@@ -43,7 +43,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
     }
 
     private void changeFragment(BaseFragment fragment, Bundle bundle, boolean isBack){
