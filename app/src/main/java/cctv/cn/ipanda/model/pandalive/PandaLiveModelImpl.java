@@ -3,8 +3,8 @@ package cctv.cn.ipanda.model.pandalive;
 import java.util.Map;
 
 import cctv.cn.ipanda.model.http.MyCallback;
-import cctv.cn.ipanda.model.http.pandalive.IPandaLiveModel;
-import cctv.cn.ipanda.model.http.pandalive.PandaLiveBqBean;
+import cctv.cn.ipanda.model.pandalive.IPandaLiveModel;
+import cctv.cn.ipanda.model.pandalive.PandaLiveBqBean;
 
 /**
  * Created by lenovo on 2017/4/7.

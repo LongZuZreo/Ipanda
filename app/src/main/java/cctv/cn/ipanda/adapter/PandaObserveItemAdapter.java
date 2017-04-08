@@ -8,8 +8,8 @@ import com.androidkun.adapter.ViewHolder;
 import java.util.List;
 
 import cctv.cn.ipanda.R;
-import cctv.cn.ipanda.model.panda_observe.PandaObserveHeadEntity;
-import cctv.cn.ipanda.model.panda_observe.PandaObserveItemEntity;
+import cctv.cn.ipanda.model.panda_observer.PandaObserverHeadEntity;
+import cctv.cn.ipanda.model.panda_observer.PandaObserveItemEntity;
 
 /**
 *

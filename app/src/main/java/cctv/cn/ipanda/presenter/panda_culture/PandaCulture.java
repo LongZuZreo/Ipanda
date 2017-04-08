@@ -60,7 +60,7 @@ public class PandaCulture implements CultureContract.View, MyCallback<PandaCultu
 
     @Override
     public void getBanner() {
-    pandaCultureImp.getPandaCultureHead(Urls);
+
     }
 
     @Override

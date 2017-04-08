@@ -3,15 +3,15 @@ package cctv.cn.ipanda.presenter.panda_obsenver;
 import cctv.cn.ipanda.common.Urls;
 import cctv.cn.ipanda.contract.ObserverContract;
 import cctv.cn.ipanda.model.http.MyCallback;
-import cctv.cn.ipanda.model.panda_observe.PandaObserveHeadEntity;
-import cctv.cn.ipanda.model.panda_observe.PandaObserveImp;
+import cctv.cn.ipanda.model.panda_observer.PandaObserverHeadEntity;
+import cctv.cn.ipanda.model.panda_observer.PandaObserveImp;
 
 /**
 *@author king
 *Created at 2017-04-07 10:58
 */
 
-public class PandaObserve implements ObserverContract.Presenter,MyCallback<PandaObserveHeadEntity>{
+public class PandaObserve implements ObserverContract.Presenter,MyCallback<PandaObserverHeadEntity>{
     ObserverContract.View view;
     PandaObserveImp imp;
     public PandaObserve(ObserverContract.View view ) {
@@ -32,7 +32,7 @@ public class PandaObserve implements ObserverContract.Presenter,MyCallback<Panda
 
 
     @Override
-    public void onSuccess(PandaObserveHeadEntity pandaObserveHeadEntity) {
+    public void onSuccess(PandaObserverHeadEntity pandaObserveHeadEntity) {
         view.getHeadData(pandaObserveHeadEntity);
     }
 
