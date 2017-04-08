@@ -8,7 +8,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import cctv.cn.ipanda.R;
@@ -17,7 +16,7 @@ import cctv.cn.ipanda.common.Urls;
 import cctv.cn.ipanda.contract.LiveContract;
 import cctv.cn.ipanda.model.http.MyCallback;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBean;
-import cctv.cn.ipanda.presenter.pandalive.PandaLivePresenterImpl;
+import cctv.cn.ipanda.presenter.panda_live.PandaLivePresenterImpl;
 
 /**
  * Created by lenovo on 2017/4/7.

@@ -5,14 +5,15 @@ import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.base.BaseActivity;
 import cctv.cn.ipanda.base.BaseFragment;
+import cctv.cn.ipanda.fragment.PanadaHomeFragment;
 import cctv.cn.ipanda.fragment.PandaCultureFragment;
 import cctv.cn.ipanda.fragment.PandaObserverFragment;
-import cctv.cn.ipanda.fragment.PandaHomeFragment;
 import cctv.cn.ipanda.fragment.PandaLiveChinaFragment;
 import cctv.cn.ipanda.fragment.PandaLiveFragment;
 
@@ -32,11 +33,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private TextView tabTitle;
     private ImageView hudongImage;
     private ImageView personSign;
+    private RadioButton homeRadio;
+    private RadioButton eyeRadio;
+    private RadioButton cultureRadio;
+    private RadioButton liveRadio;
+    private RadioButton liveChinaRadio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
     }
 
@@ -75,7 +80,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected void initData() {
-        homeFragment = new PandaHomeFragment();
+        homeFragment = new PanadaHomeFragment();
 
         eyeFragment = new PandaObserverFragment();
 
@@ -87,11 +92,25 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
         currentFragment= homeFragment;
         changeFragment(homeFragment,null,false);
+
+        homeRadio = (RadioButton) findViewById(R.id.home_radio);
+
+        eyeRadio = (RadioButton) findViewById(R.id.eye_radio);
+
+        cultureRadio = (RadioButton) findViewById(R.id.culture_radio);
+
+        liveRadio = (RadioButton) findViewById(R.id.live_radio);
+
+        liveChinaRadio = (RadioButton) findViewById(R.id.live_china_radio);
     }
 
     @Override
     protected void initListener() {
-
+        homeRadio.setOnClickListener(this);
+        eyeRadio.setOnClickListener(this);
+        cultureRadio.setOnClickListener(this);
+        liveRadio.setOnClickListener(this);
+        liveChinaRadio.setOnClickListener(this);
     }
 
     @Override

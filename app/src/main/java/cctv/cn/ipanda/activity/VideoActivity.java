@@ -1,4 +1,5 @@
 package cctv.cn.ipanda.activity;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.view.SurfaceView;
 import android.view.View;

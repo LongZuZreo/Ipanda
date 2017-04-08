@@ -95,7 +95,7 @@ public class CustomMediaController extends MediaController {
             }
         }
     };
-    private ImageView mIvScale;
+    private TextView mIvScale;
 
 
     //videoview 用于对视频进行控制的等，activity为了退出
@@ -119,7 +119,7 @@ public class CustomMediaController extends MediaController {
         img_back = (ImageButton) v.findViewById(getResources().getIdentifier("mediacontroller_top_back", "id", context.getPackageName()));
         mFileName = (TextView) v.findViewById(getResources().getIdentifier("mediacontroller_filename", "id", context.getPackageName()));
         //缩放控件
-        mIvScale = (ImageView) v.findViewById(getResources().getIdentifier("mediacontroller_scale", "id", context.getPackageName()));
+        mIvScale = (TextView) v.findViewById(getResources().getIdentifier("mediacontroller_scale", "id", context.getPackageName()));
 
         if (mFileName != null) {
             mFileName.setText(videoname);
@@ -136,6 +136,7 @@ public class CustomMediaController extends MediaController {
         //注册事件监听
         img_back.setOnClickListener(backListener);
         mIvScale.setOnClickListener(scaleListener);
+        activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         return v;
     }
 

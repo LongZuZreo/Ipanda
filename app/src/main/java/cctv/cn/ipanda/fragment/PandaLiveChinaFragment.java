@@ -2,6 +2,7 @@ package cctv.cn.ipanda.fragment;
 
 import android.view.View;
 
+import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.base.BaseFragment;
 
 /**
@@ -11,7 +12,7 @@ import cctv.cn.ipanda.base.BaseFragment;
 public class PandaLiveChinaFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.fragment_panda_live_china;
     }
 
     @Override

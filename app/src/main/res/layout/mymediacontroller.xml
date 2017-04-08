@@ -24,6 +24,7 @@
 
             <TextView
                 android:id="@+id/mediacontroller_filename"
+                style="@style/MediaController_Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -41,15 +42,16 @@
                 android:background="@null"
                 android:src="@drawable/ic_action_share_without_padding" />
 
-            <ImageButton
+            <CheckBox
                 android:id="@+id/mediacontroller_favorite"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
                 android:layout_toLeftOf="@+id/mediacontroller_share"
                 android:layout_toStartOf="@+id/mediacontroller_share"
-                android:background="@null"
-                android:src="@drawable/ic_action_favorites" />
+                android:button="@null"
+                android:layout_marginLeft="10dp"
+                android:drawableTop="@drawable/play_fullsrcee_collect_selector"/>
         </RelativeLayout>
 
         <ImageButton
@@ -98,6 +100,7 @@
 
             <TextView
                 android:id="@+id/mediacontroller_time_current"
+                style="@style/MediaController_Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -106,23 +109,27 @@
 
             <TextView
                 android:id="@+id/mediacontroller_time_total"
+                style="@style/MediaController_Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"
+                android:layout_marginRight="40dp"
                 android:text="33:33:33" />
 
-            <ImageView
+            <TextView
                 android:id="@+id/mediacontroller_scale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/ic_action_scale" />
+               android:background="@drawable/video_quality_btn_shap"
+                android:text="高清"
+                android:padding="5dp"/>
 
             <SeekBar
                 android:id="@+id/mediacontroller_seekbar"
+                style="@style/MediaController_SeekBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"

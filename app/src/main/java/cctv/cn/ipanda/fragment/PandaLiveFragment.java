@@ -2,7 +2,6 @@ package cctv.cn.ipanda.fragment;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Toast;
 
@@ -12,11 +11,9 @@ import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.base.BaseFragment;
 import cctv.cn.ipanda.common.Urls;
 import cctv.cn.ipanda.contract.LiveContract;
-import cctv.cn.ipanda.model.pandalive.IPandaLiveModel;
 import cctv.cn.ipanda.model.http.MyCallback;
-import cctv.cn.ipanda.model.pandalive.PandaLiveModelImpl;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBqBean;
-import cctv.cn.ipanda.presenter.pandalive.PandaLivePresenterImpl;
+import cctv.cn.ipanda.presenter.panda_live.PandaLivePresenterImpl;
 
 /**
  * Created by lenovo on 2017/4/7.
