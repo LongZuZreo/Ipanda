@@ -1,0 +1,138 @@
+package cctv.cn.ipanda.activity;
+
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.base.BaseActivity;
+import cctv.cn.ipanda.base.BaseFragment;
+import cctv.cn.ipanda.fragment.PandaCultureFragment;
+import cctv.cn.ipanda.fragment.PandaObserverFragment;
+import cctv.cn.ipanda.fragment.PandaHomeFragment;
+import cctv.cn.ipanda.fragment.PandaLiveChinaFragment;
+import cctv.cn.ipanda.fragment.PandaLiveFragment;
+
+public class MainActivity extends BaseActivity implements View.OnClickListener{
+
+
+    private BaseFragment currentFragment;
+    private BaseFragment eyeFragment;
+    private BaseFragment cultureFragment;
+    private BaseFragment liveFragment;
+    private BaseFragment liveChinaFragment;
+    private BaseFragment homeFragment;
+    public static final int HOME_TITLE=1;
+    public static final int OTHER_TITLE=2;
+    private ImageView titlePandaSign;
+    private ImageView titleBackImage;
+    private TextView tabTitle;
+    private ImageView hudongImage;
+    private ImageView personSign;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+    }
+
+    private void changeFragment(BaseFragment fragment, Bundle bundle, boolean isBack){
+        FragmentManager supportFragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = supportFragmentManager.beginTransaction();
+        if(bundle!=null)
+            fragment.setParams(bundle);
+        transaction.hide(currentFragment);
+        if (!fragment.isAdded())
+            transaction.add(R.id.mFram,fragment);
+        transaction.show(fragment);
+        transaction.commit();
+        currentFragment=fragment;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void loadData() {
+
+
+    }
+
+    @Override
+    protected void initView() {
+        titlePandaSign = (ImageView) findViewById(R.id.title_panda_sign);
+        titleBackImage = (ImageView)findViewById(R.id.title_back_img);
+        tabTitle = (TextView) findViewById(R.id.tab_title);
+        hudongImage = (ImageView) findViewById(R.id.hudong_image);
+        personSign = (ImageView) findViewById(R.id.person_sign);
+    }
+
+    @Override
+    protected void initData() {
+        homeFragment = new PandaHomeFragment();
+
+        eyeFragment = new PandaObserverFragment();
+
+        cultureFragment = new PandaCultureFragment();
+
+        liveFragment = new PandaLiveFragment();
+
+        liveChinaFragment = new PandaLiveChinaFragment();
+
+        currentFragment= homeFragment;
+        changeFragment(homeFragment,null,false);
+    }
+
+    @Override
+    protected void initListener() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.home_radio:
+                changeFragment(homeFragment,null,false);
+                changTitle(HOME_TITLE,"首页");
+                break;
+            case R.id.eye_radio:
+                changeFragment(eyeFragment,null,false);
+                changTitle(OTHER_TITLE,"熊猫观察");
+                break;
+            case R.id.culture_radio:
+                changeFragment(cultureFragment,null,false);
+                changTitle(OTHER_TITLE,"熊猫文化");
+                break;
+            case R.id.live_radio:
+                changeFragment(liveFragment,null,false);
+                changTitle(OTHER_TITLE,"熊猫直播");
+                break;
+            case R.id.live_china_radio:
+                changeFragment(liveChinaFragment,null,false);
+                changTitle(OTHER_TITLE,"直播中国");
+                break;
+        }
+    }
+    public void changTitle(int titleType,String title){
+        switch (titleType){
+            case HOME_TITLE:
+                titlePandaSign.setVisibility(View.VISIBLE);
+                hudongImage.setVisibility(View.VISIBLE);
+                personSign.setVisibility(View.VISIBLE);
+                tabTitle.setVisibility(View.GONE);
+                break;
+            case OTHER_TITLE:
+                tabTitle.setText(title);
+                tabTitle.setVisibility(View.VISIBLE);
+                hudongImage.setVisibility(View.GONE);
+                titlePandaSign.setVisibility(View.GONE);
+                break;
+        }
+    }
+}
