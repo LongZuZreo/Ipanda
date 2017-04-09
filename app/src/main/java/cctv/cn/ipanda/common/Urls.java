@@ -6,8 +6,6 @@ package cctv.cn.ipanda.common;
 
 public class Urls {
     public static final String BASE_URL="http://www.ipanda.com/kehuduan/";
-    //首页
-    public static final String HOME_URL =BASE_URL+"PAGE14501749764071042/index.json";
     //熊猫直播
     public static final String PANDALIVE = BASE_URL + "PAGE14501769230331752/index.json";
     //熊猫直播标签
