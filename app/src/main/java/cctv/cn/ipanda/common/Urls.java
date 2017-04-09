@@ -16,4 +16,6 @@ public class Urls {
     public static final String PANDA_OBSERVE_ITEM = "http://api.cntv.cn/apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1449807494852603,PAGE1451473625420136,PAGE1449807502866458,PAGE1451473627439140,PAGE1451473547108278,PAGE1451473628934144&serviceId=panda";
     //直播中国Tab
     public static final String PANDA_LIVE_CHINA_TAB=BASE_URL+"PAGE14501775094142282/index.json";
+    //熊猫首页
+    public static final String HOME_URL = BASE_URL+"PAGE14501749764071042/index.json";
 }
