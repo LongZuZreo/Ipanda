@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/panda_live_duoshijiao_image"
+            android:layout_width="110dp"
+            android:layout_height="70dp" />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:layout_alignBottom="@id/panda_live_duoshijiao_image"
+            android:layout_gravity="left"
+            android:background="@drawable/lpanda_bottom_gra" />
+
+        <ImageView
+            android:id="@+id/live"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignBottom="@id/panda_live_duoshijiao_image"
+            android:paddingBottom="8dp"
+            android:src="@drawable/lpanda_live_layer" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/panda_live_duoshijiao_image"
+            android:layout_toRightOf="@id/live"
+            android:textColor="#ffffff"
+            android:paddingBottom="6dp"
+            android:paddingLeft="2dp"
+            android:text="Live" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/panda_live_duoshijiao_title"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="00000000000000000" />
+
+</LinearLayout>

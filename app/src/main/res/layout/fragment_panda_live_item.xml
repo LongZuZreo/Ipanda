@@ -12,14 +12,17 @@
             android:id="@+id/panda_live_img"
             android:layout_width="150dp"
             android:layout_height="100dp"
-            android:layout_margin="20dp" />
+            android:layout_margin="20dp"
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/panda_live_item_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            android:layout_toRightOf="@id/panda_live_img" />
+            android:layout_toRightOf="@id/panda_live_img"
+            android:text="0000000"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/panda_live_item_data"
@@ -27,8 +30,9 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/panda_live_img"
             android:layout_alignParentBottom="true"
-            android:layout_margin="20dp"
-            android:layout_toRightOf="@id/panda_live_img" />
+            android:layout_margin="30dp"
+            android:layout_toRightOf="@id/panda_live_img"
+            android:text="000000" />
 
     </RelativeLayout>
 </LinearLayout>

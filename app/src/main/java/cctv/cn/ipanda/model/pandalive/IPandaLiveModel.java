@@ -4,7 +4,6 @@ import java.util.Map;
 
 import cctv.cn.ipanda.model.BaseModel;
 import cctv.cn.ipanda.model.http.MyCallback;
-import cctv.cn.ipanda.model.pandalive.PandaLiveBqBean;
 
 /**
  * Created by lenovo on 2017/4/7.
@@ -26,4 +25,16 @@ public interface IPandaLiveModel extends BaseModel {
 
     //详细信息
     <T> void getDetailInfo(String url, Map<String, String> params, MyCallback<T> callback);
+
+    //多视角直播
+    <T> void getLiveTitle(String url, Map<String, String> params, MyCallback<T> callback);
+
+    //边看边聊直播
+    <T> void getEyeTitle(String url, Map<String, String> params, MyCallback<T> callback);
+
+    //多视角
+    <T> void getLiveFragment(String url, Map<String, String> params, MyCallback<T> callback);
+
+    //边看边聊
+    <T> void getEyeFragment(String url, Map<String, String> params, MyCallback<T> callback);
 }

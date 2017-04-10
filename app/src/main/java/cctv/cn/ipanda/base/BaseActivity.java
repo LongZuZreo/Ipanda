@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import java.io.IOException;
 
+import cctv.cn.ipanda.common.App;
+
 /**
  * Created by 张志远 on 2017/4/6.
  */
@@ -16,6 +18,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+        App.context = this;
         initView();
         initData();
         initListener();

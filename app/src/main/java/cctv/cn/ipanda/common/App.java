@@ -1,5 +1,6 @@
 package cctv.cn.ipanda.common;
 
+import android.app.Activity;
 import android.app.Application;
 
 import io.vov.vitamio.Vitamio;
@@ -10,6 +11,7 @@ import io.vov.vitamio.Vitamio;
 
 public class App extends Application {
 
+    public static Activity context;
     @Override
     public void onCreate() {
         super.onCreate();

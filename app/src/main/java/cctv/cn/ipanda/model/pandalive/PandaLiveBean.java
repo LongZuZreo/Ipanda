@@ -33,6 +33,7 @@ public class PandaLiveBean {
     }
 
     public static class BookmarkBean {
+
         private List<MultipleBean> multiple;
         private List<WatchTalkBean> watchTalk;
 
