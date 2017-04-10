@@ -21,7 +21,7 @@ public abstract class MyCommonBaseAdapter<T> extends CommonBaseAdapter<T> {
 
         display(holder,datas.get(position));
 
-        return convertView;
+        return holder.getConvertView();
     }
 
     protected  abstract void display(CommonViewHolder holder,T t);

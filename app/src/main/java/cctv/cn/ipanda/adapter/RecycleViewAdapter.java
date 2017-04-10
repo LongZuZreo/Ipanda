@@ -3,7 +3,6 @@ package cctv.cn.ipanda.adapter;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +15,19 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.adapter.recycleviewadapter_adapter.CctvGridViewAdapter;
+import cctv.cn.ipanda.adapter.recycleviewadapter_adapter.ChinaLiveGridViewAdapter;
+import cctv.cn.ipanda.adapter.recycleviewadapter_adapter.WallLiveGridViewAdapter;
 import cctv.cn.ipanda.model.panada_home.PanadaHomeBean;
 import cctv.cn.ipanda.viewholder.JCTJViewHolder;
+import cctv.cn.ipanda.viewholder.PanadaCCTVViewHolder;
+import cctv.cn.ipanda.viewholder.PanadaChinaLiveViewHolder;
+import cctv.cn.ipanda.viewholder.PanadaEyesViewHolder;
+import cctv.cn.ipanda.adapter.recycleviewadapter_adapter.PanadaLiveGridViewAdapter;
+import cctv.cn.ipanda.viewholder.PanadaInteractiveViewHolder;
+import cctv.cn.ipanda.viewholder.PanadaListBeanViewHolder;
+import cctv.cn.ipanda.viewholder.PanadaLiveViewHolder;
+import cctv.cn.ipanda.viewholder.PanadaWallLiveViewHolder;
 
 /**
  * Created by ASUS on 2017/4/7.
@@ -37,6 +47,14 @@ public class RecycleViewAdapter extends RecyclerView.Adapter{
     public static final int TYPE6 = 6;
     public static final int TYPE7 = 7;
     public static final int TYPE8 = 8;
+    private PanadaEyesViewHolder panadaEyesViewHolder;
+    private PanadaLiveViewHolder panadaLiveViewHolder;
+    private PanadaWallLiveViewHolder panadaWallLiveViewHolder;
+    private PanadaChinaLiveViewHolder panadaChinaLiveViewHolder;
+    private PanadaInteractiveViewHolder panadaInteractiveViewHolder;
+    private PanadaCCTVViewHolder panadaCCTVViewHolder;
+    private PanadaListBeanViewHolder panadaListBeanViewHolder;
+
     public RecycleViewAdapter(Context context, List<Object> list){
         inflater = LayoutInflater.from(context);
         this.mlist = list;
@@ -55,13 +73,33 @@ public class RecycleViewAdapter extends RecyclerView.Adapter{
                  viewHolder= new JCTJViewHolder(jctjRecycleView);
                 return viewHolder;
             case TYPE2:
+                View panadaeyesRecycleView = inflater.inflate(R.layout.recycleview_panadaeyes_item, parent, false);
+                panadaEyesViewHolder = new PanadaEyesViewHolder(panadaeyesRecycleView);
+                return panadaEyesViewHolder;
             case TYPE3:
+                View panadaLiveRecycleView = inflater.inflate(R.layout.recycleview_panadalive_item, parent, false);
+                panadaLiveViewHolder = new PanadaLiveViewHolder(panadaLiveRecycleView);
+                return panadaLiveViewHolder;
             case TYPE4:
+                View wallliveRecycle = inflater.inflate(R.layout.recycleview_walllive_item, parent, false);
+                panadaWallLiveViewHolder = new PanadaWallLiveViewHolder(wallliveRecycle);
+                return panadaWallLiveViewHolder;
             case TYPE5:
+                View chinaliveRecycle = inflater.inflate(R.layout.recycleview_chinalive_item, parent, false);
+                panadaChinaLiveViewHolder = new PanadaChinaLiveViewHolder(chinaliveRecycle);
+                return panadaChinaLiveViewHolder;
             case TYPE6:
+                View interactiveRecycleView = inflater.inflate(R.layout.recycleview_interactive_item, parent, false);
+                panadaInteractiveViewHolder = new PanadaInteractiveViewHolder(interactiveRecycleView);
+                return panadaInteractiveViewHolder;
             case TYPE7:
+                View panadaCCTVRecycleView = inflater.inflate(R.layout.recycleview_cctv_item, parent, false);
+                panadaCCTVViewHolder = new PanadaCCTVViewHolder(panadaCCTVRecycleView);
+                return panadaCCTVViewHolder;
             case TYPE8:
-
+                View panadalistbeanRecycleView = inflater.inflate(R.layout.recycleview_listbean_itme, parent, false);
+                panadaListBeanViewHolder = new PanadaListBeanViewHolder(panadalistbeanRecycleView);
+                return panadaListBeanViewHolder;
 
         }
         return null;
@@ -110,18 +148,52 @@ public class RecycleViewAdapter extends RecyclerView.Adapter{
 
                 break;
             case TYPE2:
+                PanadaHomeBean.DataBean.PandaeyeBean pandaeyeBean = (PanadaHomeBean.DataBean.PandaeyeBean) o;
+                PanadaEyesViewHolder panadaEyesViewHolder = (PanadaEyesViewHolder) holder;
+                panadaEyesViewHolder.panadaTitle.setText(pandaeyeBean.getTitle());
+                Glide.with(context).load(pandaeyeBean.getPandaeyelogo()).into(panadaEyesViewHolder.panadaeyesTitleImage);
+                panadaEyesViewHolder.panadaeyesTitleTitle1.setText(pandaeyeBean.getItems().get(0).getBrief());
+                panadaEyesViewHolder.panadaeyesTitleMessage1.setText(pandaeyeBean.getItems().get(0).getTitle());
+                panadaEyesViewHolder.panadaeyesTitleTitle2.setText(pandaeyeBean.getItems().get(1).getBrief());
+                panadaEyesViewHolder.panadaeyesTitleMessage2.setText(pandaeyeBean.getItems().get(1).getTitle());
+                //PanadaHomeBean.DataBean.PandaeyeBean.ItemsBean itemsBean = o;
                 break;
             case TYPE3:
+                PanadaHomeBean.DataBean.PandaliveBean pandaliveBean = (PanadaHomeBean.DataBean.PandaliveBean) o;
+                panadaLiveViewHolder = (PanadaLiveViewHolder) holder;
+                panadaLiveViewHolder.panadaLiveTitle.setText(pandaliveBean.getTitle());
+                PanadaLiveGridViewAdapter panadaLiveGridViewAdapter = new PanadaLiveGridViewAdapter(context,pandaliveBean.getList());
+                panadaLiveViewHolder.panadaLiveGridView.setAdapter(panadaLiveGridViewAdapter);
                 break;
             case TYPE4:
+                PanadaHomeBean.DataBean.WallliveBean wallliveBean = (PanadaHomeBean.DataBean.WallliveBean) o;
+                panadaWallLiveViewHolder = (PanadaWallLiveViewHolder) holder;
+                ((PanadaWallLiveViewHolder) holder).panadaWallLiveTitle.setText(wallliveBean.getTitle());
+                ((PanadaWallLiveViewHolder) holder).panadaWallLiveGridView.setAdapter(new WallLiveGridViewAdapter(context,wallliveBean.getList()));
                 break;
             case TYPE5:
+                PanadaHomeBean.DataBean.ChinaliveBean chinaliveBean = (PanadaHomeBean.DataBean.ChinaliveBean) o;
+                panadaChinaLiveViewHolder = (PanadaChinaLiveViewHolder) holder;
+                ((PanadaChinaLiveViewHolder) holder).panadaChinaLiveTitle.setText(chinaliveBean.getTitle());
+                ((PanadaChinaLiveViewHolder) holder).panadaChinaLiveGridView.setAdapter(new ChinaLiveGridViewAdapter(context,chinaliveBean.getList()));
                 break;
             case TYPE6:
+                PanadaHomeBean.DataBean.InteractiveBean interactiveBean = (PanadaHomeBean.DataBean.InteractiveBean) o;
+                panadaInteractiveViewHolder = (PanadaInteractiveViewHolder) holder;
+                ((PanadaInteractiveViewHolder) holder).panadaInteractiveTitle.setText(interactiveBean.getTitle());
+                Glide.with(context).load(interactiveBean.getInteractiveone().get(0).getImage()).into(((PanadaInteractiveViewHolder) holder).panadaInteractiveImage);
+                ((PanadaInteractiveViewHolder) holder).panadaInteractiveMessage.setText(interactiveBean.getInteractiveone().get(0).getTitle());
                 break;
             case TYPE7:
+                PanadaHomeBean.DataBean.CctvBean cctvBean = (PanadaHomeBean.DataBean.CctvBean) o;
+                panadaCCTVViewHolder = (PanadaCCTVViewHolder) holder;
+                ((PanadaCCTVViewHolder) holder).panadaCCTVTitle.setText(cctvBean.getTitle());
+                //((PanadaCCTVViewHolder) holder).panadaCCTVGridView.setAdapter(new CctvGridViewAdapter(context,cctvBean.getListurl()));
                 break;
             case TYPE8:
+                PanadaHomeBean.DataBean.ListBeanXXX listBeanXXX = (PanadaHomeBean.DataBean.ListBeanXXX) o;
+                panadaListBeanViewHolder = (PanadaListBeanViewHolder) holder;
+                ((PanadaListBeanViewHolder) holder).panadaListBeanTitle.setText(listBeanXXX.getTitle());
                 break;
         }
     }
@@ -134,7 +206,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter{
             //创建LayoutParams对象
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(dp2px(140),dp2px(120));
             linearLayout.setLayoutParams(params);
-            linearLayout.setPadding(10,0,0,0);
+           // linearLayout.setPadding(10,0,0,0);
             //设置垂直方向
             linearLayout.setOrientation(LinearLayout.VERTICAL);
 
