@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:id="@+id/mPanadaChinalive_GridView_image"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="5dp"/>
+    <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:background="@drawable/lpanda_bottom_gra"
+        android:layout_alignBottom="@id/mPanadaChinalive_GridView_image"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="5dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/lpanda_live_layer"
+            android:layout_marginLeft="3dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:text="Live"
+            android:textSize="10sp"
+            android:layout_marginLeft="3dp" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mPanadaChinalive_GridView_title"
+        android:layout_below="@id/mPanadaChinalive_GridView_image"/>
+</RelativeLayout>
