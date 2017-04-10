@@ -5,12 +5,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#EDEDED"/>
     <android.support.design.widget.TabLayout
         android:id="@+id/panda_live_tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabIndicatorColor="#0000cd">
+        app:tabSelectedTextColor="#0000FF"
+        app:tabTextColor="#000000"
+        app:tabIndicatorColor="#0000cd"
+        app:tabBackground="@color/colorWhite"
+        >
+
 
     </android.support.design.widget.TabLayout>
 
