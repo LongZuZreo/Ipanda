@@ -5,20 +5,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <android.support.design.widget.TabLayout
         android:id="@+id/panda_live_tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabIndicatorColor="#0000cd">
+        app:tabBackground="@color/colorWhite"
+        app:tabIndicatorColor="@color/colorAccent"
+        app:tabSelectedTextColor="@color/colorPrimaryDark"
+        app:tabTextColor="@color/colorPrimary">
 
     </android.support.design.widget.TabLayout>
 
-    <fragment
-        android:name="cctv.cn.ipanda.fragment.LiveFragment"
-        android:id="@+id/pandaLiveFragment"
+
+    <FrameLayout
+        android:id="@+id/panda_live_Framlayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
-
+    </FrameLayout>
 </LinearLayout>

@@ -4,12 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.androidkun.PullToRefreshRecyclerView
-        android:id="@+id/panda_live_recycle"
+    <GridView
+        android:id="@+id/panda_live_duoshijiao_gridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
-
-    </com.androidkun.PullToRefreshRecyclerView>
+        android:numColumns="3">
+    </GridView>
 
 </LinearLayout>

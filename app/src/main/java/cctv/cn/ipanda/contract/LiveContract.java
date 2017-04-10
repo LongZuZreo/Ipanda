@@ -5,6 +5,9 @@ import java.util.Map;
 import cctv.cn.ipanda.base.BasePresenter;
 import cctv.cn.ipanda.base.BaseView;
 import cctv.cn.ipanda.model.http.MyCallback;
+import cctv.cn.ipanda.model.pandalive.PandaLiveBean;
+import cctv.cn.ipanda.model.pandalive.PandaLiveBqBean;
+import cctv.cn.ipanda.model.pandalive.PandaLiveDuoshijiaoBean;
 
 /**
  * Created by 张志远 on 2017/4/6.
@@ -21,7 +24,7 @@ public interface LiveContract {
         /**
          * 详情内容的显示
          */
-        void showDetail();
+        void showDetail(PandaLiveBean pandaLiveBean);
 
         /**
          * 详情内容页取消显示
@@ -44,21 +47,58 @@ public interface LiveContract {
         void clickTabtoHome();
 
         /**
+         * 多视角直播
+         */
+        void showLiveFragment(PandaLiveDuoshijiaoBean pandaLiveDuoshijiaoBean);
+
+        /**
+         * 多视角直播标题
+         */
+        void showLiveTitle();
+
+        /**
+         * 边看边聊
+         */
+        void showEyeFragment(PandaLiveDuoshijiaoBean pandaLiveDuoshijiaoBean);
+
+        /**
+         * 边看边聊标题
+         */
+        void showEyeTitle();
+
+        /**
          * 加载Tab标题
          */
-        void loadTab();
+        void loadTab2(PandaLiveBqBean pandaLiveBqBean);
     }
 
     interface Presenter extends BasePresenter {
 
         <T> void getTabTitle(String url, Map<String, String> params, MyCallback<T> callback);
 
+        <T> void getData();
+
         <T> void getData(String url, Map<String, String> params, MyCallback<T> callback);
 
         <T> void showImage(String url);
 
+        //多视角直播标题
+        <T> void getLiveTitle(String url, Map<String, String> params, MyCallback<T> callback);
+
+        //边看边聊标题
+        <T> void getEyeTitle(String url, Map<String, String> params, MyCallback<T> callback);
+
         <T> void getTitle(String title);
 
-        <T> void showDetailInfo(String info);
+        <T> void showDetailInfo(String url, Map<String, String> params, MyCallback<T> callback);
+
+        //标题详情页
+        <T> void getInfo(String url, Map<String, String> params, MyCallback<T> callback);
+
+        //多视角直播
+        <T> void getLiveFragment(String url, Map<String, String> params, MyCallback<T> callback);
+
+        //边看边聊
+        <T> void getEyeFragment(String url, Map<String, String> params, MyCallback<T> callback);
     }
 }
