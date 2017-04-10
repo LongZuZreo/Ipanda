@@ -72,6 +72,7 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
         mRecycle.setAdapter(adapter);
     }
 
+
     @Override
     protected void initListener() {
 
