@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="cctv.cn.ipanda.activity.MainActivity">
+    tools:context="cctv.cn.ipanda.activity.MainActivity"
+    android:background="#FFFFFF">
 
     <RelativeLayout
         android:id="@+id/base_action_bar"
@@ -69,7 +70,8 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:weightSum="5"
-        android:paddingTop="5dp">
+        android:paddingTop="5dp"
+       >
         <RadioButton
             android:id="@+id/home_radio"
             android:layout_width="0dp"
@@ -78,7 +80,8 @@
             android:drawableTop="@drawable/tab_home_selector"
             android:layout_weight="1"
             android:text="首页"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:background="@drawable/activity_main_color_selector"/>
         <RadioButton
             android:id="@+id/eye_radio"
             android:layout_width="0dp"
@@ -87,7 +90,8 @@
             android:drawableTop="@drawable/tab_panda_eye_selector"
             android:layout_weight="1"
             android:text="熊猫观察"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:background="@drawable/activity_main_color_selector"/>
         <RadioButton
             android:id="@+id/culture_radio"
             android:layout_width="0dp"
@@ -96,7 +100,8 @@
             android:drawableTop="@drawable/tab_panda_culture_selector"
             android:layout_weight="1"
             android:text="熊猫文化"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:background="@drawable/activity_main_color_selector"/>
         <RadioButton
             android:id="@+id/live_radio"
             android:layout_width="0dp"
@@ -105,7 +110,8 @@
             android:drawableTop="@drawable/tab_panda_live_selector"
             android:layout_weight="1"
             android:text="熊猫直播"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:background="@drawable/activity_main_color_selector"/>
         <RadioButton
             android:id="@+id/live_china_radio"
             android:layout_width="0dp"
@@ -114,7 +120,8 @@
             android:drawableTop="@drawable/tab_live_china_selector"
             android:layout_weight="1"
             android:text="直播中国"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:background="@drawable/activity_main_color_selector"/>
 
     </RadioGroup>
 </LinearLayout>

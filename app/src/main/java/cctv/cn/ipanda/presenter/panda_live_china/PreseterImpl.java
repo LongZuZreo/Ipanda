@@ -4,6 +4,7 @@ import cctv.cn.ipanda.base.BaseView;
 import cctv.cn.ipanda.common.Urls;
 import cctv.cn.ipanda.contract.LiveChinaContract;
 import cctv.cn.ipanda.model.http.MyCallback;
+import cctv.cn.ipanda.model.panda_live_china.IPandaLiveChinaListEntity;
 import cctv.cn.ipanda.model.panda_live_china.IPandaLiveChinaModel;
 import cctv.cn.ipanda.model.panda_live_china.IPandaLiveChinaModelImpl;
 import cctv.cn.ipanda.model.panda_live_china.IPandaLiveChinaTabEntity;
@@ -22,6 +23,7 @@ public class PreseterImpl implements LiveChinaContract.Presenter{
         this.model=new IPandaLiveChinaModelImpl();
     }
 
+    @Override
     public void getAllTab(){
         model.getAllTab(Urls.PANDA_LIVE_CHINA_TAB, null, new MyCallback<IPandaLiveChinaTabEntity>() {
             @Override
@@ -35,7 +37,18 @@ public class PreseterImpl implements LiveChinaContract.Presenter{
             }
         });
     }
-    public void getVideoList(){
+    @Override
+    public void getVideoList(String url) {
+        model.getVideoList(url, null, new MyCallback<IPandaLiveChinaListEntity>() {
+            @Override
+            public void onSuccess(IPandaLiveChinaListEntity iPandaLiveChinaListEntity) {
+                view.loadList(iPandaLiveChinaListEntity);
+            }
 
+            @Override
+            public void onError(String msg) {
+
+            }
+        });
     }
 }

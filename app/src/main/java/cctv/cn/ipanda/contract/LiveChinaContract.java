@@ -2,6 +2,7 @@ package cctv.cn.ipanda.contract;
 
 import cctv.cn.ipanda.base.BasePresenter;
 import cctv.cn.ipanda.base.BaseView;
+import cctv.cn.ipanda.model.panda_live_china.IPandaLiveChinaListEntity;
 import cctv.cn.ipanda.model.panda_live_china.IPandaLiveChinaTabEntity;
 
 /**
@@ -25,9 +26,23 @@ public interface LiveChinaContract {
          * 加载tab栏
          */
         void loadTab(IPandaLiveChinaTabEntity iPandaLiveChinaTabEntity);
+
+        /**
+         * 加载List列表
+         */
+        void loadList(IPandaLiveChinaListEntity iPandaLiveChinaListEntity);
     }
 
     interface Presenter extends BasePresenter{
 
+        /**
+         * 加载所有Tab
+         */
+        void getAllTab();
+
+        /**
+         * 加载List列表
+         */
+        void getVideoList(String url);
     }
 }
