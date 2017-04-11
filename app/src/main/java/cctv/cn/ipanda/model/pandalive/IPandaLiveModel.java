@@ -37,4 +37,7 @@ public interface IPandaLiveModel extends BaseModel {
 
     //边看边聊
     <T> void getEyeFragment(String url, Map<String, String> params, MyCallback<T> callback);
+
+    //精彩一刻
+    <T> void getJcyk(String url, Map<String, String> params, MyCallback<T> callback);
 }

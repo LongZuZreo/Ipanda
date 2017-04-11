@@ -2,7 +2,6 @@ package cctv.cn.ipanda.fragment;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -11,7 +10,6 @@ import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -20,14 +18,12 @@ import java.util.List;
 import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.base.BaseFragment;
 import cctv.cn.ipanda.common.App;
-import cctv.cn.ipanda.common.Urls;
 import cctv.cn.ipanda.contract.LiveContract;
-import cctv.cn.ipanda.model.http.MyCallback;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBqBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveDuoshijiaoBean;
+import cctv.cn.ipanda.model.pandalive.PandaLiveJcyiBean;
 import cctv.cn.ipanda.presenter.panda_live.PandaLivePersenterImpl;
-import retrofit2.http.Url;
 
 /**
  * Created by lenovo on 2017/4/7.
@@ -118,7 +114,6 @@ public class LiveFragment extends BaseFragment implements LiveContract.View, Vie
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 
-                Log.i("qqq", "qqqqqqq");
                 if ((int) tab.getTag() == 1000) {
 
                     changeFragment(pandaLiveLiveFragment, null, false);
@@ -164,6 +159,9 @@ public class LiveFragment extends BaseFragment implements LiveContract.View, Vie
 
                 Glide.with(App.context).load(liveBean.getImage()).into(panda_live_image);
                 panda_live_title.setText(liveBean.getTitle());
+/*
+                String name = (String) bundle.get("name");
+                panda_live_title.setText(name);*/
 
                 panda_live_detail.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -207,7 +205,6 @@ public class LiveFragment extends BaseFragment implements LiveContract.View, Vie
     @Override
     public void showLiveFragment(PandaLiveDuoshijiaoBean pandaLiveDuoshijiaoBean) {
 
-
     }
 
     /**
@@ -241,6 +238,11 @@ public class LiveFragment extends BaseFragment implements LiveContract.View, Vie
             String title = watchTalkBean.getTitle();
             panda_live_live_tablayout.addTab(panda_live_live_tablayout.newTab().setText(title).setTag(1001));
         }
+
+    }
+
+    @Override
+    public void showJcyk(PandaLiveJcyiBean pandaLiveJcyiBean) {
 
     }
 

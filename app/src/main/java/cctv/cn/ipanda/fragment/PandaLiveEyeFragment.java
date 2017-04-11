@@ -8,6 +8,7 @@ import cctv.cn.ipanda.contract.LiveContract;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBqBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveDuoshijiaoBean;
+import cctv.cn.ipanda.model.pandalive.PandaLiveJcyiBean;
 
 /**
  * Created by lenovo on 2017/4/10.
@@ -17,6 +18,7 @@ public class PandaLiveEyeFragment extends BaseFragment implements LiveContract.V
 
     @Override
     protected int getLayoutId() {
+
         return R.layout.fragment_live_kanliao;
     }
 
@@ -87,6 +89,11 @@ public class PandaLiveEyeFragment extends BaseFragment implements LiveContract.V
 
     @Override
     public void showEyeTitle() {
+
+    }
+
+    @Override
+    public void showJcyk(PandaLiveJcyiBean pandaLiveJcyiBean) {
 
     }
 

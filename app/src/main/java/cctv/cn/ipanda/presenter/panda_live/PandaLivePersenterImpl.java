@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 
 import java.util.List;
 import java.util.Map;
@@ -64,7 +63,6 @@ public class PandaLivePersenterImpl implements LiveContract.Presenter, MyCallbac
             @Override
             public void onError(String msg) {
 
-                Log.i("0000", msg);
             }
         });
 
@@ -79,14 +77,10 @@ public class PandaLivePersenterImpl implements LiveContract.Presenter, MyCallbac
     /**
      * 标题详情页
      *
-     * @param url
-     * @param params
-     * @param callback
-     * @param <T>
      */
+
     @Override
     public <T> void getInfo(String url, Map<String, String> params, MyCallback<T> callback) {
-
 
     }
 
@@ -96,7 +90,6 @@ public class PandaLivePersenterImpl implements LiveContract.Presenter, MyCallbac
     @Override
     public <T> void getLiveFragment(String url, Map<String, String> params, MyCallback<T> callback) {
 
-//        pandaLiveModel.getLiveFragment();
     }
 
     /**
@@ -140,6 +133,7 @@ public class PandaLivePersenterImpl implements LiveContract.Presenter, MyCallbac
 
         pandaLiveModel.getDetailInfo(url, params, callback);
     }
+
 
     @Override
     public void onSuccess(PandaLiveBean pandaLiveBean) {

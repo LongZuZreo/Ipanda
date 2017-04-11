@@ -69,4 +69,9 @@ public class PandaLiveModelImpl implements IPandaLiveModel {
     public <T> void getEyeFragment(String url, Map<String, String> params, MyCallback<T> callback) {
         retrofitUtils.getData(url, params, callback);
     }
+
+    @Override
+    public <T> void getJcyk(String url, Map<String, String> params, MyCallback<T> callback) {
+        retrofitUtils.getData(url, params, callback);
+    }
 }

@@ -33,16 +33,18 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/panda_live_duoshijiao_image"
             android:layout_toRightOf="@id/live"
-            android:textColor="#ffffff"
+            android:minHeight="5dp"
             android:paddingBottom="6dp"
             android:paddingLeft="2dp"
-            android:text="Live" />
+            android:text="Live"
+            android:textColor="#ffffff" />
 
     </RelativeLayout>
 
     <TextView
         android:id="@+id/panda_live_duoshijiao_title"
         android:layout_width="120dp"
+        android:textSize="16sp"
         android:layout_height="wrap_content"
         android:text="00000000000000000" />
 
