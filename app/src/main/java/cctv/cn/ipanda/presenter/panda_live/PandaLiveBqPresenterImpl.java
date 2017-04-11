@@ -65,15 +65,7 @@ public class PandaLiveBqPresenterImpl implements LiveContract.Presenter, MyCallb
     /**
      * 标题详情页
      *
-     * @param url
-     * @param params
-     * @param callback
-     * @param <T>
      */
-    @Override
-    public <T> void getInfo(String url, Map<String, String> params, MyCallback<T> callback) {
-
-    }
 
     @Override
     public <T> void getLiveFragment(String url, Map<String, String> params, MyCallback<T> callback) {
@@ -140,6 +132,11 @@ public class PandaLiveBqPresenterImpl implements LiveContract.Presenter, MyCallb
      */
     @Override
     public <T> void showDetailInfo(String url, Map<String, String> params, MyCallback<T> callback) {
+
+    }
+
+    @Override
+    public <T> void getInfo(String url, Map<String, String> params, MyCallback<T> callback) {
 
     }
 }

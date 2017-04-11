@@ -1,5 +1,6 @@
 package cctv.cn.ipanda.fragment;
 
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
@@ -15,10 +16,12 @@ import cctv.cn.ipanda.base.BaseFragment;
 
 import cctv.cn.ipanda.common.App;
 import cctv.cn.ipanda.contract.LiveContract;
+import cctv.cn.ipanda.model.http.MyCallback;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBqBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveDuoshijiaoBean;
-import cctv.cn.ipanda.presenter.panda_live.PandaLivePersenterImpl;
+import cctv.cn.ipanda.model.pandalive.PandaLiveJcyiBean;
+import cctv.cn.ipanda.presenter.panda_live.PandaLiveTabPresenterImpl;
 
 
 /**
@@ -29,11 +32,16 @@ public class PandaLiveListFragment extends BaseFragment implements LiveContract.
 
     private PullToRefreshRecyclerView refreshRecyclerView;
     private PandaLiveRecycleAdapter adapter;
-    private List<PandaLiveBqBean.TablistBean> datas;
-    private PandaLivePersenterImpl pandaLivePersenter;
+    private List<PandaLiveJcyiBean.VideoBean> datas;
+    private PandaLiveTabPresenterImpl pandaLivePersenter;
+    private String id;
+    private int page = 7;
+    private int p = 1;
+
 
     @Override
     protected int getLayoutId() {
+
         return R.layout.fragment_panda_live_listview;
     }
 
@@ -46,11 +54,28 @@ public class PandaLiveListFragment extends BaseFragment implements LiveContract.
     @Override
     protected void initData() {
 
-        pandaLivePersenter = new PandaLivePersenterImpl(this);
+        id = (String) bundle.get("id");
+        pandaLivePersenter = new PandaLiveTabPresenterImpl(this);
         LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         refreshRecyclerView.setLayoutManager(manager);
         datas = new ArrayList<>();
-        adapter = new PandaLiveRecycleAdapter(getActivity(), datas);
+        adapter = new PandaLiveRecycleAdapter(App.context, datas);
+        refreshRecyclerView.setPullToRefreshListener(new PullToRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                datas.clear();
+                getDatas(page, 1, false);
+            }
+
+            @Override
+            public void onLoadMore() {
+
+                p = p + 1;
+                getDatas(page, p, true);
+            }
+        });
+
         refreshRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
@@ -58,7 +83,36 @@ public class PandaLiveListFragment extends BaseFragment implements LiveContract.
     @Override
     protected void loadData() {
 
+        getDatas(page, p, false);
+    }
 
+    private void getDatas(int page, int p, final boolean isLoadMore) {
+
+        pandaLivePersenter.getInfo("http://api.cntv.cn/video/videolistById?vsid=" + id + "&n=" + page + "&serviceId=panda&o=desc&of=time&p=" + p, null, new MyCallback<PandaLiveJcyiBean>() {
+            @Override
+            public void onSuccess(PandaLiveJcyiBean pandaLiveJcyiBean) {
+
+                List<PandaLiveJcyiBean.VideoBean> video = pandaLiveJcyiBean.getVideo();
+
+                datas.addAll(video);
+                adapter.notifyDataSetChanged();
+
+                if (isLoadMore) {
+
+                    refreshRecyclerView.setLoadMoreComplete();
+                } else {
+
+                    refreshRecyclerView.setRefreshComplete();
+                }
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onError(String msg) {
+
+            }
+        });
     }
 
     @Override
@@ -102,7 +156,7 @@ public class PandaLiveListFragment extends BaseFragment implements LiveContract.
     }
 
     @Override
-    public void showLiveTitle( ) {
+    public void showLiveTitle() {
 
     }
 
@@ -115,6 +169,15 @@ public class PandaLiveListFragment extends BaseFragment implements LiveContract.
     public void showEyeTitle() {
 
     }
+
+    @Override
+    public void showJcyk(PandaLiveJcyiBean pandaLiveJcyiBean) {
+
+    }
+
+    /**
+     * 精彩一刻
+     */
 
     @Override
     public void loadTab2(PandaLiveBqBean pandaLiveBqBean) {

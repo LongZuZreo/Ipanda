@@ -4,13 +4,14 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.adapter.PandaLiveTabAdapter;
@@ -22,6 +23,7 @@ import cctv.cn.ipanda.model.http.MyCallback;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBqBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveDuoshijiaoBean;
+import cctv.cn.ipanda.model.pandalive.PandaLiveJcyiBean;
 import cctv.cn.ipanda.presenter.panda_live.PandaLiveBqPresenterImpl;
 
 
@@ -40,6 +42,18 @@ public class PandaLiveFragment extends BaseFragment implements LiveContract.View
     private BaseFragment currentFragment;
     private BaseFragment liveFragment;
     private BaseFragment pandaLiveListFragment;
+    private BaseFragment pandaLiveListFragment1;
+    private BaseFragment pandaLiveListFragment2;
+    private BaseFragment pandaLiveListFragment3;
+    private BaseFragment pandaLiveListFragment4;
+    private BaseFragment pandaLiveListFragment5;
+    private BaseFragment pandaLiveListFragment6;
+    private BaseFragment pandaLiveListFragment7;
+    private BaseFragment pandaLiveListFragment8;
+    private BaseFragment pandaLiveListFragment9;
+    private BaseFragment pandaLiveListFragment10;
+    private BaseFragment pandaLiveListFragment11;
+    private Bundle bundle;
 
 
     private void changeFragment(BaseFragment fragment, Bundle bundle, boolean isBack) {
@@ -48,6 +62,7 @@ public class PandaLiveFragment extends BaseFragment implements LiveContract.View
         FragmentTransaction transaction = supportFragmentManager.beginTransaction();
 
         if (bundle != null)
+
             fragment.setParams(bundle);
 
         transaction.hide(currentFragment);
@@ -80,11 +95,23 @@ public class PandaLiveFragment extends BaseFragment implements LiveContract.View
     @Override
     protected void initData() {
 
+        bundle = new Bundle();
         fragments = new ArrayList<>();
         list = new ArrayList<>();
         datas = new ArrayList<>();
         liveFragment = new LiveFragment();
         pandaLiveListFragment = new PandaLiveListFragment();
+        pandaLiveListFragment1 = new PandaLiveListFragment();
+        pandaLiveListFragment2 = new PandaLiveListFragment();
+        pandaLiveListFragment3 = new PandaLiveListFragment();
+        pandaLiveListFragment4 = new PandaLiveListFragment();
+        pandaLiveListFragment5 = new PandaLiveListFragment();
+        pandaLiveListFragment6 = new PandaLiveListFragment();
+        pandaLiveListFragment7 = new PandaLiveListFragment();
+        pandaLiveListFragment8 = new PandaLiveListFragment();
+        pandaLiveListFragment9 = new PandaLiveListFragment();
+        pandaLiveListFragment10 = new PandaLiveListFragment();
+        pandaLiveListFragment11 = new PandaLiveListFragment();
         pandaLivePresenter = new PandaLiveBqPresenterImpl(App.context);
 
         currentFragment = liveFragment;
@@ -108,15 +135,14 @@ public class PandaLiveFragment extends BaseFragment implements LiveContract.View
                     if (tablist != null) {
 
                         for (int i = 0; i < tablist.size(); i++) {
-
                             PandaLiveBqBean.TablistBean tablistBean = tablist.get(i);
                             String title = tablistBean.getTitle();
-                            tabLayout.addTab(tabLayout.newTab().setText(title).setTag(123));
-                            datas.add(title);
+                            Map<String, String> map = new HashMap<String, String>();
+                            map.put("order", tablistBean.getOrder());
+                            map.put("id", tablistBean.getId());
+                            tabLayout.addTab(tabLayout.newTab().setText(title).setTag(map));
                         }
                     }
-
-                    Toast.makeText(getActivity(), "直播", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -129,16 +155,65 @@ public class PandaLiveFragment extends BaseFragment implements LiveContract.View
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                Map<String, String> map = (Map<String, String>) tab.getTag();
 
-                if ((int) tab.getTag() == 123) {
+                if (map.get("order").equals("1")) {
 
-                    changeFragment(liveFragment, null, false);
-                    Toast.makeText(App.context, "9999", Toast.LENGTH_SHORT).show();
+                    bundle.putString("id", map.get("id"));
+                    changeFragment(liveFragment, bundle, false);
 
-                } else {
+                } else if (map.get("order").equals("2")) {
 
-                    changeFragment(pandaLiveListFragment, null, false);
-                    Toast.makeText(App.context, "8888", Toast.LENGTH_SHORT).show();
+                    bundle.putString("id", map.get("id"));
+                    changeFragment(pandaLiveListFragment1, bundle, false);
+
+                } else if (map.get("order").equals("3")) {
+
+                    bundle.putString("id", map.get("id"));
+                    changeFragment(pandaLiveListFragment2, bundle, false);
+
+                } else if (map.get("order").equals("4")) {
+
+                    bundle.putString("id", map.get("id"));
+                    changeFragment(pandaLiveListFragment3, bundle, false);
+                }else if (map.get("order").equals("5")) {
+
+                    bundle.putString("id", map.get("id"));
+                    changeFragment(pandaLiveListFragment4, bundle, false);
+                }
+                else if (map.get("order").equals("6")) {
+
+                    bundle.putString("id", map.get("id"));
+                    changeFragment(pandaLiveListFragment5, bundle, false);
+                }
+                else if (map.get("order").equals("7")) {
+
+                    bundle.putString("id", map.get("id"));
+                    changeFragment(pandaLiveListFragment6, bundle, false);
+                }
+                else if (map.get("order").equals("8")) {
+
+                    bundle.putString("id", map.get("id"));
+                    changeFragment(pandaLiveListFragment7, bundle, false);
+                }
+                else if (map.get("order").equals("9")) {
+
+                    bundle.putString("id", map.get("id"));
+                    changeFragment(pandaLiveListFragment8, bundle, false);
+                }
+                else if (map.get("order").equals("10")) {
+
+                    bundle.putString("id", map.get("id"));
+                    changeFragment(pandaLiveListFragment9, bundle, false);
+
+                }else if (map.get("order").equals("11")) {
+
+                    bundle.putString("id", map.get("id"));
+                    changeFragment(pandaLiveListFragment10, bundle, false);
+                }else if (map.get("order").equals("12")) {
+
+                    bundle.putString("id", map.get("id"));
+                    changeFragment(pandaLiveListFragment11, bundle, false);
                 }
             }
 
@@ -152,7 +227,6 @@ public class PandaLiveFragment extends BaseFragment implements LiveContract.View
 
             }
         });
-
     }
 
     @Override
@@ -210,6 +284,16 @@ public class PandaLiveFragment extends BaseFragment implements LiveContract.View
 
     @Override
     public void showEyeTitle() {
+
+    }
+
+    /**
+     * 精彩一刻
+     *
+     * @param pandaLiveJcyiBean
+     */
+    @Override
+    public void showJcyk(PandaLiveJcyiBean pandaLiveJcyiBean) {
 
     }
 

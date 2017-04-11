@@ -1,8 +1,13 @@
 package cctv.cn.ipanda.fragment;
 
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +21,7 @@ import cctv.cn.ipanda.model.http.MyCallback;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBqBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveDuoshijiaoBean;
+import cctv.cn.ipanda.model.pandalive.PandaLiveJcyiBean;
 import cctv.cn.ipanda.presenter.panda_live.PandaLiveDuoshijiaoPresenterImpl;
 
 /**
@@ -30,6 +36,9 @@ public class PandaLiveLiveFragment extends BaseFragment implements LiveContract.
     private PandaLiveDuoshijiaoPresenterImpl pandaLiveDuoshijiaoPresenter;
     private String url;
     private PandaLiveBean.BookmarkBean.MultipleBean multipleBean;
+    private List<PandaLiveDuoshijiaoBean.ListBean> list;
+    private String title;
+    private String image;
 
     @Override
     protected int getLayoutId() {
@@ -49,6 +58,17 @@ public class PandaLiveLiveFragment extends BaseFragment implements LiveContract.
         datas = new ArrayList<>();
         pandaLiveDuoshijiaoPresenter = new PandaLiveDuoshijiaoPresenterImpl(this);
         gridViewAdapter = new PandaLiveLiveGridViewAdapter(App.context, datas);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                PandaLiveDuoshijiaoBean.ListBean listBean = list.get(i);
+                title = listBean.getTitle();
+                image = listBean.getImage();
+                Toast.makeText(App.context, title, Toast.LENGTH_SHORT).show();
+            }
+        });
         gridView.setAdapter(gridViewAdapter);
     }
 
@@ -69,6 +89,13 @@ public class PandaLiveLiveFragment extends BaseFragment implements LiveContract.
     }
 
     @Override
+    public void setParams(Bundle bundle) {
+        super.setParams(bundle);
+        bundle.putString("name", title);
+        bundle.putString("image", image);
+    }
+
+    @Override
     public void showDetail(final PandaLiveBean pandaLiveBean) {
 
         final PandaLiveBean.BookmarkBean bookmark = pandaLiveBean.getBookmark();
@@ -84,10 +111,11 @@ public class PandaLiveLiveFragment extends BaseFragment implements LiveContract.
             @Override
             public void onSuccess(PandaLiveDuoshijiaoBean pandaLiveDuoshijiaoBean) {
 
-                List<PandaLiveDuoshijiaoBean.ListBean> list = pandaLiveDuoshijiaoBean.getList();
+                list = pandaLiveDuoshijiaoBean.getList();
                 datas.addAll(list);
                 gridViewAdapter.notifyDataSetChanged();
                 Log.i("wwww", "wwwwwww");
+
             }
 
             @Override
@@ -140,6 +168,11 @@ public class PandaLiveLiveFragment extends BaseFragment implements LiveContract.
 
     @Override
     public void showEyeTitle() {
+
+    }
+
+    @Override
+    public void showJcyk(PandaLiveJcyiBean pandaLiveJcyiBean) {
 
     }
 

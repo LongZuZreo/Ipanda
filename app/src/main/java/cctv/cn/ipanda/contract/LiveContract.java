@@ -8,6 +8,7 @@ import cctv.cn.ipanda.model.http.MyCallback;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBqBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveDuoshijiaoBean;
+import cctv.cn.ipanda.model.pandalive.PandaLiveJcyiBean;
 
 /**
  * Created by 张志远 on 2017/4/6.
@@ -65,6 +66,11 @@ public interface LiveContract {
          * 边看边聊标题
          */
         void showEyeTitle();
+
+        /**
+         * 精彩一刻
+         */
+        void showJcyk(PandaLiveJcyiBean pandaLiveJcyiBean);
 
         /**
          * 加载Tab标题
