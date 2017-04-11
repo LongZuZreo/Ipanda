@@ -25,6 +25,7 @@
             android:layout_centerVertical="true"
             />
         <Button
+            android:id="@+id/edit_btn"
             android:layout_width="55dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
@@ -35,15 +36,20 @@
     <GridView
         android:id="@+id/mListItemGrid"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:numColumns="3">
     </GridView>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:textColor="@color/colorWhite"
         android:text="点击添加更多的栏目"
+        android:layout_centerVertical="true"
         />
     <GridView
-        android:id="@+id/mTextAllListItemGrid"
+        android:id="@+id/mAllListItemGrid"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></GridView>
+        android:layout_height="wrap_content"
+        android:numColumns="3"></GridView>
 </LinearLayout>
