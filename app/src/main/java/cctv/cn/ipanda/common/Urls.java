@@ -19,4 +19,6 @@ public class Urls {
     public static final String PANDA_LIVE_CHINA_TAB=BASE_URL+"PAGE14501775094142282/index.json";
     //熊猫首页
     public static final String HOME_URL = BASE_URL+"PAGE14501749764071042/index.json";
+    //CCTV
+    public static final String CCTV = BASE_URL+"shipinliebieye/cctvshipindicengye/index.json";
 }

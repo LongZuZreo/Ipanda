@@ -2,6 +2,8 @@ package cctv.cn.ipanda.contract;
 
 import cctv.cn.ipanda.base.BasePresenter;
 import cctv.cn.ipanda.base.BaseView;
+import cctv.cn.ipanda.model.panada_home.CctvAgainBean;
+import cctv.cn.ipanda.model.panada_home.PanadaChinaListBean;
 import cctv.cn.ipanda.model.panada_home.PanadaHomeBean;
 
 /**
@@ -19,6 +21,10 @@ public interface HomeContract {
          */
 
         void loadDetail(PanadaHomeBean bean);
+        //CCTV
+        void loadCcctv(CctvAgainBean cctvAgainBean);
+        //光影中国
+        void loadListBean(PanadaChinaListBean panadaChinaListBean);
     }
 
     interface Presenter extends BasePresenter{

@@ -17,8 +17,12 @@ import java.util.List;
 import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.adapter.recycleviewadapter_adapter.CctvGridViewAdapter;
 import cctv.cn.ipanda.adapter.recycleviewadapter_adapter.ChinaLiveGridViewAdapter;
+import cctv.cn.ipanda.adapter.recycleviewadapter_adapter.ListBeanListViewAdapter;
 import cctv.cn.ipanda.adapter.recycleviewadapter_adapter.WallLiveGridViewAdapter;
+import cctv.cn.ipanda.model.panada_home.CctvAgainBean;
+import cctv.cn.ipanda.model.panada_home.PanadaChinaListBean;
 import cctv.cn.ipanda.model.panada_home.PanadaHomeBean;
+import cctv.cn.ipanda.presenter.panada_home.HomePresentImp;
 import cctv.cn.ipanda.viewholder.JCTJViewHolder;
 import cctv.cn.ipanda.viewholder.PanadaCCTVViewHolder;
 import cctv.cn.ipanda.viewholder.PanadaChinaLiveViewHolder;
@@ -27,6 +31,7 @@ import cctv.cn.ipanda.adapter.recycleviewadapter_adapter.PanadaLiveGridViewAdapt
 import cctv.cn.ipanda.viewholder.PanadaInteractiveViewHolder;
 import cctv.cn.ipanda.viewholder.PanadaListBeanViewHolder;
 import cctv.cn.ipanda.viewholder.PanadaLiveViewHolder;
+import cctv.cn.ipanda.viewholder.PanadaViewPagerViewHolder;
 import cctv.cn.ipanda.viewholder.PanadaWallLiveViewHolder;
 
 /**
@@ -47,6 +52,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter{
     public static final int TYPE6 = 6;
     public static final int TYPE7 = 7;
     public static final int TYPE8 = 8;
+    public static final int TYPE9 = 9;
     private PanadaEyesViewHolder panadaEyesViewHolder;
     private PanadaLiveViewHolder panadaLiveViewHolder;
     private PanadaWallLiveViewHolder panadaWallLiveViewHolder;
@@ -54,6 +60,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter{
     private PanadaInteractiveViewHolder panadaInteractiveViewHolder;
     private PanadaCCTVViewHolder panadaCCTVViewHolder;
     private PanadaListBeanViewHolder panadaListBeanViewHolder;
+    private PanadaViewPagerViewHolder panadaViewPagerViewHolder;
 
     public RecycleViewAdapter(Context context, List<Object> list){
         inflater = LayoutInflater.from(context);
@@ -65,8 +72,9 @@ public class RecycleViewAdapter extends RecyclerView.Adapter{
         final RecyclerView.ViewHolder viewHolder;
         switch (viewType){
             case TYPE:
-                View view = inflater.inflate(R.layout.recycleview_image_item, parent,false);
-
+               /* View viewPagerRecycleView = inflater.inflate(R.layout.recycleview_image_item, parent,false);
+                panadaViewPagerViewHolder = new PanadaViewPagerViewHolder(viewPagerRecycleView);
+                return panadaViewPagerViewHolder;*/
                 break;
             case TYPE1:
                 View jctjRecycleView = inflater.inflate(R.layout.recycleview_jctj_item, parent, false);
@@ -101,6 +109,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter{
                 panadaListBeanViewHolder = new PanadaListBeanViewHolder(panadalistbeanRecycleView);
                 return panadaListBeanViewHolder;
 
+
         }
         return null;
     }
@@ -122,9 +131,9 @@ public class RecycleViewAdapter extends RecyclerView.Adapter{
             return TYPE5;
         }else if(o instanceof PanadaHomeBean.DataBean.InteractiveBean){//特别策划
             return TYPE6;
-        }else if(o instanceof PanadaHomeBean.DataBean.CctvBean){//CCTV
+        }else if(o instanceof CctvAgainBean){//CCTV
             return TYPE7;
-        }else if(o instanceof PanadaHomeBean.DataBean.ListBeanXXX){//光影中国
+        }else if(o instanceof PanadaChinaListBean){//光影中国
             return TYPE8;
         }
         return -1;
@@ -137,7 +146,10 @@ public class RecycleViewAdapter extends RecyclerView.Adapter{
         Object o = mlist.get(position);
         switch (type){
             case TYPE:
+                /*PanadaHomeBean.DataBean.BigImgBean bigImgBean = (PanadaHomeBean.DataBean.BigImgBean) o;*/
+
                 break;
+
             case TYPE1:
                 PanadaHomeBean.DataBean.AreaBean areaBean = (PanadaHomeBean.DataBean.AreaBean) o;
                 JCTJViewHolder jctjViewHolder = (JCTJViewHolder) holder;
@@ -156,7 +168,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter{
                 panadaEyesViewHolder.panadaeyesTitleMessage1.setText(pandaeyeBean.getItems().get(0).getTitle());
                 panadaEyesViewHolder.panadaeyesTitleTitle2.setText(pandaeyeBean.getItems().get(1).getBrief());
                 panadaEyesViewHolder.panadaeyesTitleMessage2.setText(pandaeyeBean.getItems().get(1).getTitle());
-                //PanadaHomeBean.DataBean.PandaeyeBean.ItemsBean itemsBean = o;
+
                 break;
             case TYPE3:
                 PanadaHomeBean.DataBean.PandaliveBean pandaliveBean = (PanadaHomeBean.DataBean.PandaliveBean) o;
@@ -185,16 +197,16 @@ public class RecycleViewAdapter extends RecyclerView.Adapter{
                 ((PanadaInteractiveViewHolder) holder).panadaInteractiveMessage.setText(interactiveBean.getInteractiveone().get(0).getTitle());
                 break;
             case TYPE7:
-                PanadaHomeBean.DataBean.CctvBean cctvBean = (PanadaHomeBean.DataBean.CctvBean) o;
                 panadaCCTVViewHolder = (PanadaCCTVViewHolder) holder;
-                ((PanadaCCTVViewHolder) holder).panadaCCTVTitle.setText(cctvBean.getTitle());
-                //((PanadaCCTVViewHolder) holder).panadaCCTVGridView.setAdapter(new CctvGridViewAdapter(context,cctvBean.getListurl()));
+                CctvAgainBean cctvAgainBean = (CctvAgainBean) o;
+                ((PanadaCCTVViewHolder) holder).panadaCCTVGridView.setAdapter(new CctvGridViewAdapter(context,cctvAgainBean.getList()));
                 break;
             case TYPE8:
-                PanadaHomeBean.DataBean.ListBeanXXX listBeanXXX = (PanadaHomeBean.DataBean.ListBeanXXX) o;
+                 PanadaChinaListBean panadaChinaListBean = (PanadaChinaListBean) o;
                 panadaListBeanViewHolder = (PanadaListBeanViewHolder) holder;
-                ((PanadaListBeanViewHolder) holder).panadaListBeanTitle.setText(listBeanXXX.getTitle());
+                ((PanadaListBeanViewHolder) holder).panadaListBeanListView.setAdapter(new ListBeanListViewAdapter(context,panadaChinaListBean.getList()));
                 break;
+
         }
     }
     //精彩推荐动态添加横向的图片和标题

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:id="@+id/mPanadaListBean_listView_image"
+        android:layout_marginLeft="5dp"/>
+    <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:background="@drawable/lpanda_bottom_gra"
+        android:layout_alignBottom="@id/mPanadaListBean_listView_image"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/play"
+            android:layout_marginLeft="3dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:text="00:00"
+            android:textSize="10sp"
+            android:layout_marginLeft="3dp"
+            android:id="@+id/mPanadaListBean_listView_image_time"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/mPanadaListBean_listView_title"
+        android:layout_toRightOf="@id/mPanadaListBean_listView_image"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/mPanadaListBean_listView_time"
+        android:layout_toRightOf="@id/mPanadaListBean_listView_image"
+        android:layout_alignBottom="@id/mPanadaListBean_listView_image"
+        android:layout_marginBottom="5dp"/>
+
+</RelativeLayout>

@@ -18,7 +18,10 @@ public class MyBannerAdapter extends PagerAdapter{
     }
     @Override
     public int getCount() {
-        return mlist.size();
+        if(mlist.size() ==0){
+            return 0;
+        }
+        return Integer.MAX_VALUE;
     }
 
     @Override
@@ -28,14 +31,22 @@ public class MyBannerAdapter extends PagerAdapter{
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        ImageView imageView = mlist.get(position);
-        mlist.add(imageView);
+
+
+        ImageView imageView = mlist.get(position % mlist.size());
+
+        if (imageView.getParent() != null) {
+
+            ((ViewGroup) imageView.getParent()).removeView(imageView);
+        }
+        container.addView(imageView);
         return imageView;
     }
+
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
       //  super.destroyItem(container, position, object);
-        mlist.remove(position);
+     //   mlist.remove(position);
     }
 }

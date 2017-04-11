@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/mPanadaCCTV_Title"
         android:textSize="15sp"
+        android:text="@string/cctv"
         android:textColor="#0000ff"
         android:layout_margin="10dp"/>
     <GridView

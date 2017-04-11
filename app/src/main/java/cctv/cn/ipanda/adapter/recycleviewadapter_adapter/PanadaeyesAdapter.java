@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.List;
 
+import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.base.adapter.CommonViewHolder;
 import cctv.cn.ipanda.base.adapter.MyCommonBaseAdapter;
 import cctv.cn.ipanda.model.panada_home.PanadaHomeBean;
@@ -13,8 +14,8 @@ import cctv.cn.ipanda.model.panada_home.PanadaHomeBean;
  */
 
 public class PanadaeyesAdapter extends MyCommonBaseAdapter<PanadaHomeBean.DataBean.PandaeyeBean.ItemsBean>{
-    public PanadaeyesAdapter(Context context, List<PanadaHomeBean.DataBean.PandaeyeBean.ItemsBean> datas, int layoutId) {
-        super(context, datas, layoutId);
+    public PanadaeyesAdapter(Context context, List<PanadaHomeBean.DataBean.PandaeyeBean.ItemsBean> datas) {
+        super(context, datas, R.layout.recycleview_panadaeyes_item_listview);
     }
 
     @Override
