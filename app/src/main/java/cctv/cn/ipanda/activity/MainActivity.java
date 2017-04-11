@@ -1,5 +1,6 @@
 package cctv.cn.ipanda.activity;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
@@ -107,6 +108,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         liveRadio = (RadioButton) findViewById(R.id.live_radio);
 
         liveChinaRadio = (RadioButton) findViewById(R.id.live_china_radio);
+
     }
 
     @Override
@@ -116,6 +118,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         cultureRadio.setOnClickListener(this);
         liveRadio.setOnClickListener(this);
         liveChinaRadio.setOnClickListener(this);
+        hudongImage.setOnClickListener(this);
+        personSign.setOnClickListener(this);
     }
 
     @Override
@@ -140,6 +144,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.live_china_radio:
                 changeFragment(liveChinaFragment, null, false);
                 changTitle(OTHER_TITLE, "直播中国");
+                break;
+            case R.id.person_sign:
+                break;
+            case R.id.hudong_image:
+                Intent intent=new Intent(this,PandaPersonActivity.class);
+
+                startActivity(intent);
                 break;
         }
     }

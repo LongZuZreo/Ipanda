@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\Ipanda\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\mediacontroller.xml",
+        "source": "D:\\Ipanda\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\layout\\mediacontroller.xml"
+    },
+    {
         "merged": "G:\\android-studio-workspace\\Ipanda\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\mediacontroller.xml",
         "source": "G:\\android-studio-workspace\\Ipanda\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\layout\\mediacontroller.xml"
     }
