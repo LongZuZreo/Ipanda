@@ -18,6 +18,7 @@ public class PanadaeyesAdapter extends MyCommonBaseAdapter<PanadaHomeBean.DataBe
         super(context, datas, R.layout.recycleview_panadaeyes_item_listview);
     }
 
+
     @Override
     protected void display(CommonViewHolder holder, PanadaHomeBean.DataBean.PandaeyeBean.ItemsBean itemsBean) {
 
