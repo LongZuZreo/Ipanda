@@ -29,7 +29,6 @@ public class DbManager {
 
     public <T> void insertData(T t){
         DaoSession daoSession = daoMaster.newSession();
-
         daoSession.insert(t);
     }
 
