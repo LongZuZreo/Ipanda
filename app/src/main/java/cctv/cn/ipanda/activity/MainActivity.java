@@ -53,13 +53,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         if (bundle != null)
             fragment.setParams(bundle);
 
+
+
         transaction.hide(currentFragment);
+        if (isBack)
+            transaction.addToBackStack(null);
 
         if (!fragment.isAdded())
 
             transaction.add(R.id.mFram, fragment);
 
         transaction.show(fragment);
+
+        if (isBack)
+            transaction.addToBackStack(null);
 
         transaction.commit();
 

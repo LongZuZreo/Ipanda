@@ -258,7 +258,7 @@
         <meta-data
             android:name="JPUSH_APPKEY"
             android:value="eda7e6214b1f703987cbcfe7" />
-
+        <activity android:name=".activity.ChinaLivePoPActivity"/>
     </application>
 
 </manifest>

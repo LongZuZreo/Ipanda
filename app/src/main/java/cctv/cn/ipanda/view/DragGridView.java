@@ -254,7 +254,7 @@ public class DragGridView extends GridView implements AdapterView.OnItemLongClic
 
                 View view=getChildAt(i);
 
-                View prevView=getChildAt(i--);
+                View prevView=getChildAt(i-1);
 
                 float xValue=(prevView.getLeft()-view.getLeft())*1.0f/view.getWidth();
 
@@ -268,7 +268,7 @@ public class DragGridView extends GridView implements AdapterView.OnItemLongClic
 
                 translateAnimation.setDuration(300);
 
-                if (i == tempPosition-1){
+                if (i == tempPosition){
 
                     translateAnimation.setAnimationListener(animationListener);
 
