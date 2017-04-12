@@ -1,17 +1,11 @@
 package cctv.cn.ipanda.view;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.PixelFormat;
-import android.graphics.Rect;
-import android.os.Vibrator;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
@@ -180,7 +174,7 @@ public class DragGridView extends GridView implements AdapterView.OnItemLongClic
 
             layoutParams.x=view.getLeft()+this.getLeft();
 
-            layoutParams.y=view.getRight()+this.getRight();
+            layoutParams.y=view.getTop()+this.getTop();
 
             view.setVisibility(INVISIBLE);
         }
@@ -209,12 +203,12 @@ public class DragGridView extends GridView implements AdapterView.OnItemLongClic
 
         float my=ev.getY();
 
-        int dropPosiotion= pointToPosition((int)mx,(int)my);
+        int dropPosition= pointToPosition((int)mx,(int)my);
 
-        if (dropPosiotion == tempPosition || dropPosiotion == GridView.INVALID_POSITION){
+        if (dropPosition == tempPosition || dropPosition == GridView.INVALID_POSITION){
             return;
         }
-        itemMove(dropPosiotion);
+        itemMove(dropPosition);
     }
 
     private void itemMove(int dropPosition){
@@ -258,7 +252,7 @@ public class DragGridView extends GridView implements AdapterView.OnItemLongClic
 
                 float xValue=(prevView.getLeft()-view.getLeft())*1.0f/view.getWidth();
 
-                float yValue=(prevView.getLeft()-view.getLeft())*1.0f/view.getWidth();
+                float yValue=(prevView.getTop()-view.getTop())*1.0f/view.getHeight();
 
                 translateAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, xValue, Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, yValue);
 
@@ -268,7 +262,7 @@ public class DragGridView extends GridView implements AdapterView.OnItemLongClic
 
                 translateAnimation.setDuration(300);
 
-                if (i == tempPosition){
+                if (i == dropPosition){
 
                     translateAnimation.setAnimationListener(animationListener);
 

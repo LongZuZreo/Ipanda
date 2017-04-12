@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private RadioGroup radioGroup;
 
 
-    private void changeFragment(BaseFragment fragment, Bundle bundle, boolean isBack) {
+    public void changeFragment(BaseFragment fragment, Bundle bundle, boolean isBack) {
 
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = supportFragmentManager.beginTransaction();
