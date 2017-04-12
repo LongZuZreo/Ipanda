@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import cctv.cn.ipanda.R;
@@ -41,6 +42,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private RadioButton liveRadio;
     private RadioButton liveChinaRadio;
     private TextView editText;
+    private RadioGroup radioGroup;
 
 
     private void changeFragment(BaseFragment fragment, Bundle bundle, boolean isBack) {
@@ -83,6 +85,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         hudongImage = (ImageView) findViewById(R.id.hudong_image);
         personSign = (ImageView) findViewById(R.id.person_sign);
         editText = (TextView) findViewById(R.id.edit_text);
+        radioGroup = (RadioGroup) findViewById(R.id.fragment_radio_group);
     }
 
     @Override
@@ -184,6 +187,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 tabTitle.setVisibility(View.VISIBLE);
                 personSign.setVisibility(View.GONE);
                 editText.setVisibility(View.GONE);
+                radioGroup.setVisibility(View.GONE);
                 break;
             case EDIT_TITLE:
                 titlePandaSign.setVisibility(View.GONE);
@@ -192,6 +196,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 tabTitle.setVisibility(View.VISIBLE);
                 personSign.setVisibility(View.GONE);
                 editText.setVisibility(View.VISIBLE);
+                radioGroup.setVisibility(View.GONE);
                 break;
         }
     }
