@@ -63,38 +63,45 @@
                 android:paddingTop="10dp" />
 
         </RelativeLayout>
-<!--
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/lpanda_pause" />-->
 
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/panda_live_detailInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginTop="20dp"
-        android:textColor="#ff00ff"
-        android:visibility="gone" />
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/panda_live_live_tablayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabIndicatorColor="@color/colorPrimary"
-        app:tabSelectedTextColor="@color/colorPrimary">
-
-    </android.support.design.widget.TabLayout>
-
-    <FrameLayout
-        android:id="@+id/panda_live_framlayout"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/panda_live_detailInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_marginTop="20dp"
+                android:text="0....0"
+                android:textColor="#000000"
+                android:visibility="gone" />
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/panda_live_live_tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabSelectedTextColor="@color/colorPrimary">
+
+            </android.support.design.widget.TabLayout>
+
+            <FrameLayout
+                android:id="@+id/panda_live_framlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
