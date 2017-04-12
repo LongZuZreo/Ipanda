@@ -3,7 +3,9 @@ package cctv.cn.ipanda.view;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -19,6 +21,8 @@ import android.widget.Toast;
 
 import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.adapter.DragAdapter;
+
+import static io.vov.vitamio.utils.Log.TAG;
 
 /**
  * Created by 张志远 on 2017/4/11.
@@ -59,7 +63,7 @@ public class DragGridView extends GridView implements AdapterView.OnItemLongClic
                 ((DragAdapter)adapter).exchangePosition(position,tempPosition,true);
 
             }
-            position=tempPosition;
+           position=tempPosition;
 
         }
 
@@ -125,8 +129,6 @@ public class DragGridView extends GridView implements AdapterView.OnItemLongClic
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-        Toast.makeText(getContext(), "长安", Toast.LENGTH_SHORT).show();
-
         if (mode==MODE_DRAG){
             return false;
         }
@@ -149,7 +151,7 @@ public class DragGridView extends GridView implements AdapterView.OnItemLongClic
 
         if (dragView==null){
 
-            dragView=  View.inflate(getContext(),R.layout.china_live_grid_item,null);
+            dragView= LayoutInflater.from(getContext()).inflate(R.layout.china_live_grid_item,null);
 
             TextView mText= (TextView) dragView.findViewById(R.id.mText);
 
@@ -163,7 +165,7 @@ public class DragGridView extends GridView implements AdapterView.OnItemLongClic
 
             layoutParams.format= PixelFormat.RGBA_8888;
 
-            layoutParams.gravity= Gravity.TOP|Gravity.LEFT;
+            layoutParams.gravity= Gravity.TOP | Gravity.START;
 
             layoutParams.flags=WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL|
                     WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
@@ -204,7 +206,7 @@ public class DragGridView extends GridView implements AdapterView.OnItemLongClic
         float my=ev.getY();
 
         int dropPosition= pointToPosition((int)mx,(int)my);
-
+        Log.i(TAG, "dropPosition : " + dropPosition + " , tempPosition : " + tempPosition);
         if (dropPosition == tempPosition || dropPosition == GridView.INVALID_POSITION){
             return;
         }
@@ -250,9 +252,9 @@ public class DragGridView extends GridView implements AdapterView.OnItemLongClic
 
                 View prevView=getChildAt(i-1);
 
-                float xValue=(prevView.getLeft()-view.getLeft())*1.0f/view.getWidth();
+                float xValue=(prevView.getLeft()-view.getLeft())*1f/view.getWidth();
 
-                float yValue=(prevView.getTop()-view.getTop())*1.0f/view.getHeight();
+                float yValue=(prevView.getTop()-view.getTop())*1f/view.getHeight();
 
                 translateAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, xValue, Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, yValue);
 
