@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.PandaPersonActivity"/>
-
+        <activity android:name=".activity.HuDongActivity"/>
     </application>
 
 </manifest>

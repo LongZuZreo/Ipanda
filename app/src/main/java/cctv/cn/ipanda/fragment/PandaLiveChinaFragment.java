@@ -30,6 +30,8 @@ import cctv.cn.ipanda.adapter.PandaLiveChinaAllGridItemAdapter;
 import cctv.cn.ipanda.adapter.PandaLiveChinaGridItemAdapter;
 import cctv.cn.ipanda.adapter.PandaLiveChinaItemAdapter;
 import cctv.cn.ipanda.base.BaseFragment;
+import cctv.cn.ipanda.click_listener.MyClickListener;
+import cctv.cn.ipanda.common.Params;
 import cctv.cn.ipanda.contract.LiveChinaContract;
 import cctv.cn.ipanda.model.db.db_dao.ChinaLiveTabAllListBeanDb;
 import cctv.cn.ipanda.model.db.db_dao.ChinaLiveTabListBeanDb;
@@ -42,7 +44,7 @@ import cctv.cn.ipanda.presenter.panda_live_china.PreseterImpl;
  * Created by 张志远 on 2017/4/7.
  */
 
-public class PandaLiveChinaFragment extends BaseFragment implements LiveChinaContract.View,TabLayout.OnTabSelectedListener {
+public class PandaLiveChinaFragment extends BaseFragment implements LiveChinaContract.View,TabLayout.OnTabSelectedListener,MyClickListener {
 
     private TabLayout tabLayout;
     private LiveChinaContract.Presenter presenter;
@@ -233,6 +235,9 @@ public class PandaLiveChinaFragment extends BaseFragment implements LiveChinaCon
 
             }
         });
+
+        pandaLiveChinaGridItemAdapter.setClickListener(this);
+        pandaLiveChinaAllGridItemAdapter.setClickListener(this);
     }
 
     @Override
@@ -352,7 +357,6 @@ public class PandaLiveChinaFragment extends BaseFragment implements LiveChinaCon
 
         pandaLiveChinaItemAdapter.notifyDataSetChanged();
 
-
     }
 
     @Override
@@ -378,5 +382,49 @@ public class PandaLiveChinaFragment extends BaseFragment implements LiveChinaCon
 
         int screenWidth = dm.widthPixels;
         return screenWidth;
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        String adapterName= (String) view.getTag();
+
+        if (adapterName.equals("Tab")){
+
+            ChinaLiveTabListBeanDb chinaLiveTabListBeanDb= (ChinaLiveTabListBeanDb) view.getTag(R.id.mText);
+
+            chinaLiveTabListBeanDb.setId(null);
+
+            tabListBeanDbs.remove(chinaLiveTabListBeanDb);
+
+            dbManager.deleteAll(ChinaLiveTabListBeanDb.class);
+
+            dbManager.insertAll(tabListBeanDbs);
+
+            ChinaLiveTabAllListBeanDb chinaLiveTabAllListBeanDb=new ChinaLiveTabAllListBeanDb(null,chinaLiveTabListBeanDb.getTitle(),chinaLiveTabListBeanDb.getUrl(),chinaLiveTabListBeanDb.getType(),chinaLiveTabListBeanDb.getOrder());
+
+            dbManager.insertData(chinaLiveTabAllListBeanDb);
+        }else{
+
+            ChinaLiveTabAllListBeanDb chinaLiveTabAllListBeanDb=(ChinaLiveTabAllListBeanDb) view.getTag(R.id.mText);
+
+            dbManager.deleteData(chinaLiveTabAllListBeanDb);
+
+            ChinaLiveTabListBeanDb chinaLiveTabListBeanDb=new ChinaLiveTabListBeanDb(null,chinaLiveTabAllListBeanDb.getTitle(),chinaLiveTabAllListBeanDb.getUrl(),chinaLiveTabAllListBeanDb.getType(),chinaLiveTabAllListBeanDb.getOrder());
+
+            dbManager.insertData(chinaLiveTabListBeanDb);
+        }
+        tabListBeanDbs.clear();
+
+        tabListBeanDbs.addAll(dbManager.selectChinaLiveTabListBeanDb());
+
+        chinaLiveTabAllListBeanDbs.clear();
+
+        chinaLiveTabAllListBeanDbs.addAll(dbManager.selectChinaLiveAllTabListBeanDb());
+
+        pandaLiveChinaAllGridItemAdapter.notifyDataSetChanged();
+
+        pandaLiveChinaGridItemAdapter.notifyDataSetChanged();
+
     }
 }

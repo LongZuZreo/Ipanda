@@ -146,11 +146,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 changTitle(OTHER_TITLE, "直播中国");
                 break;
             case R.id.person_sign:
-                break;
-            case R.id.hudong_image:
                 Intent intent=new Intent(this,PandaPersonActivity.class);
 
                 startActivity(intent);
+                break;
+            case R.id.hudong_image:
+                Intent intent1=new Intent(this,HuDongActivity.class);
+
+                startActivity(intent1);
                 break;
         }
     }
