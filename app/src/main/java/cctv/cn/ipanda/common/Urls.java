@@ -21,4 +21,8 @@ public class Urls {
     public static final String HOME_URL = BASE_URL+"PAGE14501749764071042/index.json";
     //CCTV
     public static final String CCTV = BASE_URL+"shipinliebieye/cctvshipindicengye/index.json";
+
+    public static final String PANDACULTURE = "http://www.ipanda.com/kehuduan/xmwh/index.json";
+
+
 }

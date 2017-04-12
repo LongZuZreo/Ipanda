@@ -2,6 +2,7 @@ package cctv.cn.ipanda.contract;
 
 import cctv.cn.ipanda.base.BasePresenter;
 import cctv.cn.ipanda.base.BaseView;
+import cctv.cn.ipanda.model.panda_observer.PandaObserveItemEntity;
 import cctv.cn.ipanda.model.panda_observer.PandaObserverHeadEntity;
 
 /**
@@ -11,12 +12,12 @@ import cctv.cn.ipanda.model.panda_observer.PandaObserverHeadEntity;
 public interface ObserverContract {
 
     interface View extends BaseView{
-        void getHeadData(PandaObserverHeadEntity entity);
-        void getItemData();
+        void showHead(PandaObserverHeadEntity entity);
+        void showItem(PandaObserveItemEntity entity);
     }
     interface Presenter extends BasePresenter{
         void getHead();
-        void getItem();
+        void getItem(String url);
     }
 
 }

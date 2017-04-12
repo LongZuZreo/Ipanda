@@ -19,7 +19,7 @@ import cctv.cn.ipanda.model.db.db_dao.ChinaLiveTabListBeanDb;
  * Created by 张志远 on 2017/4/11.
  */
 
-public class PandaLiveChinaGridItemAdapter extends MyCommonBaseAdapter<ChinaLiveTabListBeanDb>{
+public class PandaLiveChinaGridItemAdapter extends DragAdapter<ChinaLiveTabListBeanDb>{
 
     private boolean deleteAble=false;
 
@@ -42,7 +42,6 @@ public class PandaLiveChinaGridItemAdapter extends MyCommonBaseAdapter<ChinaLive
         ImageView deleteBtn = holder.getView(R.id.deleteBtn);
 
         if (deleteAble){
-
             deleteBtn.setVisibility(View.VISIBLE);
         }else {
             deleteBtn.setVisibility(View.GONE);
@@ -56,11 +55,14 @@ public class PandaLiveChinaGridItemAdapter extends MyCommonBaseAdapter<ChinaLive
                 clickListener.onClick(v);
             }
         });
+        View convertView = holder.getConvertView();
+        if (datas.indexOf(chinaLiveTabListBeanDb) == movePosition && isMove ){
+            convertView.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void setDeleteAble(boolean deleteAble){
         this.deleteAble=deleteAble;
     }
-
 
 }

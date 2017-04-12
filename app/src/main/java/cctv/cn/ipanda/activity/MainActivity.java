@@ -20,7 +20,6 @@ import cctv.cn.ipanda.fragment.PandaLiveChinaFragment;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
-
     private BaseFragment currentFragment;
     private BaseFragment eyeFragment;
     private BaseFragment cultureFragment;
@@ -29,6 +28,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private BaseFragment homeFragment;
     public static final int HOME_TITLE = 1;
     public static final int OTHER_TITLE = 2;
+    public static final int PERSON_OR_INTERTACT=3;
+    public static final int EDIT_TITLE=4;
     private ImageView titlePandaSign;
     private ImageView titleBackImage;
     private TextView tabTitle;
@@ -39,6 +40,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private RadioButton cultureRadio;
     private RadioButton liveRadio;
     private RadioButton liveChinaRadio;
+    private TextView editText;
+
 
     private void changeFragment(BaseFragment fragment, Bundle bundle, boolean isBack) {
 
@@ -74,12 +77,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initView() {
-
         titlePandaSign = (ImageView) findViewById(R.id.title_panda_sign);
         titleBackImage = (ImageView) findViewById(R.id.title_back_img);
         tabTitle = (TextView) findViewById(R.id.tab_title);
         hudongImage = (ImageView) findViewById(R.id.hudong_image);
         personSign = (ImageView) findViewById(R.id.person_sign);
+        editText = (TextView) findViewById(R.id.edit_text);
     }
 
     @Override
@@ -165,12 +168,30 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 hudongImage.setVisibility(View.VISIBLE);
                 personSign.setVisibility(View.VISIBLE);
                 tabTitle.setVisibility(View.GONE);
+                editText.setVisibility(View.GONE);
                 break;
             case OTHER_TITLE:
                 tabTitle.setText(title);
                 tabTitle.setVisibility(View.VISIBLE);
                 hudongImage.setVisibility(View.GONE);
                 titlePandaSign.setVisibility(View.GONE);
+                editText.setVisibility(View.GONE);
+                break;
+            case PERSON_OR_INTERTACT:
+                titlePandaSign.setVisibility(View.GONE);
+                hudongImage.setVisibility(View.GONE);
+                titleBackImage.setVisibility(View.VISIBLE);
+                tabTitle.setVisibility(View.VISIBLE);
+                personSign.setVisibility(View.GONE);
+                editText.setVisibility(View.GONE);
+                break;
+            case EDIT_TITLE:
+                titlePandaSign.setVisibility(View.GONE);
+                hudongImage.setVisibility(View.GONE);
+                titleBackImage.setVisibility(View.VISIBLE);
+                tabTitle.setVisibility(View.VISIBLE);
+                personSign.setVisibility(View.GONE);
+                editText.setVisibility(View.VISIBLE);
                 break;
         }
     }

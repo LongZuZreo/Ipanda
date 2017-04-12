@@ -39,6 +39,7 @@ import cctv.cn.ipanda.model.db.db_manager.DbManager;
 import cctv.cn.ipanda.model.panda_live_china.IPandaLiveChinaListEntity;
 import cctv.cn.ipanda.model.panda_live_china.IPandaLiveChinaTabEntity;
 import cctv.cn.ipanda.presenter.panda_live_china.PreseterImpl;
+import cctv.cn.ipanda.view.DragGridView;
 
 /**
  * Created by 张志远 on 2017/4/7.
@@ -58,7 +59,7 @@ public class PandaLiveChinaFragment extends BaseFragment implements LiveChinaCon
     private boolean isFirstGetTab;
     private SharedPreferences.Editor editor;
     private DbManager dbManager;
-    private GridView mListItemGrid;
+    private DragGridView mListItemGrid;
     private GridView mAllListItemGrid;
     private List<ChinaLiveTabListBeanDb> tabListBeanDbs;
     private PandaLiveChinaGridItemAdapter pandaLiveChinaGridItemAdapter;
@@ -76,9 +77,7 @@ public class PandaLiveChinaFragment extends BaseFragment implements LiveChinaCon
     protected void loadData() {
         if (isFirstGetTab) {
 
-            editor.putBoolean("isFirstGetTab", false);
 
-            editor.commit();
             presenter.getAllTab();
         } else {
             tabListBeanDbs.clear();
@@ -185,7 +184,7 @@ public class PandaLiveChinaFragment extends BaseFragment implements LiveChinaCon
 
         dismiss_text = (TextView) popView.findViewById(R.id.dismiss_text);
 
-        mListItemGrid = (GridView) popView.findViewById(R.id.mListItemGrid);
+        mListItemGrid = (DragGridView) popView.findViewById(R.id.mListItemGrid);
 
         mAllListItemGrid = (GridView)popView.findViewById(R.id.mAllListItemGrid);
 
@@ -345,6 +344,10 @@ public class PandaLiveChinaFragment extends BaseFragment implements LiveChinaCon
         tabLayout.addOnTabSelectedListener(this);
 
         addDataToGridAdapter();
+
+        editor.putBoolean("isFirstGetTab", false);
+
+        editor.commit();
     }
 
     @Override
