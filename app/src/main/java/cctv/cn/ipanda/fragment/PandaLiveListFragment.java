@@ -56,7 +56,7 @@ public class PandaLiveListFragment extends BaseFragment implements LiveContract.
 
         id = (String) bundle.get("id");
         pandaLivePersenter = new PandaLiveTabPresenterImpl(this);
-        LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager manager = new LinearLayoutManager(App.context, LinearLayoutManager.VERTICAL, false);
         refreshRecyclerView.setLayoutManager(manager);
         datas = new ArrayList<>();
         adapter = new PandaLiveRecycleAdapter(App.context, datas);
