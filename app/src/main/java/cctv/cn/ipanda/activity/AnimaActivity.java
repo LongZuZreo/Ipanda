@@ -32,6 +32,7 @@ public class AnimaActivity extends Activity{
             @Override
             public void onAnimationEnd(Animation animation) {
                 isFirstShow();
+                finish();
                /* Intent intent = new Intent(AnimaActivity.this,FirstPagerActivity.class);
                 startActivity(intent);*/
             }
@@ -59,6 +60,7 @@ public class AnimaActivity extends Activity{
         }else{
             Intent intent = new Intent(AnimaActivity.this,MainActivity.class);
             startActivity(intent);
+
 
         }
 

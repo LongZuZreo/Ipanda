@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">熊猫频道</string>
     <string name="cctv">CCTV</string>
-    <string name="listbean">光影中国</string>
+    <string name="listbean">《光影中国》</string>
+    <string name="hudong">原创·互动</string>
 </resources>

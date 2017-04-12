@@ -25,4 +25,9 @@ public class Urls {
     public static final String PANDACULTURE = "http://www.ipanda.com/kehuduan/xmwh/index.json";
 
 
+    //互动集合
+    public static final String HDJH = BASE_URL+"PAGE14501767715521482/index.json";
+    //版本跟新
+    public static final String UPDATE_URL = "http://115.182.9.124/index.php?action=release-GetNewVersions&applyName=1426217325";
+
 }
