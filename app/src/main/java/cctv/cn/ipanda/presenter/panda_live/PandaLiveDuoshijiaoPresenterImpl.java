@@ -22,7 +22,6 @@ public class PandaLiveDuoshijiaoPresenterImpl implements LiveContract.Presenter 
 
     private List<PandaLiveBean.BookmarkBean.MultipleBean> multiple;
     private List<PandaLiveBean.BookmarkBean.WatchTalkBean> watchTalk;
-    public static PandaLiveBean.LiveBean liveBean;
     private LiveContract.View liveFragment;
     private IPandaLiveModel pandaLiveModel;
 
@@ -56,7 +55,6 @@ public class PandaLiveDuoshijiaoPresenterImpl implements LiveContract.Presenter 
             @Override
             public void onError(String msg) {
 
-                Log.i("0000", msg);
             }
         });
 

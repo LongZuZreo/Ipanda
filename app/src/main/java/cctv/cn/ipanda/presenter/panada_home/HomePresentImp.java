@@ -72,7 +72,7 @@ public class HomePresentImp implements HomeContract.Presenter{
 
             @Override
             public void onError(String msg) {
-                msg.toString();
+
             }
         });
 

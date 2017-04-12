@@ -16,6 +16,7 @@ import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.adapter.PandaLiveLiveGridViewAdapter;
 import cctv.cn.ipanda.base.BaseFragment;
 import cctv.cn.ipanda.common.App;
+import cctv.cn.ipanda.common.HeadGridView;
 import cctv.cn.ipanda.contract.LiveContract;
 import cctv.cn.ipanda.model.http.MyCallback;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBean;
@@ -39,6 +40,7 @@ public class PandaLiveLiveFragment extends BaseFragment implements LiveContract.
     private List<PandaLiveDuoshijiaoBean.ListBean> list;
     private String title;
     private String image;
+    private HeadGridView headGridView;
 
     @Override
     protected int getLayoutId() {
@@ -56,6 +58,7 @@ public class PandaLiveLiveFragment extends BaseFragment implements LiveContract.
     protected void initData() {
 
         datas = new ArrayList<>();
+
         pandaLiveDuoshijiaoPresenter = new PandaLiveDuoshijiaoPresenterImpl(this);
         gridViewAdapter = new PandaLiveLiveGridViewAdapter(App.context, datas);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -69,6 +72,7 @@ public class PandaLiveLiveFragment extends BaseFragment implements LiveContract.
                 Toast.makeText(App.context, title, Toast.LENGTH_SHORT).show();
             }
         });
+
         gridView.setAdapter(gridViewAdapter);
     }
 

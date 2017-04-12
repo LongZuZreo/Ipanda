@@ -3,7 +3,9 @@ package cctv.cn.ipanda.activity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -16,9 +18,9 @@ import cctv.cn.ipanda.fragment.PandaCultureFragment;
 import cctv.cn.ipanda.fragment.PandaLiveFragment;
 import cctv.cn.ipanda.fragment.PandaObserverFragment;
 import cctv.cn.ipanda.fragment.PandaLiveChinaFragment;
+import cctv.cn.ipanda.fragment.PandaPersonFragment;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
-
 
     private BaseFragment currentFragment;
     private BaseFragment eyeFragment;
@@ -38,8 +40,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private RadioButton cultureRadio;
     private RadioButton liveRadio;
     private RadioButton liveChinaRadio;
+    private PandaPersonFragment pandaPersonFragment;
+    private TextView editText;
+    public static final int PERSON_OR_INTERTACT = 3;
+    public static final int EDIT_TITLE = 4;
 
-    private void changeFragment(BaseFragment fragment, Bundle bundle, boolean isBack) {
+    public void changeFragment(BaseFragment fragment, Bundle bundle, boolean isBack) {
 
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = supportFragmentManager.beginTransaction();
@@ -47,6 +53,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         if (bundle != null)
             fragment.setParams(bundle);
 
+        if (isBack)
+            transaction.addToBackStack(null);
         transaction.hide(currentFragment);
 
         if (!fragment.isAdded())
@@ -54,6 +62,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             transaction.add(R.id.mFram, fragment);
 
         transaction.show(fragment);
+
+
 
         transaction.commit();
 
@@ -79,6 +89,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         tabTitle = (TextView) findViewById(R.id.tab_title);
         hudongImage = (ImageView) findViewById(R.id.hudong_image);
         personSign = (ImageView) findViewById(R.id.person_sign);
+        editText = (TextView) findViewById(R.id.edit_text);
     }
 
     @Override
@@ -94,9 +105,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         liveChinaFragment = new PandaLiveChinaFragment();
 
+        pandaPersonFragment = new PandaPersonFragment();
+
         currentFragment = homeFragment;
 
         changeFragment(homeFragment, null, false);
+        changTitle(HOME_TITLE, "首页");
 
         homeRadio = (RadioButton) findViewById(R.id.home_radio);
 
@@ -116,6 +130,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         cultureRadio.setOnClickListener(this);
         liveRadio.setOnClickListener(this);
         liveChinaRadio.setOnClickListener(this);
+        personSign.setOnClickListener(this);
     }
 
     @Override
@@ -141,6 +156,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 changeFragment(liveChinaFragment, null, false);
                 changTitle(OTHER_TITLE, "直播中国");
                 break;
+            case R.id.person_sign:
+                changeFragment(pandaPersonFragment, null, false);
+                changTitle(PERSON_OR_INTERTACT, "个人中心");
+                Log.i("vvv", "个人中心");
+                break;
         }
     }
 
@@ -151,13 +171,33 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 hudongImage.setVisibility(View.VISIBLE);
                 personSign.setVisibility(View.VISIBLE);
                 tabTitle.setVisibility(View.GONE);
+                editText.setVisibility(View.GONE);
                 break;
             case OTHER_TITLE:
                 tabTitle.setText(title);
                 tabTitle.setVisibility(View.VISIBLE);
                 hudongImage.setVisibility(View.GONE);
                 titlePandaSign.setVisibility(View.GONE);
+                editText.setVisibility(View.GONE);
+                break;
+            case PERSON_OR_INTERTACT:
+                titlePandaSign.setVisibility(View.GONE);
+                hudongImage.setVisibility(View.GONE);
+                titleBackImage.setVisibility(View.VISIBLE);
+                tabTitle.setVisibility(View.VISIBLE);
+                personSign.setVisibility(View.GONE);
+                editText.setVisibility(View.GONE);
+                break;
+            case EDIT_TITLE:
+                titlePandaSign.setVisibility(View.GONE);
+                hudongImage.setVisibility(View.GONE);
+                titleBackImage.setVisibility(View.VISIBLE);
+                tabTitle.setVisibility(View.VISIBLE);
+                personSign.setVisibility(View.GONE);
+                editText.setVisibility(View.VISIBLE);
                 break;
         }
     }
 }
+
+
