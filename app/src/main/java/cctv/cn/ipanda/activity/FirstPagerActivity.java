@@ -30,6 +30,7 @@ public class FirstPagerActivity extends Activity{
         setContentView(R.layout.activity_pager);
 
         init();
+        finish();
     }
 
     public void init(){

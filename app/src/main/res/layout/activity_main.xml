@@ -52,8 +52,7 @@
             android:src="@drawable/hudong_sign"
             android:layout_toLeftOf="@id/person_sign"
             android:layout_marginRight="10dp"
-            android:layout_centerVertical="true"
-            />
+            android:layout_centerVertical="true" />
     </RelativeLayout>
 
     <FrameLayout

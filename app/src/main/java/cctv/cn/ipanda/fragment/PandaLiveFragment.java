@@ -56,6 +56,7 @@ public class PandaLiveFragment extends BaseFragment implements LiveContract.View
     private Bundle bundle;
 
 
+
     private void changeFragment(BaseFragment fragment, Bundle bundle, boolean isBack) {
 
         FragmentManager supportFragmentManager = getFragmentManager();

@@ -21,4 +21,9 @@ public class Urls {
     public static final String HOME_URL = BASE_URL+"PAGE14501749764071042/index.json";
     //CCTV
     public static final String CCTV = BASE_URL+"shipinliebieye/cctvshipindicengye/index.json";
+    //互动集合
+    public static final String HDJH = BASE_URL+"PAGE14501767715521482/index.json";
+    //版本跟新
+    public static final String UPDATE_URL = "http://115.182.9.124/index.php?action=release-GetNewVersions&applyName=1426217325";
+
 }

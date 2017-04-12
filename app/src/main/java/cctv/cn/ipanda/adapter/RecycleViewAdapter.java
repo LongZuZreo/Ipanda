@@ -60,7 +60,6 @@ public class RecycleViewAdapter extends RecyclerView.Adapter{
     private PanadaInteractiveViewHolder panadaInteractiveViewHolder;
     private PanadaCCTVViewHolder panadaCCTVViewHolder;
     private PanadaListBeanViewHolder panadaListBeanViewHolder;
-    private PanadaViewPagerViewHolder panadaViewPagerViewHolder;
 
     public RecycleViewAdapter(Context context, List<Object> list){
         inflater = LayoutInflater.from(context);
@@ -84,6 +83,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter{
                 View panadaeyesRecycleView = inflater.inflate(R.layout.recycleview_panadaeyes_item, parent, false);
                 panadaEyesViewHolder = new PanadaEyesViewHolder(panadaeyesRecycleView);
                 return panadaEyesViewHolder;
+
             case TYPE3:
                 View panadaLiveRecycleView = inflater.inflate(R.layout.recycleview_panadalive_item, parent, false);
                 panadaLiveViewHolder = new PanadaLiveViewHolder(panadaLiveRecycleView);

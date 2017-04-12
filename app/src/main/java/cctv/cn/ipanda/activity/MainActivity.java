@@ -11,6 +11,7 @@ import android.widget.TextView;
 import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.base.BaseActivity;
 import cctv.cn.ipanda.base.BaseFragment;
+import cctv.cn.ipanda.fragment.InteractionFragment;
 import cctv.cn.ipanda.fragment.PanadaHomeFragment;
 import cctv.cn.ipanda.fragment.PandaCultureFragment;
 import cctv.cn.ipanda.fragment.PandaLiveFragment;
@@ -26,6 +27,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private BaseFragment liveFragment;
     private BaseFragment liveChinaFragment;
     private BaseFragment homeFragment;
+    private BaseFragment interactionFragment;
     public static final int HOME_TITLE = 1;
     public static final int OTHER_TITLE = 2;
     private ImageView titlePandaSign;
@@ -94,6 +96,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         liveChinaFragment = new PandaLiveChinaFragment();
 
+        /*interactionFragment = new InteractionFragment();*/
+
         currentFragment = homeFragment;
 
         changeFragment(homeFragment, null, false);
@@ -116,6 +120,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         cultureRadio.setOnClickListener(this);
         liveRadio.setOnClickListener(this);
         liveChinaRadio.setOnClickListener(this);
+       /* hudongImage.setOnClickListener(this);*/
     }
 
     @Override
@@ -141,6 +146,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 changeFragment(liveChinaFragment, null, false);
                 changTitle(OTHER_TITLE, "直播中国");
                 break;
+            /*case R.id.hudong_image:
+                changeFragment(interactionFragment,null,true);
+                changTitle(OTHER_TITLE,"原创·互动");
+                break;*/
         }
     }
 

@@ -9,9 +9,11 @@ import cctv.cn.ipanda.contract.HomeContract;
 import cctv.cn.ipanda.fragment.PanadaHomeFragment;
 import cctv.cn.ipanda.model.http.MyCallback;
 import cctv.cn.ipanda.model.http.RetrofitUtils;
+import cctv.cn.ipanda.model.panada_hdjh.PanadaInterfactionBean;
 import cctv.cn.ipanda.model.panada_home.CctvAgainBean;
 import cctv.cn.ipanda.model.panada_home.PanadaChinaListBean;
 import cctv.cn.ipanda.model.panada_home.PanadaHomeBean;
+import cctv.cn.ipanda.model.panada_home.UpdateBean;
 
 
 /**
@@ -75,6 +77,33 @@ public class HomePresentImp implements HomeContract.Presenter{
                 msg.toString();
             }
         });
+    }
+    //互动集合
+    public void getHdjh(String url){
+        retrofitUtils.getData(url, null, new MyCallback<PanadaInterfactionBean>() {
+            @Override
+            public void onSuccess(PanadaInterfactionBean panadaInterfactionBean) {
+                view.loadInteractionBean(panadaInterfactionBean);
+            }
 
+            @Override
+            public void onError(String msg) {
+
+            }
+        });
+    }
+    //获取版本号
+    public void getVersion(String url){
+        retrofitUtils.getData(url, null, new MyCallback<UpdateBean>() {
+            @Override
+            public void onSuccess(UpdateBean updateBean) {
+                view.getVersion(updateBean);
+            }
+
+            @Override
+            public void onError(String msg) {
+
+            }
+        });
     }
 }
