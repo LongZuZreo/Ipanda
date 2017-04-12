@@ -275,7 +275,7 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
     @Override
     public void onDestroy() {
         super.onDestroy();
-        alertDialog.dismiss();
+       // alertDialog.dismiss();
     }
 
     @Override
