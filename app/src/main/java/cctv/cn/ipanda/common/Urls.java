@@ -30,4 +30,6 @@ public class Urls {
     //版本跟新
     public static final String UPDATE_URL = "http://115.182.9.124/index.php?action=release-GetNewVersions&applyName=1426217325";
 
+    public static final String LOGIN_URL="https://reg.cntv.cn/login/login.action";
+
 }

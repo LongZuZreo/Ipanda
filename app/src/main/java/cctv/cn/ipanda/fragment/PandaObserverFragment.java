@@ -28,7 +28,7 @@ import cctv.cn.ipanda.presenter.panda_obsenver.PandaObservePersenter;
  * Created by hp1 on 2017-04-07.
  */
 
-public class PandaObserverFragment extends BaseFragment implements ObserverContract.View, PullToRefreshListener {
+public class PandaObserverFragment extends MainFragment implements ObserverContract.View, PullToRefreshListener {
 
 
     private PullToRefreshRecyclerView pullToRefreshRecyclerView;

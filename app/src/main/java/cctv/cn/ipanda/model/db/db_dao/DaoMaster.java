@@ -23,12 +23,14 @@ public class DaoMaster extends AbstractDaoMaster {
     public static void createAllTables(Database db, boolean ifNotExists) {
         ChinaLiveTabAllListBeanDbDao.createTable(db, ifNotExists);
         ChinaLiveTabListBeanDbDao.createTable(db, ifNotExists);
+        LoginEntityDbDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
     public static void dropAllTables(Database db, boolean ifExists) {
         ChinaLiveTabAllListBeanDbDao.dropTable(db, ifExists);
         ChinaLiveTabListBeanDbDao.dropTable(db, ifExists);
+        LoginEntityDbDao.dropTable(db, ifExists);
     }
 
     /**
@@ -49,6 +51,7 @@ public class DaoMaster extends AbstractDaoMaster {
         super(db, SCHEMA_VERSION);
         registerDaoClass(ChinaLiveTabAllListBeanDbDao.class);
         registerDaoClass(ChinaLiveTabListBeanDbDao.class);
+        registerDaoClass(LoginEntityDbDao.class);
     }
 
     public DaoSession newSession() {

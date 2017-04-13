@@ -3,4 +3,6 @@
     <string name="cctv">CCTV</string>
     <string name="listbean">《光影中国》</string>
     <string name="hudong">原创·互动</string>
+    <string name="nameHint">账号：请输入邮箱或手机号</string>
+    <string name="passwordHint">请输入密码</string>
 </resources>

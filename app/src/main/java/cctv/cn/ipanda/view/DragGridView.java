@@ -178,9 +178,11 @@ public class DragGridView extends GridView implements AdapterView.OnItemLongClic
 
             layoutParams.y=view.getTop()+this.getTop();
 
-            view.setVisibility(INVISIBLE);
+
         }
         windowManager.addView(dragView,layoutParams);
+
+        view.setVisibility(INVISIBLE);
 
         mode=MODE_DRAG;
     }

@@ -35,6 +35,7 @@ public class PandaPersonFragment extends BaseFragment implements LiveContract.Vi
     private BaseFragment watchHistoryFragment;
     private BaseFragment myCollectionFragment;
     private BaseFragment settingFragment;
+    private PandaLoginFragment loginFragment;
 
     @Override
     protected int getLayoutId() {
@@ -54,6 +55,7 @@ public class PandaPersonFragment extends BaseFragment implements LiveContract.Vi
         watchHistoryFragment = new WatchHistoryFragment();
         myCollectionFragment = new MyCollectionFragment();
         settingFragment = new SettingFragment();
+        loginFragment = new PandaLoginFragment();
     }
 
     @Override
@@ -82,8 +84,8 @@ public class PandaPersonFragment extends BaseFragment implements LiveContract.Vi
             case R.id.panda_person_username:
 
                 MainActivity mainActivity = (MainActivity) getActivity();
-                mainActivity.changeFragment(personInfoFragment, null, true);
-
+                mainActivity.changeFragment(loginFragment, null, true);
+                mainActivity.changTitle(MainActivity.RIGHT_TYPE,"登陆");
                 break;
             case R.id.panda_person_guankanlishi:
 
@@ -203,8 +205,10 @@ public class PandaPersonFragment extends BaseFragment implements LiveContract.Vi
 
     }
 
+
     @Override
     public void changeTitleBar() {
 
     }
+
 }

@@ -61,7 +61,7 @@ import static android.content.Context.TELEPHONY_SERVICE;
  * Created by ASUS on 2017/4/7.
  */
 
-public class PanadaHomeFragment extends BaseFragment implements HomeContract.View{
+public class PanadaHomeFragment extends MainFragment implements HomeContract.View{
 
 
     private List<Object> list;

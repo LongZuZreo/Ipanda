@@ -1,6 +1,7 @@
 package cctv.cn.ipanda.activity;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
 import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.base.BaseActivity;
 import cctv.cn.ipanda.base.BaseFragment;
@@ -18,6 +21,8 @@ import cctv.cn.ipanda.fragment.PandaCultureFragment;
 import cctv.cn.ipanda.fragment.PandaLiveFragment;
 import cctv.cn.ipanda.fragment.PandaObserverFragment;
 import cctv.cn.ipanda.fragment.PandaLiveChinaFragment;
+import cctv.cn.ipanda.fragment.PandaPersonFragment;
+import cctv.cn.ipanda.fragment.PandaRegisterFragment;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -31,6 +36,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public static final int OTHER_TITLE = 2;
     public static final int PERSON_OR_INTERTACT=3;
     public static final int EDIT_TITLE=4;
+    public static final int RIGHT_TYPE=5;
     private ImageView titlePandaSign;
     private ImageView titleBackImage;
     private TextView tabTitle;
@@ -42,23 +48,26 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private RadioButton liveRadio;
     private RadioButton liveChinaRadio;
     private TextView editText;
-    private RadioGroup radioGroup;
+    public RadioGroup radioGroup;
+    public PandaPersonFragment pandaPersonFragment;
+   FragmentManager supportFragmentManager;
+    private PandaRegisterFragment registerFragment;
 
 
     public void changeFragment(BaseFragment fragment, Bundle bundle, boolean isBack) {
 
-        FragmentManager supportFragmentManager = getSupportFragmentManager();
+        supportFragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = supportFragmentManager.beginTransaction();
 
         if (bundle != null)
             fragment.setParams(bundle);
 
-
-
         transaction.hide(currentFragment);
-        if (isBack)
+        if (isBack) {
             transaction.addToBackStack(null);
-
+        }else{
+            currentFragment = fragment;
+        }
         if (!fragment.isAdded())
 
             transaction.add(R.id.mFram, fragment);
@@ -69,8 +78,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             transaction.addToBackStack(null);
 
         transaction.commit();
-
-        currentFragment = fragment;
     }
 
     @Override
@@ -108,6 +115,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         liveChinaFragment = new PandaLiveChinaFragment();
 
+        pandaPersonFragment = new PandaPersonFragment();
+
+        registerFragment = new PandaRegisterFragment();
+
         currentFragment = homeFragment;
 
         changeFragment(homeFragment, null, false);
@@ -133,6 +144,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         liveChinaRadio.setOnClickListener(this);
         hudongImage.setOnClickListener(this);
         personSign.setOnClickListener(this);
+        editText.setOnClickListener(this);
+        titleBackImage.setOnClickListener(this);
     }
 
     @Override
@@ -159,14 +172,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 changTitle(OTHER_TITLE, "直播中国");
                 break;
             case R.id.person_sign:
-                Intent intent=new Intent(this,PandaPersonActivity.class);
-
-                startActivity(intent);
+                changeFragment(pandaPersonFragment,null,true);
+                changTitle(PERSON_OR_INTERTACT,"个人中心");
                 break;
             case R.id.hudong_image:
-                Intent intent1=new Intent(this,HuDongActivity.class);
+                changeFragment(pandaPersonFragment,null,true);
+                changTitle(PERSON_OR_INTERTACT,"互动·集合");
+                break;
+            case R.id.edit_text:
+                if (editText.equals("注册")){
+                    changeFragment(registerFragment,null,true);
+                    changTitle(PERSON_OR_INTERTACT,"注册");
+                }else{
 
-                startActivity(intent1);
+                }
+                break;
+            case R.id.title_back_img:
+                supportFragmentManager.popBackStack();
                 break;
         }
     }
@@ -188,6 +210,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 editText.setVisibility(View.GONE);
                 break;
             case PERSON_OR_INTERTACT:
+                tabTitle.setText(title);
                 titlePandaSign.setVisibility(View.GONE);
                 hudongImage.setVisibility(View.GONE);
                 titleBackImage.setVisibility(View.VISIBLE);
@@ -197,6 +220,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 radioGroup.setVisibility(View.GONE);
                 break;
             case EDIT_TITLE:
+                tabTitle.setText(title);
                 titlePandaSign.setVisibility(View.GONE);
                 hudongImage.setVisibility(View.GONE);
                 titleBackImage.setVisibility(View.VISIBLE);
@@ -205,6 +229,34 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 editText.setVisibility(View.VISIBLE);
                 radioGroup.setVisibility(View.GONE);
                 break;
+            case RIGHT_TYPE:
+                if (title.equals("登陆")) {
+                    tabTitle.setText(title);
+                    titlePandaSign.setVisibility(View.GONE);
+                    hudongImage.setVisibility(View.GONE);
+                    titleBackImage.setVisibility(View.VISIBLE);
+                    tabTitle.setVisibility(View.VISIBLE);
+                    personSign.setVisibility(View.GONE);
+                    editText.setVisibility(View.VISIBLE);
+                    radioGroup.setVisibility(View.GONE);
+                    editText.setText("注册");
+                }else{
+                    tabTitle.setText(title);
+                    titlePandaSign.setVisibility(View.GONE);
+                    hudongImage.setVisibility(View.GONE);
+                    titleBackImage.setVisibility(View.VISIBLE);
+                    tabTitle.setVisibility(View.VISIBLE);
+                    personSign.setVisibility(View.GONE);
+                    editText.setVisibility(View.GONE);
+                    radioGroup.setVisibility(View.GONE);
+                }
+                break;
         }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

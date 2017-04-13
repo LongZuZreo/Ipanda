@@ -58,4 +58,6 @@ public class ChinaLiveTabListBeanDb {
     public void setOrder(String order) {
         this.order = order;
     }
+
+
 }

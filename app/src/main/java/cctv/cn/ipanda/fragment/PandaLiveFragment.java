@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.adapter.PandaLiveTabAdapter;
 import cctv.cn.ipanda.base.BaseFragment;
 import cctv.cn.ipanda.common.App;
@@ -31,7 +32,7 @@ import cctv.cn.ipanda.presenter.panda_live.PandaLiveBqPresenterImpl;
  * Created by lenovo on 2017/4/7.
  */
 
-public class PandaLiveFragment extends BaseFragment implements LiveContract.View {
+public class PandaLiveFragment extends MainFragment implements LiveContract.View {
 
     private TabLayout tabLayout;
     private PandaLiveBqPresenterImpl pandaLivePresenter;

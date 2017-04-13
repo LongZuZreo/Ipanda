@@ -67,7 +67,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.PandaPersonActivity"/>
         <activity android:name=".activity.HuDongActivity"/>
         activity
         android:name=".wxapi.WXEntryActivity"

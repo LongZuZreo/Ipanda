@@ -24,6 +24,7 @@ import java.util.List;
 
 import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.activity.ChinaLivePoPActivity;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.adapter.PandaLiveChinaItemAdapter;
 import cctv.cn.ipanda.base.BaseFragment;
 import cctv.cn.ipanda.contract.LiveChinaContract;
@@ -39,7 +40,7 @@ import cctv.cn.ipanda.view.DragGridView;
  * Created by 张志远 on 2017/4/7.
  */
 
-public class PandaLiveChinaFragment extends BaseFragment implements LiveChinaContract.View,TabLayout.OnTabSelectedListener {
+public class PandaLiveChinaFragment extends MainFragment implements LiveChinaContract.View,TabLayout.OnTabSelectedListener {
 
     private TabLayout tabLayout;
     private LiveChinaContract.Presenter presenter;
@@ -80,6 +81,7 @@ public class PandaLiveChinaFragment extends BaseFragment implements LiveChinaCon
             presenter.getVideoList((String) firstTab.getTag());
 
             tabLayout.addOnTabSelectedListener(this);
+
 
         }
     }
@@ -137,7 +139,7 @@ public class PandaLiveChinaFragment extends BaseFragment implements LiveChinaCon
 
                 Intent intent=new Intent(getActivity(),ChinaLivePoPActivity.class);
 
-                startActivity(intent);
+                startActivityForResult(intent,100);
             }
         });
 
@@ -248,8 +250,6 @@ public class PandaLiveChinaFragment extends BaseFragment implements LiveChinaCon
 
         tabLayout.addOnTabSelectedListener(this);
 
-
-
         editor.putBoolean("isFirstGetTab", false);
 
         editor.commit();
@@ -257,7 +257,6 @@ public class PandaLiveChinaFragment extends BaseFragment implements LiveChinaCon
 
     @Override
     public void loadList(IPandaLiveChinaListEntity iPandaLiveChinaListEntity) {
-
 
         liveBeenList.clear();
 
@@ -282,13 +281,25 @@ public class PandaLiveChinaFragment extends BaseFragment implements LiveChinaCon
 
     }
 
-    public int getScreenWidth(Activity activity){
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==100 && resultCode==100){
 
-        DisplayMetrics dm = new DisplayMetrics();
+            tabListBeanDbs.clear();
 
-        activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
+            tabListBeanDbs.addAll(dbManager.selectChinaLiveTabListBeanDb());
 
-        int screenWidth = dm.widthPixels;
-        return screenWidth;
+            tabLayout.removeAllTabs();
+
+            for (int i=0;i<tabListBeanDbs.size();i++){
+
+                ChinaLiveTabListBeanDb chinaLiveTabListBeanDb = tabListBeanDbs.get(i);
+
+                tabLayout.addTab(tabLayout.newTab().setText(chinaLiveTabListBeanDb.getTitle()).setTag(chinaLiveTabListBeanDb.getUrl()));
+            }
+
+
+        }
     }
 }

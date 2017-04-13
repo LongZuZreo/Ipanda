@@ -91,6 +91,7 @@ public class ChinaLivePoPActivity extends BaseActivity implements MyClickListene
         dismiss_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setResult(100);
 
               finish();
             }

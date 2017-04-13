@@ -127,6 +127,37 @@ public class RetrofitUtils {
             });
 
     }
+    public <T> void postData(String url, Map<String,String> params, final MyCallback<T> callback,Map<String,String> headers){
+
+
+        Call<ResponseBody> call = myNetRequest.postResponseBody(url,params,headers);
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                try {
+                    String json=response.body().string();
+
+                    Type generice = getGenerice(callback);
+
+                    Gson gson=new Gson();
+
+                    T  t= gson.fromJson(json, generice);
+
+                    callback.onSuccess(t);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callback.onError(t.getMessage());
+            }
+        });
+
+    }
 
     private <T>Type getGenerice(MyCallback<T> callback){
 
