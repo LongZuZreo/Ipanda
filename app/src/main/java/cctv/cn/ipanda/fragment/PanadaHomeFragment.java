@@ -45,6 +45,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.adapter.RecycleViewAdapter;
 import cctv.cn.ipanda.adapter.banner.MyBannerAdapter;
 import cctv.cn.ipanda.base.BaseFragment;
@@ -56,6 +57,7 @@ import cctv.cn.ipanda.model.panada_home.CctvAgainBean;
 import cctv.cn.ipanda.model.panada_home.PanadaChinaListBean;
 import cctv.cn.ipanda.model.panada_home.PanadaHomeBean;
 import cctv.cn.ipanda.model.panada_home.UpdateBean;
+import cctv.cn.ipanda.model.panda_culture.PandaCultureEntity;
 import cctv.cn.ipanda.presenter.panada_home.HomePresentImp;
 
 import static android.content.Context.TELEPHONY_SERVICE;
@@ -81,7 +83,7 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
     private static int versionCode;
     private AlertDialog alertDialog;
     private int imageChage = 1000;
-
+    private PandaWebView pandaWebView;
     int total=0;
     private String versionsUrl;
 
@@ -98,6 +100,7 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
     //获取当前版本
     @Override
     protected void initData() {
+        pandaWebView = new PandaWebView();
         getAppVersionName(getActivity());
     }
     public static String getAppVersionName(Context context) {
@@ -322,7 +325,7 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
 
         @Override
         public void onPageSelected(int position) {
-        imageChage = position;
+                imageChage = position;
         }
 
         @Override
@@ -427,14 +430,31 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
 
     public void getImageView( PanadaHomeBean panadaHomeBean1){
 
-        List<PanadaHomeBean.DataBean.BigImgBean> beanList = panadaHomeBean1.getData().getBigImg();
+      final   List<PanadaHomeBean.DataBean.BigImgBean> beanList = panadaHomeBean1.getData().getBigImg();
         for(int i=0;i<beanList.size();i++){
             PanadaHomeBean.DataBean.BigImgBean bigImgBean1 = beanList.get(i);
-            ImageView imageView = new ImageView(getActivity());
+            final ImageView imageView = new ImageView(getActivity());
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             imageView.setLayoutParams(params);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             Glide.with(getActivity()).load(bigImgBean1.getImage()).into(imageView);
+            imageView.setTag(i);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int a = (int) imageView.getTag();
+                    PanadaHomeBean.DataBean.BigImgBean bigImgBean1 = beanList.get(a);
+                    MainActivity activity = (MainActivity) getActivity();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("url", bigImgBean1.getUrl());
+                    bundle.putString("title", bigImgBean1.getTitle());
+                    bundle.putString("imageurl", bigImgBean1.getImage());
+                    activity.changeFragment(pandaWebView, bundle, false);
+
+                }
+            });
+
+
             imageList.add(imageView);
 
         }
