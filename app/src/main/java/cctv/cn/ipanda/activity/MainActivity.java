@@ -74,9 +74,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         transaction.show(fragment);
 
-        if (isBack)
-            transaction.addToBackStack(null);
-
         transaction.commit();
     }
 
