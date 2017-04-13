@@ -32,4 +32,7 @@ public class Urls {
 
     public static final String LOGIN_URL="https://reg.cntv.cn/login/login.action";
 
+    //验证码
+    public static final String IMAGE_CODE="http://reg.cntv.cn/simple/verificationCode.action";
+
 }
