@@ -23,10 +23,7 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     private Button delete;
     private CheckBox isPlay;
     private CheckBox isPush;
-    private ImageView isHelp;
-    private ImageView isShengji;
-    private ImageView isGood;
-    private ImageView isAbout;
+
     public static final String PACKAGE = "cn.cntv.app.ipanda";
     private TextView cleanSize;
 
@@ -62,10 +59,6 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
         delete.setOnClickListener(this);
         isPlay.setOnCheckedChangeListener(this);
         isPush.setOnCheckedChangeListener(this);
-        isAbout.setOnClickListener(this);
-        isGood.setOnClickListener(this);
-        isHelp.setOnClickListener(this);
-        isAbout.setOnClickListener(this);
     }
 
     @Override
