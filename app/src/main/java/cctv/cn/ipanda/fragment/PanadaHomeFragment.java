@@ -14,6 +14,8 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -46,6 +48,7 @@ import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.adapter.RecycleViewAdapter;
 import cctv.cn.ipanda.adapter.banner.MyBannerAdapter;
 import cctv.cn.ipanda.base.BaseFragment;
+import cctv.cn.ipanda.common.App;
 import cctv.cn.ipanda.common.Urls;
 import cctv.cn.ipanda.contract.HomeContract;
 import cctv.cn.ipanda.model.panada_hdjh.PanadaInterfactionBean;
@@ -77,7 +80,10 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
     private String listUrl1;
     private static int versionCode;
     private AlertDialog alertDialog;
+    private int imageChage = 1000;
 
+    int total=0;
+    private String versionsUrl;
 
     @Override
     protected int getLayoutId() {
@@ -89,7 +95,7 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
     protected void loadData() {
         presentImp.getAllList(Urls.HOME_URL);
     }
-
+    //获取当前版本
     @Override
     protected void initData() {
         getAppVersionName(getActivity());
@@ -121,6 +127,7 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
     @Override
     public void getVersion(UpdateBean updateBean) {
         String versionsNum = updateBean.getData().getVersionsNum();
+        versionsUrl = updateBean.getData().getVersionsUrl();
         int versionsInt = Integer.parseInt(versionsNum);
         if(versionCode<versionsInt){
             getShowDialog();
@@ -145,6 +152,7 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
                         // TODO Auto-generated method stub
                         dialog.dismiss();
                         showDialogUpdate();
+                        dialog.dismiss();
 
                     }
 
@@ -202,7 +210,7 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
      * 下载新版本程序，需要子线程
      */
     private void loadNewVersionProgress() {
-        final   String uri="http://download.cntv.cn/app/ipanda/PandaTV_V1.5.0_2017-01-18.apk";
+        final   String uri=versionsUrl;
         final ProgressDialog pd;    //进度条对话框
         pd = new  ProgressDialog(getActivity());
         pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
@@ -219,7 +227,8 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
                     pd.dismiss(); //结束掉进度条对话框
                 } catch (Exception e) {
                     //下载apk失败
-                    Toast.makeText(getActivity(), "下载新版本失败", Toast.LENGTH_LONG).show();
+                    Log.i("abc","下载失败");
+//                    Toast.makeText(getActivity(), "下载新版本失败", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
             }}.start();
@@ -229,7 +238,7 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
      * 传入网址uri，进度条对象即可获得一个File文件
      * （要在子线程中执行哦）
      */
-    public static File getFileFromServer(String uri, ProgressDialog pd) throws Exception{
+    public  File getFileFromServer(String uri, final ProgressDialog pd) throws Exception{
         //如果相等的话表示当前的sdcard挂载在手机上并且是可用的
         if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
             URL url = new URL(uri);
@@ -239,12 +248,14 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
             pd.setMax(conn.getContentLength());
             InputStream is = conn.getInputStream();
             long time= System.currentTimeMillis();//当前时间的毫秒数
-            File file = new File(Environment.getExternalStorageDirectory(), time+"updata.apk");
+            File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), time+"updata.apk");
+            if(!file.exists())
+                file.createNewFile();
             FileOutputStream fos = new FileOutputStream(file);
             BufferedInputStream bis = new BufferedInputStream(is);
             byte[] buffer = new byte[1024];
             int len ;
-            int total=0;
+
             while((len =bis.read(buffer))!=-1){
                 fos.write(buffer, 0, len);
                 total+= len;
@@ -295,28 +306,30 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
         //实例化适配
         adapter = new RecycleViewAdapter(getActivity(),list);
         pullToRefreshRecyclerView.setAdapter(adapter);
-        pullToRefreshRecyclerView.setPullToRefreshListener(new PullToRefreshListener() {
-            @Override
-            public void onRefresh() {
-                list.clear();
-                adapter.notifyDataSetChanged();
-                pullToRefreshRecyclerView.setRefreshComplete();
-
-            }
-
-            @Override
-            public void onLoadMore() {
-
-            }
-        });
-
+        pullToRefreshRecyclerView.setPullRefreshEnabled(false);
+        pullToRefreshRecyclerView.setLoadingMoreEnabled(false);
 
     }
 
 
     @Override
     protected void initListener() {
+    mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+        imageChage = position;
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+    });
     }
 
 
@@ -417,19 +430,10 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
         List<PanadaHomeBean.DataBean.BigImgBean> beanList = panadaHomeBean1.getData().getBigImg();
         for(int i=0;i<beanList.size();i++){
             PanadaHomeBean.DataBean.BigImgBean bigImgBean1 = beanList.get(i);
-            RelativeLayout relativeLayout = new RelativeLayout(getActivity());
-            ViewGroup.LayoutParams relativeParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            relativeLayout.setLayoutParams(relativeParams);
             ImageView imageView = new ImageView(getActivity());
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             imageView.setLayoutParams(params);
-            TextView textView = new TextView(getActivity());
-            ViewGroup.LayoutParams textParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            textView.setLayoutParams(textParams);
-            String title = bigImgBean1.getTitle();
-            textView.setText(title);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-
             Glide.with(getActivity()).load(bigImgBean1.getImage()).into(imageView);
             imageList.add(imageView);
 
@@ -439,7 +443,22 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
         mViewPager.setAdapter(bannerAdapter);
 
         mViewPager.setCurrentItem(1000);
+        handler.sendEmptyMessageDelayed(1,2000);
 
     }
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what){
+                case 1:
+                    imageChage = imageChage+1;
+                    mViewPager.setCurrentItem(imageChage);
+                    sendEmptyMessageDelayed(1,2000);
+                    break;
+            }
+
+        }
+    };
 
 }
