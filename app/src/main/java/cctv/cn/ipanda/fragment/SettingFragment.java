@@ -1,12 +1,17 @@
 package cctv.cn.ipanda.fragment;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,12 +25,16 @@ import cctv.cn.ipanda.utils.CleanMessageUtil;
 
 public class SettingFragment extends BaseFragment implements View.OnClickListener,CompoundButton.OnCheckedChangeListener{
 
-    private Button delete;
     private CheckBox isPlay;
     private CheckBox isPush;
 
     public static final String PACKAGE = "cn.cntv.app.ipanda";
     private TextView cleanSize;
+    private RelativeLayout about;
+    private RelativeLayout help;
+    private RelativeLayout shengji;
+    private RelativeLayout good;
+    private RelativeLayout clean;
 
     @Override
     protected int getLayoutId() {
@@ -50,13 +59,21 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     protected void initView(View view) {
         isPlay = (CheckBox) view.findViewById(R.id.isPlay);
         isPush = (CheckBox) view.findViewById(R.id.isPush);
-
+        about = (RelativeLayout) view.findViewById(R.id.panda_setting_about);
+        help = (RelativeLayout) view.findViewById(R.id.panda_setting_help);
+        shengji = (RelativeLayout) view.findViewById(R.id.panda_setting_shengji);
+        good = (RelativeLayout) view.findViewById(R.id.panda_setting_haoping);
+        clean = (RelativeLayout) view.findViewById(R.id.clean);
 
     }
 
     @Override
     protected void initListener() {
-        delete.setOnClickListener(this);
+        clean.setOnClickListener(this);
+        help.setOnClickListener(this);
+        shengji.setOnClickListener(this);
+        good.setOnClickListener(this);
+        about.setOnClickListener(this);
         isPlay.setOnCheckedChangeListener(this);
         isPush.setOnCheckedChangeListener(this);
     }
@@ -65,11 +82,16 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.personal_delete_img:
-                CleanMessageUtil.clearAllCache(getActivity());
-                cleanSize.setText("0KB");
+              onClickCleanCache();
                 break;
-            case R.id.isGood:
+            case R.id.clean:
                 openApplicationMarket(PACKAGE);
+                break;
+            case R.id.panda_setting_shengji:
+                Toast.makeText(getActivity(), "已经是最新版本了", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.panda_setting_help:
+                Intent intent = new Intent(getActivity(),PandaAboutUsFragment.class);
                 break;
         }
     }
@@ -102,5 +124,26 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
         startActivity(intent);
+    }
+    private void onClickCleanCache() {
+        getConfirmDialog(getActivity(), "是否清空缓存?", new DialogInterface.OnClickListener
+                () {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                CleanMessageUtil.clearAllCache(getActivity());
+                cleanSize.setText("0.00MB");
+            }
+        }).show();
+    }
+    public static AlertDialog.Builder getConfirmDialog(Context context, String message, DialogInterface.OnClickListener onClickListener) {
+        AlertDialog.Builder builder = getDialog(context);
+        builder.setMessage(Html.fromHtml(message));
+        builder.setPositiveButton("确定", onClickListener);
+        builder.setNegativeButton("取消", null);
+        return builder;
+    }
+    public static AlertDialog.Builder getDialog(Context context) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        return builder;
     }
 }
