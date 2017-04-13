@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="120dp">
 <ImageView
+    android:padding="5dp"
     android:layout_width="180dp"
     android:layout_height="120dp"
     android:id="@+id/panda_observe_item_image"
-    android:layout_alignParentTop="true"
+    android:layout_centerVertical="true"
     android:layout_alignParentLeft="true"
     android:layout_alignParentStart="true" />
     <ImageView
@@ -14,19 +15,22 @@
         android:layout_height="wrap_content"
         android:src="@drawable/default_time_view"
         android:layout_alignBottom="@+id/panda_observe_item_image"
-        android:layout_marginLeft="6dp"
-        android:layout_marginStart="6dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginBottom="5dp"
         android:id="@+id/imageView2" />
     <ImageView
         android:id="@+id/play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/play"
+        android:layout_marginLeft="5dp"
         android:layout_alignTop="@+id/imageView2"
         android:layout_alignLeft="@+id/imageView2"
         android:layout_alignStart="@+id/imageView2" />
 
     <TextView
+        android:layout_marginBottom="5dp"
         android:id="@+id/panda_observe_item_sp_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,7 +40,8 @@
         android:layout_toEndOf="@+id/play"
         android:layout_toRightOf="@+id/play"
         android:textColor="#ffffff"
-        android:text="00:00:54" />
+        android:text="00:00:54"
+        />
 <TextView
     android:text="21331313"
     android:layout_width="wrap_content"
@@ -56,6 +61,11 @@
         android:layout_alignBottom="@+id/panda_observe_item_image"
         android:layout_toRightOf="@+id/panda_observe_item_image"
         android:layout_toEndOf="@+id/panda_observe_item_image"
-        android:layout_marginLeft="17dp"
-        android:layout_marginStart="17dp" />
+         />
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_alignParentBottom="true"
+    android:background="#d3d3d3"/>
 </RelativeLayout>

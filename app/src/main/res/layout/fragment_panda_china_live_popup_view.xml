@@ -33,12 +33,12 @@
             android:text="编辑"
             android:textSize="14sp"/>
     </RelativeLayout>
-    <GridView
+    <cctv.cn.ipanda.view.DragGridView
         android:id="@+id/mListItemGrid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:numColumns="3">
-    </GridView>
+    </cctv.cn.ipanda.view.DragGridView>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/panda_sign"
             android:layout_alignParentBottom="true"
+
             />
         <ImageView
             android:id="@+id/title_back_img"
@@ -26,7 +27,8 @@
             android:layout_centerVertical="true"
             android:src="@drawable/title_back_img"
             android:layout_marginLeft="10dp"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            />
         <TextView
             android:id="@+id/tab_title"
             android:layout_width="wrap_content"
@@ -54,7 +56,6 @@
             android:layout_marginRight="10dp"
             android:layout_centerVertical="true"
             />
-
         <TextView
             android:id="@+id/edit_text"
             android:layout_width="wrap_content"
@@ -65,7 +66,6 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
             android:textColor="@color/colorWhite"/>
-
     </RelativeLayout>
 
     <FrameLayout

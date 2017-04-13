@@ -1,19 +1,15 @@
 package cctv.cn.ipanda.activity;
 
-import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.base.BaseActivity;
 
 /**
- * Created by lenovo on 2017/4/11.
+ * Created by 张志远 on 2017/4/11.
  */
 
 public class PandaPersonActivity extends BaseActivity {
-
-
     @Override
     protected int getLayoutId() {
-
-        return R.layout.panda_person_view;
+        return 0;
     }
 
     @Override

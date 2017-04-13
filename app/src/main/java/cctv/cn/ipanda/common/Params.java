@@ -5,4 +5,8 @@ package cctv.cn.ipanda.common;
  */
 
 public class Params {
+
+    public static final int POSITION=2;
+
+
 }
