@@ -77,6 +77,11 @@ public class PandaLiveBqPresenterImpl implements LiveContract.Presenter, MyCallb
 
     }
 
+    @Override
+    public <T> void getTalkList() {
+
+    }
+
     /**
      * 多视角直播
      *

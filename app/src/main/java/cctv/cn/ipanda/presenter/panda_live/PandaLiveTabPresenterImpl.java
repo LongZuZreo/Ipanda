@@ -80,4 +80,9 @@ public class PandaLiveTabPresenterImpl implements LiveContract.Presenter {
     public <T> void getEyeFragment(String url, Map<String, String> params, MyCallback<T> callback) {
 
     }
+
+    @Override
+    public <T> void getTalkList() {
+
+    }
 }

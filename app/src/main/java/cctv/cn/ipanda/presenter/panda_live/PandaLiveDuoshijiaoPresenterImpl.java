@@ -107,6 +107,11 @@ public class PandaLiveDuoshijiaoPresenterImpl implements LiveContract.Presenter 
     }
 
     @Override
+    public <T> void getTalkList() {
+
+    }
+
+    @Override
     public void onSuccess(PandaLiveDuoshijiaoBean pandaLiveDuoshijiaoBean) {
 
         liveFragment.showLiveFragment(pandaLiveDuoshijiaoBean);

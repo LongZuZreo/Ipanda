@@ -51,6 +51,7 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
 
     @Override
     protected int getLayoutId() {
+
         return R.layout.fragment_panda_culture;
     }
 

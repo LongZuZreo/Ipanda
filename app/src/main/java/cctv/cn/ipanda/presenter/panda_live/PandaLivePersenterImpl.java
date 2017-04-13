@@ -100,6 +100,11 @@ public class PandaLivePersenterImpl implements LiveContract.Presenter, MyCallbac
     }
 
     @Override
+    public <T> void getTalkList() {
+
+    }
+
+    @Override
     public <T> void showImage(String url) {
 
     }

@@ -13,11 +13,13 @@ import android.widget.TextView;
 import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.base.BaseActivity;
 import cctv.cn.ipanda.base.BaseFragment;
+import cctv.cn.ipanda.fragment.InteractionFragment;
 import cctv.cn.ipanda.fragment.PanadaHomeFragment;
 import cctv.cn.ipanda.fragment.PandaCultureFragment;
 import cctv.cn.ipanda.fragment.PandaLiveFragment;
 import cctv.cn.ipanda.fragment.PandaObserverFragment;
 import cctv.cn.ipanda.fragment.PandaLiveChinaFragment;
+import cctv.cn.ipanda.fragment.PandaPersonFragment;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -29,8 +31,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private BaseFragment homeFragment;
     public static final int HOME_TITLE = 1;
     public static final int OTHER_TITLE = 2;
-    public static final int PERSON_OR_INTERTACT=3;
-    public static final int EDIT_TITLE=4;
+    public static final int PERSON_OR_INTERTACT = 3;
+    public static final int EDIT_TITLE = 4;
     private ImageView titlePandaSign;
     private ImageView titleBackImage;
     private TextView tabTitle;
@@ -43,6 +45,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private RadioButton liveChinaRadio;
     private TextView editText;
     private RadioGroup radioGroup;
+    private BaseFragment pandaPersonFragment;
+    private BaseFragment interactionFragment;
 
 
     public void changeFragment(BaseFragment fragment, Bundle bundle, boolean isBack) {
@@ -51,11 +55,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         FragmentTransaction transaction = supportFragmentManager.beginTransaction();
 
         if (bundle != null)
+
             fragment.setParams(bundle);
 
-
-
         transaction.hide(currentFragment);
+
         if (isBack)
             transaction.addToBackStack(null);
 
@@ -66,6 +70,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         transaction.show(fragment);
 
         if (isBack)
+
             transaction.addToBackStack(null);
 
         transaction.commit();
@@ -86,6 +91,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initView() {
+
         titlePandaSign = (ImageView) findViewById(R.id.title_panda_sign);
         titleBackImage = (ImageView) findViewById(R.id.title_back_img);
         tabTitle = (TextView) findViewById(R.id.tab_title);
@@ -108,9 +114,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         liveChinaFragment = new PandaLiveChinaFragment();
 
+        pandaPersonFragment = new PandaPersonFragment();
+
+        interactionFragment = new InteractionFragment();
+
         currentFragment = homeFragment;
 
         changeFragment(homeFragment, null, false);
+        editText.setVisibility(View.GONE);
 
         homeRadio = (RadioButton) findViewById(R.id.home_radio);
 
@@ -126,6 +137,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initListener() {
+
         homeRadio.setOnClickListener(this);
         eyeRadio.setOnClickListener(this);
         cultureRadio.setOnClickListener(this);
@@ -159,20 +171,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 changTitle(OTHER_TITLE, "直播中国");
                 break;
             case R.id.person_sign:
-                Intent intent=new Intent(this,PandaPersonActivity.class);
-
-                startActivity(intent);
+                changeFragment(pandaPersonFragment, null, true);
+                changTitle(OTHER_TITLE, "个人中心");
                 break;
             case R.id.hudong_image:
-                Intent intent1=new Intent(this,HuDongActivity.class);
-
-                startActivity(intent1);
+                changeFragment(interactionFragment, null, true);
+                changTitle(OTHER_TITLE, "原创·互动");
                 break;
         }
     }
 
     public void changTitle(int titleType, String title) {
+
         switch (titleType) {
+
             case HOME_TITLE:
                 titlePandaSign.setVisibility(View.VISIBLE);
                 hudongImage.setVisibility(View.VISIBLE);
@@ -180,6 +192,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 tabTitle.setVisibility(View.GONE);
                 editText.setVisibility(View.GONE);
                 break;
+
             case OTHER_TITLE:
                 tabTitle.setText(title);
                 tabTitle.setVisibility(View.VISIBLE);
@@ -187,16 +200,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 titlePandaSign.setVisibility(View.GONE);
                 editText.setVisibility(View.GONE);
                 break;
+
             case PERSON_OR_INTERTACT:
+                tabTitle.setText(title);
                 titlePandaSign.setVisibility(View.GONE);
                 hudongImage.setVisibility(View.GONE);
                 titleBackImage.setVisibility(View.VISIBLE);
+//                titleBackImage.setVisibility(View.GONE);
                 tabTitle.setVisibility(View.VISIBLE);
                 personSign.setVisibility(View.GONE);
                 editText.setVisibility(View.GONE);
                 radioGroup.setVisibility(View.GONE);
                 break;
+
             case EDIT_TITLE:
+                tabTitle.setText(title);
                 titlePandaSign.setVisibility(View.GONE);
                 hudongImage.setVisibility(View.GONE);
                 titleBackImage.setVisibility(View.VISIBLE);

@@ -36,6 +36,7 @@ public class InteractionFragment extends BaseFragment implements HomeContract.Vi
 
     @Override
     protected void loadData() {
+
     presentImp.getHdjh(Urls.HDJH);
     }
 

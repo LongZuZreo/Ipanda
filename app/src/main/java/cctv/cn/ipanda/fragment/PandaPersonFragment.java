@@ -18,6 +18,7 @@ import cctv.cn.ipanda.model.pandalive.PandaLiveBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBqBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveDuoshijiaoBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveJcyiBean;
+import cctv.cn.ipanda.model.pandalive.PandaLiveTalkListBean;
 
 /**
  * Created by lenovo on 2017/4/12.
@@ -35,6 +36,7 @@ public class PandaPersonFragment extends BaseFragment implements LiveContract.Vi
     private BaseFragment watchHistoryFragment;
     private BaseFragment myCollectionFragment;
     private BaseFragment settingFragment;
+    private BaseFragment pandaLoginFragment;
 
     @Override
     protected int getLayoutId() {
@@ -53,6 +55,7 @@ public class PandaPersonFragment extends BaseFragment implements LiveContract.Vi
         personInfoFragment = new PersonInfoFragment();
         watchHistoryFragment = new WatchHistoryFragment();
         myCollectionFragment = new MyCollectionFragment();
+        pandaLoginFragment = new PandaLoginFragment();
         settingFragment = new SettingFragment();
     }
 
@@ -83,7 +86,8 @@ public class PandaPersonFragment extends BaseFragment implements LiveContract.Vi
 
                 MainActivity mainActivity = (MainActivity) getActivity();
                 mainActivity.changeFragment(personInfoFragment, null, true);
-
+//                mainActivity.changeFragment(pandaLoginFragment, null, true);
+                mainActivity.changTitle(3, "个人信息");
                 break;
             case R.id.panda_person_guankanlishi:
 
@@ -160,6 +164,11 @@ public class PandaPersonFragment extends BaseFragment implements LiveContract.Vi
 
     @Override
     public void showJcyk(PandaLiveJcyiBean pandaLiveJcyiBean) {
+
+    }
+
+    @Override
+    public void showTalkList(PandaLiveTalkListBean pandaLiveJcyiBean) {
 
     }
 

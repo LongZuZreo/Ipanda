@@ -21,6 +21,7 @@ import android.widget.Toast;
 import java.io.File;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.base.BaseFragment;
 import cctv.cn.ipanda.common.App;
 
@@ -37,6 +38,7 @@ public class PersonInfoFragment extends BaseFragment implements View.OnClickList
     private Button cancle;
     private Button camera;
     private PopupWindow popupWindow;
+    private BaseFragment personChangUserNameFragment;
 
     @Override
     protected int getLayoutId() {
@@ -57,6 +59,8 @@ public class PersonInfoFragment extends BaseFragment implements View.OnClickList
         photos = (Button) view.findViewById(R.id.photosBtn);
         camera = (Button) view.findViewById(R.id.cameraBtn);
         cancle = (Button) view.findViewById(R.id.cancleBtn);
+
+        personChangUserNameFragment = new PersonChangUserNameFragment();
     }
 
     @Override
@@ -85,8 +89,12 @@ public class PersonInfoFragment extends BaseFragment implements View.OnClickList
             case R.id.panda_person_img:
 
                 showPopupWindow();
+
                 break;
             case R.id.panda_person_nicheng:
+
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.changeFragment(personChangUserNameFragment, null, true);
 
                 break;
             case R.id.photosBtn:
