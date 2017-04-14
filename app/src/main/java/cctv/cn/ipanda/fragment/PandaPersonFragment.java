@@ -87,7 +87,7 @@ public class PandaPersonFragment extends BaseFragment implements LiveContract.Vi
                 MainActivity mainActivity = (MainActivity) getActivity();
                 mainActivity.changeFragment(personInfoFragment, null, true);
 //                mainActivity.changeFragment(pandaLoginFragment, null, true);
-                mainActivity.changTitle(3, "个人信息");
+                mainActivity.changTitle(2, "个人信息");
                 break;
             case R.id.panda_person_guankanlishi:
 

@@ -94,7 +94,9 @@ public class PersonInfoFragment extends BaseFragment implements View.OnClickList
             case R.id.panda_person_nicheng:
 
                 MainActivity mainActivity = (MainActivity) getActivity();
+
                 mainActivity.changeFragment(personChangUserNameFragment, null, true);
+                mainActivity.changTitle(2, "修改昵称");
 
                 break;
             case R.id.photosBtn:

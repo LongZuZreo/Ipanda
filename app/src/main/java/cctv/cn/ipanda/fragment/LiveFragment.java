@@ -160,9 +160,9 @@ public class LiveFragment extends BaseFragment implements LiveContract.View, Vie
 
                 Glide.with(App.context).load(liveBean.getImage()).into(panda_live_image);
                 panda_live_title.setText(liveBean.getTitle());
-/*
-                String name = (String) bundle.get("name");
-                panda_live_title.setText(name);*/
+
+                String name = bundle.getString("name");
+//                panda_live_title.setText(name);
 
                 panda_live_detail.setOnClickListener(new View.OnClickListener() {
                     @Override

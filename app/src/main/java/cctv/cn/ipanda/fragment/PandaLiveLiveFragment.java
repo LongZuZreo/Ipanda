@@ -61,16 +61,19 @@ public class PandaLiveLiveFragment extends BaseFragment implements LiveContract.
 
         pandaLiveDuoshijiaoPresenter = new PandaLiveDuoshijiaoPresenterImpl(this);
         gridViewAdapter = new PandaLiveLiveGridViewAdapter(App.context, datas);
+
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 PandaLiveDuoshijiaoBean.ListBean listBean = list.get(i);
+
                 title = listBean.getTitle();
                 image = listBean.getImage();
 
-
+                bundle.putString("name", title);
+                bundle.putString("image", image);
             }
         });
 
@@ -95,9 +98,11 @@ public class PandaLiveLiveFragment extends BaseFragment implements LiveContract.
 
     @Override
     public void setParams(Bundle bundle) {
+
+
+
         super.setParams(bundle);
-        bundle.putString("name", title);
-        bundle.putString("image", image);
+
     }
 
     @Override

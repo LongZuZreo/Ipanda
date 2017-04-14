@@ -28,7 +28,6 @@ public class PersonChangUserNameFragment extends BaseFragment implements View.On
     @Override
     protected void loadData() {
 
-
     }
 
     @Override
@@ -56,6 +55,7 @@ public class PersonChangUserNameFragment extends BaseFragment implements View.On
             case R.id.save:
                 String s = editText.getText().toString();
                 Toast.makeText(App.context, "0...0" + s, Toast.LENGTH_SHORT).show();
+
                 break;
         }
     }
