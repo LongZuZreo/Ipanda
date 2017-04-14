@@ -79,6 +79,7 @@ public class VideoActivity extends BaseActivity implements MediaPlayer.OnInfoLis
         loadRateView = (TextView) findViewById(R.id.load_rate);
     }
 
+
     @Override
     protected void initData() {
 
