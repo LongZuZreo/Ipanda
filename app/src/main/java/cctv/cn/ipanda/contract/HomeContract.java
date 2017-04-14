@@ -5,6 +5,7 @@ import cctv.cn.ipanda.base.BaseView;
 import cctv.cn.ipanda.model.panada_hdjh.PanadaInterfactionBean;
 import cctv.cn.ipanda.model.panada_home.CctvAgainBean;
 import cctv.cn.ipanda.model.panada_home.PanadaChinaListBean;
+import cctv.cn.ipanda.model.panada_home.PanadaEyesBean;
 import cctv.cn.ipanda.model.panada_home.PanadaHomeBean;
 import cctv.cn.ipanda.model.panada_home.UpdateBean;
 
@@ -31,6 +32,8 @@ public interface HomeContract {
         void loadInteractionBean(PanadaInterfactionBean panadaInterfactionBean);
         //获取版本号
         void getVersion(UpdateBean updateBean);
+        //熊猫观察List
+        void getPanadaEyesList(PanadaEyesBean panadaEyesBean);
     }
 
     interface Presenter extends BasePresenter{

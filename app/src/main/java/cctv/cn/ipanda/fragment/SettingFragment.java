@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
@@ -16,8 +17,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.base.BaseFragment;
 import cctv.cn.ipanda.utils.CleanMessageUtil;
+
+import static cctv.cn.ipanda.R.id.panda_setting_help;
 
 /**
  * Created by lenovo on 2017/4/12.
@@ -35,6 +39,8 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     private RelativeLayout shengji;
     private RelativeLayout good;
     private RelativeLayout clean;
+    private BaseFragment pandaAboutUsFragment;
+    private PersonalFeedBackFragment personalFeedBackFragment;
 
     @Override
     protected int getLayoutId() {
@@ -53,14 +59,17 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
         } catch (Exception e) {
             e.printStackTrace();
         }
+        pandaAboutUsFragment = new PandaAboutUsFragment();
+        personalFeedBackFragment = new PersonalFeedBackFragment();
     }
 
     @Override
     protected void initView(View view) {
+        cleanSize = (TextView) view.findViewById(R.id.number);
         isPlay = (CheckBox) view.findViewById(R.id.isPlay);
         isPush = (CheckBox) view.findViewById(R.id.isPush);
         about = (RelativeLayout) view.findViewById(R.id.panda_setting_about);
-        help = (RelativeLayout) view.findViewById(R.id.panda_setting_help);
+        help = (RelativeLayout) view.findViewById(panda_setting_help);
         shengji = (RelativeLayout) view.findViewById(R.id.panda_setting_shengji);
         good = (RelativeLayout) view.findViewById(R.id.panda_setting_haoping);
         clean = (RelativeLayout) view.findViewById(R.id.clean);
@@ -81,18 +90,26 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.personal_delete_img:
-              onClickCleanCache();
-                break;
             case R.id.clean:
-                openApplicationMarket(PACKAGE);
+             onClickCleanCache();
                 break;
             case R.id.panda_setting_shengji:
                 Toast.makeText(getActivity(), "已经是最新版本了", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.panda_setting_help:
-                Intent intent = new Intent(getActivity(),PandaAboutUsFragment.class);
+            case panda_setting_help:
+                MainActivity activity1 = (MainActivity) getActivity();
+                activity1.changeFragment(personalFeedBackFragment,null,false);
+                activity1.changTitle(2,"用户反馈");
                 break;
+            case R.id.panda_setting_haoping:
+                openApplicationMarket(PACKAGE);
+                break;
+            case R.id.panda_setting_about:
+                MainActivity activity = (MainActivity) getActivity();
+                activity.changeFragment(pandaAboutUsFragment,null,false);
+                activity.changTitle(2,"关于熊猫频道");
+                break;
+
         }
     }
 

@@ -29,6 +29,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private BaseFragment liveFragment;
     private BaseFragment liveChinaFragment;
     private BaseFragment homeFragment;
+    private BaseFragment interactionFragment;
+    private BaseFragment panadaPersionFragment;
     public static final int HOME_TITLE = 1;
     public static final int OTHER_TITLE = 2;
     public static final int PERSON_OR_INTERTACT=3;
@@ -45,6 +47,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private RadioButton liveChinaRadio;
     private TextView editText;
     private RadioGroup radioGroup;
+    private PandaPersonFragment pandaPersonFragment;
+    private PandaAboutUsFragment pandaAboutUsFragment;
     private BaseFragment pandaPersonFragment;
     private BaseFragment interactionFragment;
 
@@ -99,8 +103,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         radioGroup = (RadioGroup) findViewById(R.id.fragment_radio_group);
     }
 
+
     @Override
     protected void initData() {
+        panadaPersionFragment = new PandaPersonFragment();
+        interactionFragment = new InteractionFragment();
 
         homeFragment = new PanadaHomeFragment();
 
@@ -114,12 +121,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         pandaPersonFragment = new PandaPersonFragment();
 
+        pandaAboutUsFragment = new PandaAboutUsFragment();
+
+        pandaPersonFragment = new PandaPersonFragment();
+
         interactionFragment = new InteractionFragment();
 
         currentFragment = homeFragment;
 
         changeFragment(homeFragment, null, false);
-        editText.setVisibility(View.GONE);
 
         homeRadio = (RadioButton) findViewById(R.id.home_radio);
 
@@ -168,12 +178,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 changTitle(OTHER_TITLE, "直播中国");
                 break;
             case R.id.person_sign:
-                changeFragment(pandaPersonFragment, null, true);
-                changTitle(OTHER_TITLE, "个人中心");
+                changeFragment(pandaPersonFragment, null, false);
+                changTitle(OTHER_TITLE,"个人中心");
+                personSign.setVisibility(View.GONE);
                 break;
             case R.id.hudong_image:
-                changeFragment(interactionFragment, null, true);
-                changTitle(OTHER_TITLE, "原创·互动");
+                changeFragment(cultureFragment, null, false);
+                changTitle(OTHER_TITLE, "熊猫文化");
+                break;
+            case R.id.panda_setting_about:
+                 changeFragment(pandaAboutUsFragment,null,false);
+                changTitle(OTHER_TITLE,"关于熊猫频道");
                 break;
         }
     }
