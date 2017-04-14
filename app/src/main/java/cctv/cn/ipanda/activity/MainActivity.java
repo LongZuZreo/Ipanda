@@ -171,8 +171,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 personSign.setVisibility(View.GONE);
                 break;
             case R.id.hudong_image:
-                Intent intent1 = new Intent(this, HuDongActivity.class);
-                startActivity(intent1);
+                changeFragment(cultureFragment, null, false);
+                changTitle(OTHER_TITLE, "熊猫文化");
                 break;
             case R.id.panda_setting_about:
                  changeFragment(pandaAboutUsFragment,null,false);

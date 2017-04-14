@@ -27,6 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.Util.CircleImageView;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.adapter.RecycleViewAdapter;
 import cctv.cn.ipanda.adapter.banner.MyBannerAdapter;
 import cctv.cn.ipanda.base.BaseFragment;
@@ -54,6 +57,7 @@ import cctv.cn.ipanda.contract.HomeContract;
 import cctv.cn.ipanda.model.panada_hdjh.PanadaInterfactionBean;
 import cctv.cn.ipanda.model.panada_home.CctvAgainBean;
 import cctv.cn.ipanda.model.panada_home.PanadaChinaListBean;
+import cctv.cn.ipanda.model.panada_home.PanadaEyesBean;
 import cctv.cn.ipanda.model.panada_home.PanadaHomeBean;
 import cctv.cn.ipanda.model.panada_home.UpdateBean;
 import cctv.cn.ipanda.presenter.panada_home.HomePresentImp;
@@ -81,9 +85,14 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
     private static int versionCode;
     private AlertDialog alertDialog;
     private int imageChage = 1000;
+    private TextView mPanada_banner_title;
+    private LinearLayout linearLayout;
+    private List<CircleImageView> viewPagerList;
 
     int total=0;
     private String versionsUrl;
+    private List<PanadaHomeBean.DataBean.BigImgBean> beanList;
+    private PandaWebView pandaWebView;
 
     @Override
     protected int getLayoutId() {
@@ -136,6 +145,8 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
         }
 
     }
+
+
     public void getShowDialog() {
         new AlertDialog.Builder(getActivity()).setTitle("版本升级")//设置对话框标题
 
@@ -293,6 +304,8 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
     protected void initView(View view) {
 
 
+        pandaWebView = new PandaWebView();
+
         pullToRefreshRecyclerView = (PullToRefreshRecyclerView) view.findViewById(R.id.mRecycleView);
         View view1 = LayoutInflater.from(getActivity()).inflate(R.layout.recycleview_image_item, null);
         mPanada_banner_title = (TextView) view1.findViewById(R.id.mPanadaBanner_title);
@@ -397,10 +410,14 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
         getVersion();
         list.add(area);
         list.add(pandaeyeBean);
+        //熊猫观察的list
+       /* String pandaeyelist = pandaeyeBean.getPandaeyelist();
+        sendPanadaEyesList(pandaeyelist);*/
         list.add(pandaliveBean);
         list.add(wallliveBean);
         list.add(chinaliveBean);
         list.add(interactiveBean);
+
 //        list.add(cctvBean);
         //CCTV发送二次网络请求
         listurl = cctvBean.getListurl();
@@ -409,6 +426,14 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
         String listUrl1 =  listBeanXXX.getListUrl();
         sendListBean(listUrl1);
 
+        adapter.notifyDataSetChanged();
+    }
+    public void sendPanadaEyesList(String url){
+        presentImp.getPanadaList(url);
+    }
+    @Override
+    public void getPanadaEyesList(PanadaEyesBean panadaEyesBean) {
+        list.add(panadaEyesBean);
         adapter.notifyDataSetChanged();
     }
     public void sendListBean(String url){
@@ -436,10 +461,11 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
 
     public void getImageView( PanadaHomeBean panadaHomeBean1){
 
-        List<PanadaHomeBean.DataBean.BigImgBean> beanList = panadaHomeBean1.getData().getBigImg();
-        for(int i=0;i<beanList.size();i++){
+        beanList = panadaHomeBean1.getData().getBigImg();
+        int pointPosition = 0;
+        for(int i = 0; i< beanList.size(); i++){
             PanadaHomeBean.DataBean.BigImgBean bigImgBean1 = beanList.get(i);
-            ImageView imageView = new ImageView(getActivity());
+            final ImageView imageView = new ImageView(getActivity());
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             imageView.setLayoutParams(params);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -497,5 +523,8 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
 
         }
     };
+    public int dp2Px(int dpValue) {
+        return (int) (getActivity().getResources().getDisplayMetrics().density * dpValue + 0.5f);
+    }
 
 }

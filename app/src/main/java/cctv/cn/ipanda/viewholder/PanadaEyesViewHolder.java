@@ -21,7 +21,7 @@ public class PanadaEyesViewHolder extends RecyclerView.ViewHolder{
     public final TextView panadaeyesTitleMessage1;
     public final TextView panadaeyesTitleTitle2;
     public final TextView panadaeyesTitleMessage2;
-    private final ListView panadaeyesListView;
+
 
 
     public PanadaEyesViewHolder(View itemView) {
@@ -32,6 +32,6 @@ public class PanadaEyesViewHolder extends RecyclerView.ViewHolder{
         panadaeyesTitleMessage1 = (TextView) itemView.findViewById(R.id.mPanadaeyes_title_message1);
         panadaeyesTitleTitle2 = (TextView) itemView.findViewById(R.id.mPanadaeyes_title_title2);
         panadaeyesTitleMessage2 = (TextView) itemView.findViewById(R.id.mPanadaeyes_title_message2);
-        panadaeyesListView = (ListView) itemView.findViewById(R.id.mPanadaeyes_listview);
+
     }
 }
