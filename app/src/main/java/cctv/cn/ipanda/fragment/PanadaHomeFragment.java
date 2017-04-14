@@ -27,6 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.Util.CircleImageView;
 import cctv.cn.ipanda.adapter.RecycleViewAdapter;
 import cctv.cn.ipanda.adapter.banner.MyBannerAdapter;
 import cctv.cn.ipanda.base.BaseFragment;
@@ -81,9 +83,13 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
     private static int versionCode;
     private AlertDialog alertDialog;
     private int imageChage = 1000;
+    private List<CircleImageView> viewPagerList;
 
     int total=0;
     private String versionsUrl;
+    private TextView mPanada_banner_title;
+    private List<PanadaHomeBean.DataBean.BigImgBean> beanList;
+    private LinearLayout linearLayout;
 
     @Override
     protected int getLayoutId() {
@@ -295,8 +301,11 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
 
         pullToRefreshRecyclerView = (PullToRefreshRecyclerView) view.findViewById(R.id.mRecycleView);
         View view1 = LayoutInflater.from(getActivity()).inflate(R.layout.recycleview_image_item, null);
+        mPanada_banner_title = (TextView) view1.findViewById(R.id.mPanadaBanner_title);
         mViewPager = (ViewPager) view1.findViewById(R.id.mPanadaBanner_viewPager);
+        linearLayout = (LinearLayout) view1.findViewById(R.id.mPanadaBanner_Linear);
         imageList = new ArrayList<ImageView>();
+        viewPagerList = new ArrayList<>();
 
         presentImp = new HomePresentImp(this);
         list = new ArrayList<>();
@@ -323,6 +332,11 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
         @Override
         public void onPageSelected(int position) {
         imageChage = position;
+            for (CircleImageView circleImageView : viewPagerList) {
+                circleImageView.setImageResource(R.drawable.white_point);
+            }
+            viewPagerList.get(position % viewPagerList.size()).setImageResource(R.drawable.gray_point);
+            mPanada_banner_title.setText(beanList.get(position % viewPagerList.size()).getTitle());
         }
 
         @Override
@@ -426,9 +440,9 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
 
 
     public void getImageView( PanadaHomeBean panadaHomeBean1){
-
-        List<PanadaHomeBean.DataBean.BigImgBean> beanList = panadaHomeBean1.getData().getBigImg();
-        for(int i=0;i<beanList.size();i++){
+        int pointPosition = 0;
+        beanList = panadaHomeBean1.getData().getBigImg();
+        for(int i = 0; i< beanList.size(); i++){
             PanadaHomeBean.DataBean.BigImgBean bigImgBean1 = beanList.get(i);
             ImageView imageView = new ImageView(getActivity());
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -436,6 +450,17 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             Glide.with(getActivity()).load(bigImgBean1.getImage()).into(imageView);
             imageList.add(imageView);
+
+
+            CircleImageView circleImageView = new CircleImageView(getActivity());
+            circleImageView.setCircleModel(CircleImageView.POINT);
+            RelativeLayout.LayoutParams pointViewParams = new RelativeLayout.LayoutParams(dp2Px(8), dp2Px(8));
+            circleImageView.setLayoutParams(pointViewParams);
+            circleImageView.setTag(pointPosition);
+            circleImageView.setImageResource(R.drawable.white_point);
+            viewPagerList.add(circleImageView);
+            linearLayout.addView(circleImageView);
+            pointPosition++;
 
         }
         bannerAdapter = new MyBannerAdapter(imageList);
@@ -460,5 +485,8 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
 
         }
     };
+    public int dp2Px(int dpValue) {
+        return (int) (getActivity().getResources().getDisplayMetrics().density * dpValue + 0.5f);
+    }
 
 }
