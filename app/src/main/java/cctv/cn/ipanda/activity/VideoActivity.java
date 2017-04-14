@@ -46,7 +46,6 @@ public class VideoActivity extends BaseActivity implements  MediaPlayer.OnInfoLi
 
     @Override
     protected void loadData() {
-
     }
 
     @Override
