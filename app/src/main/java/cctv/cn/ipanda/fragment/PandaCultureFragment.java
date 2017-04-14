@@ -1,5 +1,6 @@
 package cctv.cn.ipanda.fragment;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -19,6 +20,7 @@ import java.util.List;
 
 import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.Util.CircleImageView;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.adapter.pandacultureadapter.PandaCultureBannerAdapter;
 import cctv.cn.ipanda.adapter.pandacultureadapter.PandaCultureItemAdapter;
 import cctv.cn.ipanda.adapter.pandaobserveradapter.PandaObserverBannerAdapter;
@@ -48,6 +50,7 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
     private List<CircleImageView> points;
     private int currentPosition = 10000;
     private ViewGroup pointsLinearLayout;
+    private PandaWebView pandaWebView;
 
     @Override
     protected int getLayoutId() {
@@ -66,7 +69,7 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
         listBeanList = new ArrayList<>();
         pandaCulturePersenter = new PandaCulturePersenter(this);
         dataBeanList = new ArrayList<>();
-
+        pandaWebView = new PandaWebView();
         itemAdapter = new PandaCultureItemAdapter(getActivity(), listBeanList);
         pullToRefreshRecyclerView.setAdapter(itemAdapter);
     }
@@ -175,16 +178,33 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
     }
 
     private void createImg(PandaCultureEntity entity) {
-        List<PandaCultureEntity.BigImgBean> tab = entity.getBigImg();
+        final List<PandaCultureEntity.BigImgBean> tab = entity.getBigImg();
         int pointPosition = 0;
         for (int i = 0; i < tab.size(); i++) {
             PandaCultureEntity.BigImgBean bigImgBean = tab.get(i);
             String image = bigImgBean.getImage();
-            ImageView imageView = new ImageView(getActivity());
+            final ImageView imageView = new ImageView(getActivity());
+
+
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             imageView.setLayoutParams(params);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             Glide.with(this).load(image).into(imageView);
+            imageView.setTag(i);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int a = (int) imageView.getTag();
+                    PandaCultureEntity.BigImgBean bigImgBean1 = tab.get(a);
+                    MainActivity activity = (MainActivity) getActivity();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("url", bigImgBean1.getUrl());
+                    bundle.putString("title", bigImgBean1.getTitle());
+                    bundle.putString("imageurl", bigImgBean1.getImage());
+                    activity.changeFragment(pandaWebView, bundle, false);
+
+                }
+            });
             imgs.add(imageView);
 
 

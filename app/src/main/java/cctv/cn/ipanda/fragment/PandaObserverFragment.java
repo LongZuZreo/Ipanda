@@ -1,10 +1,12 @@
 package cctv.cn.ipanda.fragment;
 
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,13 +18,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.adapter.pandaobserveradapter.PandaObserverBannerAdapter;
 import cctv.cn.ipanda.adapter.pandaobserveradapter.PandaObserverItemAdapter;
 import cctv.cn.ipanda.base.BaseFragment;
+import cctv.cn.ipanda.common.App;
 import cctv.cn.ipanda.contract.ObserverContract;
+import cctv.cn.ipanda.model.panda_culture.PandaCultureEntity;
 import cctv.cn.ipanda.model.panda_observer.PandaObserveItemEntity;
 import cctv.cn.ipanda.model.panda_observer.PandaObserverHeadEntity;
 import cctv.cn.ipanda.presenter.panda_obsenver.PandaObservePersenter;
+import cctv.cn.ipanda.utils.ShareControllerUtil;
 
 /**
  * Created by hp1 on 2017-04-07.
@@ -43,6 +49,7 @@ public class PandaObserverFragment extends BaseFragment implements ObserverContr
     private PandaObserverHeadEntity.DataBean data;
     private String mSecUrl;
     private int mPage = 1;
+    private PandaWebView pandaWebView;
 
     @Override
     protected int getLayoutId() {
@@ -57,6 +64,7 @@ public class PandaObserverFragment extends BaseFragment implements ObserverContr
     @Override
     protected void initData() {
         imgs = new ArrayList<>();
+        pandaWebView = new PandaWebView();
         listBeanList = new ArrayList<>();
         pandaObservePersenter = new PandaObservePersenter(this);
         dataBeanList = new ArrayList<>();
@@ -142,16 +150,33 @@ public class PandaObserverFragment extends BaseFragment implements ObserverContr
     }
 
     private void createImg(PandaObserverHeadEntity entity) {
-        List<PandaObserverHeadEntity.DataBean.BigImgBean> tab = entity.getData().getBigImg();
+        final List<PandaObserverHeadEntity.DataBean.BigImgBean> tab = entity.getData().getBigImg();
         for (int i = 0; i < tab.size(); i++) {
             PandaObserverHeadEntity.DataBean.BigImgBean bigImgBean = tab.get(i);
             String imageUrl = bigImgBean.getImage();
-            ImageView imageView = new ImageView(getActivity());
+            final ImageView imageView = new ImageView(getActivity());
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             imageView.setLayoutParams(params);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             Glide.with(this).load(imageUrl).into(imageView);
+            imageView.setTag(i);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int a = (int) imageView.getTag();
+                    PandaObserverHeadEntity.DataBean.BigImgBean bigImgBean1 = tab.get(a);
+                    MainActivity activity = (MainActivity) getActivity();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("url", bigImgBean1.getUrl());
+                    bundle.putString("title", bigImgBean1.getTitle());
+                    bundle.putString("imageurl", bigImgBean1.getImage());
+                    activity.changeFragment(pandaWebView, bundle, false);
+
+                }
+            });
+
             imgs.add(imageView);
+
             pandaObserverBannerTitle.setText(bigImgBean.getTitle());
             pandaObserverBannerTitle.setLines(1);
 

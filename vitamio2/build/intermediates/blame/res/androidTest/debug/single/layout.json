@@ -1,6 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\ASUS\\Desktop\\Ipanda\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\mediacontroller.xml",
-        "source": "C:\\Users\\ASUS\\Desktop\\Ipanda\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\layout\\mediacontroller.xml"
+        "merged": "H:\\other\\Ipanda\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\mediacontroller.xml",
+        "source": "H:\\other\\Ipanda\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\layout\\mediacontroller.xml"
+    },
+    {
+        "merged": "D:\\Ipanda\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\mediacontroller.xml",
+        "source": "D:\\Ipanda\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\layout\\mediacontroller.xml"
     }
 ]

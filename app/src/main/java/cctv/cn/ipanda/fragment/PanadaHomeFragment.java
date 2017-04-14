@@ -27,7 +27,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,7 +45,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cctv.cn.ipanda.R;
-import cctv.cn.ipanda.Util.CircleImageView;
 import cctv.cn.ipanda.adapter.RecycleViewAdapter;
 import cctv.cn.ipanda.adapter.banner.MyBannerAdapter;
 import cctv.cn.ipanda.base.BaseFragment;
@@ -83,13 +81,9 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
     private static int versionCode;
     private AlertDialog alertDialog;
     private int imageChage = 1000;
-    private List<CircleImageView> viewPagerList;
 
     int total=0;
     private String versionsUrl;
-    private TextView mPanada_banner_title;
-    private List<PanadaHomeBean.DataBean.BigImgBean> beanList;
-    private LinearLayout linearLayout;
 
     @Override
     protected int getLayoutId() {
@@ -337,6 +331,7 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
             }
             viewPagerList.get(position % viewPagerList.size()).setImageResource(R.drawable.gray_point);
             mPanada_banner_title.setText(beanList.get(position % viewPagerList.size()).getTitle());
+                imageChage = position;
         }
 
         @Override
@@ -440,15 +435,32 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
 
 
     public void getImageView( PanadaHomeBean panadaHomeBean1){
-        int pointPosition = 0;
-        beanList = panadaHomeBean1.getData().getBigImg();
-        for(int i = 0; i< beanList.size(); i++){
+
+        List<PanadaHomeBean.DataBean.BigImgBean> beanList = panadaHomeBean1.getData().getBigImg();
+        for(int i=0;i<beanList.size();i++){
             PanadaHomeBean.DataBean.BigImgBean bigImgBean1 = beanList.get(i);
             ImageView imageView = new ImageView(getActivity());
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             imageView.setLayoutParams(params);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             Glide.with(getActivity()).load(bigImgBean1.getImage()).into(imageView);
+            imageView.setTag(i);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int a = (int) imageView.getTag();
+                    PanadaHomeBean.DataBean.BigImgBean bigImgBean1 = beanList.get(a);
+                    MainActivity activity = (MainActivity) getActivity();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("url", bigImgBean1.getUrl());
+                    bundle.putString("title", bigImgBean1.getTitle());
+                    bundle.putString("imageurl", bigImgBean1.getImage());
+                    activity.changeFragment(pandaWebView, bundle, false);
+
+                }
+            });
+
+
             imageList.add(imageView);
 
 
@@ -485,8 +497,5 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
 
         }
     };
-    public int dp2Px(int dpValue) {
-        return (int) (getActivity().getResources().getDisplayMetrics().density * dpValue + 0.5f);
-    }
 
 }

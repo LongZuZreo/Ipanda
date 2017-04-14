@@ -99,6 +99,7 @@ public class PandaPersonFragment extends BaseFragment implements LiveContract.Vi
 
                 MainActivity mainActivity3 = (MainActivity) getActivity();
                 mainActivity3.changeFragment(settingFragment, null, true);
+                mainActivity3.changTitle(2,"设置");
                 break;
         }
     }
