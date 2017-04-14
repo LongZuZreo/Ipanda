@@ -184,6 +184,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.panda_setting_about:
                 changeFragment(pandaAboutUsFragment, null, false);
                 changTitle(OTHER_TITLE, "关于熊猫频道");
+
                 break;
         }
     }
