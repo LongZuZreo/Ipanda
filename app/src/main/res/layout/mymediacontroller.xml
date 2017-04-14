@@ -118,7 +118,7 @@
                 android:text="33:33:33"
                 />
 
-            <SeekBar
+            <TextView
                 android:id="@+id/mediacontroller_scale"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package cctv.cn.ipanda.Util;
+package cctv.cn.ipanda.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -6,7 +6,6 @@ import java.util.Map;
 
 import cctv.cn.ipanda.common.Urls;
 import cctv.cn.ipanda.contract.HomeContract;
-import cctv.cn.ipanda.fragment.PanadaHomeFragment;
 import cctv.cn.ipanda.model.http.MyCallback;
 import cctv.cn.ipanda.model.http.RetrofitUtils;
 import cctv.cn.ipanda.model.panada_hdjh.PanadaInterfactionBean;
@@ -54,6 +53,7 @@ public class HomePresentImp implements HomeContract.Presenter{
             @Override
             public void onSuccess(CctvAgainBean cctvAgainBean) {
                 view.loadCcctv(cctvAgainBean);
+
             }
 
             @Override
@@ -70,6 +70,7 @@ public class HomePresentImp implements HomeContract.Presenter{
             public void onSuccess(PanadaChinaListBean panadaChinaListBean) {
                 List<PanadaChinaListBean.ListBean> list = panadaChinaListBean.getList();
                 view.loadListBean(panadaChinaListBean);
+
             }
 
             @Override
@@ -84,6 +85,7 @@ public class HomePresentImp implements HomeContract.Presenter{
             @Override
             public void onSuccess(PanadaInterfactionBean panadaInterfactionBean) {
                 view.loadInteractionBean(panadaInterfactionBean);
+
             }
 
             @Override
@@ -98,6 +100,8 @@ public class HomePresentImp implements HomeContract.Presenter{
             @Override
             public void onSuccess(UpdateBean updateBean) {
                 view.getVersion(updateBean);
+
+
             }
 
             @Override

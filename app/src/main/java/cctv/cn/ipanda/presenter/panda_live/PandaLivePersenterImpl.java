@@ -1,17 +1,11 @@
 package cctv.cn.ipanda.presenter.panda_live;
 
-import android.content.Context;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
-
 
 import java.util.List;
 import java.util.Map;
 
 import cctv.cn.ipanda.common.Urls;
 import cctv.cn.ipanda.contract.LiveContract;
-import cctv.cn.ipanda.fragment.LiveFragment;
 import cctv.cn.ipanda.model.http.MyCallback;
 import cctv.cn.ipanda.model.pandalive.IPandaLiveModel;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBean;
@@ -105,6 +99,11 @@ public class PandaLivePersenterImpl implements LiveContract.Presenter, MyCallbac
     }
 
     @Override
+    public <T> void vadioPlay(String url, Map<String, String> params, MyCallback<T> callback) {
+
+    }
+
+    @Override
     public <T> void showImage(String url) {
 
     }
@@ -145,6 +144,7 @@ public class PandaLivePersenterImpl implements LiveContract.Presenter, MyCallbac
         liveFragment.showDetail(pandaLiveBean);
         liveFragment.showLiveTitle();
         liveFragment.showEyeTitle();*/
+
     }
 
     @Override

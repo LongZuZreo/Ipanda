@@ -29,8 +29,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private BaseFragment liveFragment;
     private BaseFragment liveChinaFragment;
     private BaseFragment homeFragment;
-    private BaseFragment interactionFragment;
-    private BaseFragment panadaPersionFragment;
     public static final int HOME_TITLE = 1;
     public static final int OTHER_TITLE = 2;
     public static final int PERSON_OR_INTERTACT=3;

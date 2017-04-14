@@ -5,7 +5,7 @@
     android:background="#ffffff"
     android:orientation="vertical">
 
-    <cctv.cn.ipanda.Util.MyEditText
+    <cctv.cn.ipanda.utils.MyEditText
         android:id="@+id/person_changeusername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

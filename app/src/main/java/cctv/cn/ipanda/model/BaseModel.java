@@ -7,5 +7,6 @@ import cctv.cn.ipanda.model.http.RetrofitUtils;
  */
 
 public interface BaseModel {
+
     RetrofitUtils retrofitUtils=RetrofitUtils.getInstance();
 }

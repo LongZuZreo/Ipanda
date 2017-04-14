@@ -25,7 +25,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         App.context = this;
-
         checkPermission();
         initView();
         initData();

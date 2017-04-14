@@ -1,12 +1,16 @@
 package cctv.cn.ipanda.fragment;
 
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidkun.PullToRefreshRecyclerView;
 import com.androidkun.callback.PullToRefreshListener;
@@ -16,9 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.activity.VideoActivity;
 import cctv.cn.ipanda.adapter.pandaobserveradapter.PandaObserverBannerAdapter;
 import cctv.cn.ipanda.adapter.pandaobserveradapter.PandaObserverItemAdapter;
 import cctv.cn.ipanda.base.BaseFragment;
+import cctv.cn.ipanda.common.App;
 import cctv.cn.ipanda.contract.ObserverContract;
 import cctv.cn.ipanda.model.panda_observer.PandaObserveItemEntity;
 import cctv.cn.ipanda.model.panda_observer.PandaObserverHeadEntity;
@@ -141,7 +147,7 @@ public class PandaObserverFragment extends BaseFragment implements ObserverContr
         itemAdapter.notifyDataSetChanged();
     }
 
-    private void createImg(PandaObserverHeadEntity entity) {
+    private void createImg(final PandaObserverHeadEntity entity) {
         List<PandaObserverHeadEntity.DataBean.BigImgBean> tab = entity.getData().getBigImg();
         for (int i = 0; i < tab.size(); i++) {
             PandaObserverHeadEntity.DataBean.BigImgBean bigImgBean = tab.get(i);
@@ -158,6 +164,40 @@ public class PandaObserverFragment extends BaseFragment implements ObserverContr
         }
         pandaObserverBannerAdapter = new PandaObserverBannerAdapter(imgs);
         pandaObserverViewPagerView.setAdapter(pandaObserverBannerAdapter);
+        /**
+         * viewpager设置监听
+         */
+        pandaObserverViewPagerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                switch (motionEvent.getAction()) {
+
+                    case MotionEvent.ACTION_UP:
+
+                        Toast.makeText(App.context, "0..0", Toast.LENGTH_SHORT).show();
+
+                        PandaObserverHeadEntity.DataBean data = entity.getData();
+                        List<PandaObserverHeadEntity.DataBean.BigImgBean> bigImg = data.getBigImg();
+
+                        for (int i = 0; i < bigImg.size(); i++) {
+                            PandaObserverHeadEntity.DataBean.BigImgBean bigImgBean = bigImg.get(i);
+                            String pid = bigImgBean.getPid();
+                            String title = bigImgBean.getTitle();
+                            if (pid != null && title != null) {
+
+                                Intent intent = new Intent(App.context, VideoActivity.class);
+                                intent.putExtra("pid", pid);
+                                intent.putExtra("title", title);
+                                startActivity(intent);
+                            }
+                        }
+                        break;
+                }
+
+                return false;
+            }
+        });
         pandaObserverViewPagerView.setCurrentItem(1000);
 
     }

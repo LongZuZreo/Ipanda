@@ -5,7 +5,6 @@ import cctv.cn.ipanda.contract.CultureContract;
 import cctv.cn.ipanda.model.http.MyCallback;
 import cctv.cn.ipanda.model.http.RetrofitUtils;
 import cctv.cn.ipanda.model.panda_culture.PandaCultureEntity;
-import cctv.cn.ipanda.model.panda_observer.PandaObserverHeadEntity;
 
 /**
  * Created by hp1 on 2017-04-07.
@@ -27,6 +26,7 @@ public class PandaCulturePersenter implements CultureContract.Presenter {
             public void onSuccess(PandaCultureEntity pandaObserverHeadEntity) {
 
                 view.showAll(pandaObserverHeadEntity);
+
             }
 
             @Override

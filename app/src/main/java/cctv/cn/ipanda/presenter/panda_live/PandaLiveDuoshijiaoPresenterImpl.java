@@ -1,7 +1,5 @@
 package cctv.cn.ipanda.presenter.panda_live;
 
-import android.util.Log;
-
 import java.util.List;
 import java.util.Map;
 
@@ -108,6 +106,11 @@ public class PandaLiveDuoshijiaoPresenterImpl implements LiveContract.Presenter 
 
     @Override
     public <T> void getTalkList() {
+
+    }
+
+    @Override
+    public <T> void vadioPlay(String url, Map<String, String> params, MyCallback<T> callback) {
 
     }
 

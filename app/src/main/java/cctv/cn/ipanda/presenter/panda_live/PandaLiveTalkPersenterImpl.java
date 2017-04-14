@@ -108,6 +108,11 @@ public class PandaLiveTalkPersenterImpl implements LiveContract.Presenter, MyCal
     }
 
     @Override
+    public <T> void vadioPlay(String url, Map<String, String> params, MyCallback<T> callback) {
+
+    }
+
+    @Override
     public void onSuccess(PandaLiveTalkListBean.DataBean dataBean) {
 
     }

@@ -8,9 +8,8 @@ import java.util.List;
 
 public class PandaObserverHeadEntity {
 
-
     /**
-     * data : {"bigImg":[{"image":"http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2017/4/6/1491442823942_950.jpg","title":"飞越江西 全村舞龙总动员","url":"http://panview.ipanda.com/2017/04/01/VIDEZVXOMLvVOAoE2XjxcLl1170401.shtml","id":"TITE1491442836634907","type":"2","stype":"","pid":"3beb5c8735314c3cb417fb940883565b","vid":"","order":"1"}],"listurl":"http://api.cntv.cn/apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1449807494852603,PAGE1451473625420136,PAGE1449807502866458,PAGE1451473627439140,PAGE1451473547108278,PAGE1451473628934144&serviceId=panda"}
+     * data : {"bigImg":[{"image":"http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2017/4/14/1492148398988_899.jpg","title":"奶爸竟然也会撒娇","url":"http://live.ipanda.com/2017/04/13/VIDE7aan9pIhzhUU3sK25HtD170413.shtml","id":"TITE1492148401826633","type":"2","stype":"","pid":"1b8e93d2d4a446308bfb1d4e60cc6ee9","vid":"","order":"1"}],"listurl":"http://api.cntv.cn/apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1449807494852603,PAGE1451473625420136,PAGE1449807502866458,PAGE1451473627439140,PAGE1451473547108278,PAGE1451473628934144&serviceId=panda"}
      */
 
     private DataBean data;
@@ -25,7 +24,7 @@ public class PandaObserverHeadEntity {
 
     public static class DataBean {
         /**
-         * bigImg : [{"image":"http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2017/4/6/1491442823942_950.jpg","title":"飞越江西 全村舞龙总动员","url":"http://panview.ipanda.com/2017/04/01/VIDEZVXOMLvVOAoE2XjxcLl1170401.shtml","id":"TITE1491442836634907","type":"2","stype":"","pid":"3beb5c8735314c3cb417fb940883565b","vid":"","order":"1"}]
+         * bigImg : [{"image":"http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2017/4/14/1492148398988_899.jpg","title":"奶爸竟然也会撒娇","url":"http://live.ipanda.com/2017/04/13/VIDE7aan9pIhzhUU3sK25HtD170413.shtml","id":"TITE1492148401826633","type":"2","stype":"","pid":"1b8e93d2d4a446308bfb1d4e60cc6ee9","vid":"","order":"1"}]
          * listurl : http://api.cntv.cn/apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1449807494852603,PAGE1451473625420136,PAGE1449807502866458,PAGE1451473627439140,PAGE1451473547108278,PAGE1451473628934144&serviceId=panda
          */
 
@@ -50,13 +49,13 @@ public class PandaObserverHeadEntity {
 
         public static class BigImgBean {
             /**
-             * image : http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2017/4/6/1491442823942_950.jpg
-             * title : 飞越江西 全村舞龙总动员
-             * url : http://panview.ipanda.com/2017/04/01/VIDEZVXOMLvVOAoE2XjxcLl1170401.shtml
-             * id : TITE1491442836634907
+             * image : http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2017/4/14/1492148398988_899.jpg
+             * title : 奶爸竟然也会撒娇
+             * url : http://live.ipanda.com/2017/04/13/VIDE7aan9pIhzhUU3sK25HtD170413.shtml
+             * id : TITE1492148401826633
              * type : 2
              * stype :
-             * pid : 3beb5c8735314c3cb417fb940883565b
+             * pid : 1b8e93d2d4a446308bfb1d4e60cc6ee9
              * vid :
              * order : 1
              */

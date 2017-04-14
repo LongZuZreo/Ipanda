@@ -1,17 +1,23 @@
 package cctv.cn.ipanda.adapter.pandaobserveradapter;
 
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.List;
+
+import cctv.cn.ipanda.activity.VideoActivity;
+import cctv.cn.ipanda.common.App;
 
 /**
  * Created by hp1 on 2017-04-11.
  */
 
 public class PandaObserverBannerAdapter extends PagerAdapter {
+
     private List<ImageView> list;
 
     public PandaObserverBannerAdapter(List<ImageView> list) {
@@ -30,6 +36,7 @@ public class PandaObserverBannerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
+
         ImageView imageView = list.get(position);
         if (imageView.getParent() != null) {
             ((ViewGroup) imageView.getParent()).removeView(imageView);

@@ -115,5 +115,9 @@ public interface LiveContract {
 
         //边看边聊列表
         <T> void getTalkList();
+
+        //视频播放
+        <T> void vadioPlay(String url, Map<String, String> params, MyCallback<T> callback);
+
     }
 }

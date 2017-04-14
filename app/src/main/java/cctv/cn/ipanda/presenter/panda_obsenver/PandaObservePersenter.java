@@ -43,6 +43,7 @@ public class PandaObservePersenter implements ObserverContract.Presenter {
             @Override
             public void onSuccess(PandaObserveItemEntity entity) {
                 view.showItem(entity);
+
             }
 
             @Override

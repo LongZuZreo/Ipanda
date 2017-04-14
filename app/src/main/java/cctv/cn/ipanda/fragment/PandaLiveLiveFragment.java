@@ -1,8 +1,6 @@
 package cctv.cn.ipanda.fragment;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -45,6 +43,7 @@ public class PandaLiveLiveFragment extends BaseFragment implements LiveContract.
 
     @Override
     protected int getLayoutId() {
+
         return R.layout.fragment_panda_live_duoshijiaolive;
     }
 
@@ -70,7 +69,8 @@ public class PandaLiveLiveFragment extends BaseFragment implements LiveContract.
                 PandaLiveDuoshijiaoBean.ListBean listBean = list.get(i);
                 title = listBean.getTitle();
                 image = listBean.getImage();
-                Toast.makeText(App.context, title, Toast.LENGTH_SHORT).show();
+
+
             }
         });
 
@@ -119,8 +119,6 @@ public class PandaLiveLiveFragment extends BaseFragment implements LiveContract.
                 list = pandaLiveDuoshijiaoBean.getList();
                 datas.addAll(list);
                 gridViewAdapter.notifyDataSetChanged();
-                Log.i("wwww", "wwwwwww");
-
             }
 
             @Override

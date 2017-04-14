@@ -1,29 +1,28 @@
 package cctv.cn.ipanda.presenter.panda_live;
 
+import android.content.Context;
+
 import java.util.Map;
 
-import cctv.cn.ipanda.common.Urls;
+import cctv.cn.ipanda.activity.VideoActivity;
 import cctv.cn.ipanda.contract.LiveContract;
 import cctv.cn.ipanda.model.http.MyCallback;
 import cctv.cn.ipanda.model.pandalive.IPandaLiveModel;
 import cctv.cn.ipanda.model.pandalive.PandaLiveModelImpl;
 
 /**
- * Created by lenovo on 2017/4/11.
+ * Created by lenovo on 2017/4/14.
  */
 
-public class PandaLiveTabPresenterImpl implements LiveContract.Presenter {
+public class PandaVadioPersenterImpl implements LiveContract.Presenter {
 
-    private LiveContract.View liveFragment;
+    private VideoActivity videoActivity;
     private IPandaLiveModel pandaLiveModel;
 
-
-    public PandaLiveTabPresenterImpl(LiveContract.View view) {
+    public PandaVadioPersenterImpl(Context context) {
 
         pandaLiveModel = new PandaLiveModelImpl();
-
-        liveFragment = view;
-
+        videoActivity = (VideoActivity) context;
     }
 
     @Override
@@ -69,7 +68,6 @@ public class PandaLiveTabPresenterImpl implements LiveContract.Presenter {
     @Override
     public <T> void getInfo(String url, Map<String, String> params, MyCallback<T> callback) {
 
-        pandaLiveModel.getJcyk(url, params, callback);
     }
 
     @Override
