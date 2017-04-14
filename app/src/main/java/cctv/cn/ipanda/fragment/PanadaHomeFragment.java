@@ -56,6 +56,7 @@ import cctv.cn.ipanda.contract.HomeContract;
 import cctv.cn.ipanda.model.panada_hdjh.PanadaInterfactionBean;
 import cctv.cn.ipanda.model.panada_home.CctvAgainBean;
 import cctv.cn.ipanda.model.panada_home.PanadaChinaListBean;
+import cctv.cn.ipanda.model.panada_home.PanadaEyesBean;
 import cctv.cn.ipanda.model.panada_home.PanadaHomeBean;
 import cctv.cn.ipanda.model.panada_home.UpdateBean;
 import cctv.cn.ipanda.model.panda_observer.PandaObserverHeadEntity;
@@ -141,6 +142,11 @@ public class PanadaHomeFragment extends BaseFragment implements HomeContract.Vie
         } else {
             Toast.makeText(getActivity(), "已经是最新版本", Toast.LENGTH_LONG).show();
         }
+
+    }
+
+    @Override
+    public void getPanadaEyesList(PanadaEyesBean panadaEyesBean) {
 
     }
 

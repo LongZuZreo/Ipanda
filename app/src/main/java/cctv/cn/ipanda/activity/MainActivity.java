@@ -15,6 +15,7 @@ import cctv.cn.ipanda.base.BaseActivity;
 import cctv.cn.ipanda.base.BaseFragment;
 import cctv.cn.ipanda.fragment.InteractionFragment;
 import cctv.cn.ipanda.fragment.PanadaHomeFragment;
+import cctv.cn.ipanda.fragment.PandaAboutUsFragment;
 import cctv.cn.ipanda.fragment.PandaCultureFragment;
 import cctv.cn.ipanda.fragment.PandaLiveFragment;
 import cctv.cn.ipanda.fragment.PandaObserverFragment;
@@ -29,12 +30,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private BaseFragment liveFragment;
     private BaseFragment liveChinaFragment;
     private BaseFragment homeFragment;
-    private BaseFragment interactionFragment;
-    private BaseFragment panadaPersionFragment;
     public static final int HOME_TITLE = 1;
     public static final int OTHER_TITLE = 2;
-    public static final int PERSON_OR_INTERTACT=3;
-    public static final int EDIT_TITLE=4;
+    public static final int PERSON_OR_INTERTACT = 3;
+    public static final int EDIT_TITLE = 4;
     private ImageView titlePandaSign;
     private ImageView titleBackImage;
     private TextView tabTitle;
@@ -47,7 +46,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private RadioButton liveChinaRadio;
     private TextView editText;
     private RadioGroup radioGroup;
-    private PandaPersonFragment pandaPersonFragment;
     private PandaAboutUsFragment pandaAboutUsFragment;
     private BaseFragment pandaPersonFragment;
     private BaseFragment interactionFragment;
@@ -60,7 +58,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         if (bundle != null)
             fragment.setParams(bundle);
-
 
 
         transaction.hide(currentFragment);
@@ -106,8 +103,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initData() {
-        panadaPersionFragment = new PandaPersonFragment();
-        interactionFragment = new InteractionFragment();
 
         homeFragment = new PanadaHomeFragment();
 
@@ -179,7 +174,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.person_sign:
                 changeFragment(pandaPersonFragment, null, false);
-                changTitle(OTHER_TITLE,"个人中心");
+                changTitle(OTHER_TITLE, "个人中心");
                 personSign.setVisibility(View.GONE);
                 break;
             case R.id.hudong_image:
@@ -187,8 +182,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 changTitle(OTHER_TITLE, "熊猫文化");
                 break;
             case R.id.panda_setting_about:
-                 changeFragment(pandaAboutUsFragment,null,false);
-                changTitle(OTHER_TITLE,"关于熊猫频道");
+                changeFragment(pandaAboutUsFragment, null, false);
+                changTitle(OTHER_TITLE, "关于熊猫频道");
                 break;
         }
     }
