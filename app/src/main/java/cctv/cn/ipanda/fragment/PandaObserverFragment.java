@@ -89,6 +89,16 @@ public class PandaObserverFragment extends BaseFragment implements ObserverContr
     }
 
     @Override
+    protected void show() {
+
+    }
+
+    @Override
+    protected void hide() {
+
+    }
+
+    @Override
     public void showProgress() {
 
     }

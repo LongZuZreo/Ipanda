@@ -8,12 +8,12 @@
         "source": "D:\\Ipanda\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_secondary_holo.9.png"
     },
     {
-        "merged": "D:\\Ipanda\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
-        "source": "D:\\Ipanda\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_launcher.png"
-    },
-    {
         "merged": "D:\\Ipanda\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png",
         "source": "D:\\Ipanda\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png"
+    },
+    {
+        "merged": "D:\\Ipanda\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
+        "source": "D:\\Ipanda\\vitamio2\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_launcher.png"
     },
     {
         "merged": "D:\\Ipanda\\vitamio2\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_track_holo_dark.9.png",

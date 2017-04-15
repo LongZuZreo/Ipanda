@@ -108,6 +108,16 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
         });
     }
 
+    @Override
+    protected void show() {
+
+    }
+
+    @Override
+    protected void hide() {
+
+    }
+
     Handler handler = new Handler() {
 
         @Override

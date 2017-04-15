@@ -71,6 +71,16 @@ public class CommonQuestionFragment extends BaseFragment {
 
 	}
 
+	@Override
+	protected void show() {
+
+	}
+
+	@Override
+	protected void hide() {
+
+	}
+
 	private void requestHisData() {
 
 //		if (isConnected()) 

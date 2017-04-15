@@ -77,6 +77,16 @@ public class PandaWebView extends BaseFragment implements View.OnClickListener {
     }
 
     @Override
+    protected void show() {
+
+    }
+
+    @Override
+    protected void hide() {
+
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.share:

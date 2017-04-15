@@ -75,6 +75,15 @@ public class PersonalFeedBackFragment extends BaseFragment implements
 
 	}
 
+	@Override
+	protected void show() {
+
+	}
+
+	@Override
+	protected void hide() {
+
+	}
 
 
 	class MyFragmentAdapter extends FragmentStatePagerAdapter {

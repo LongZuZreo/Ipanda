@@ -49,6 +49,16 @@ public class PersonChangUserNameFragment extends BaseFragment implements View.On
     }
 
     @Override
+    protected void show() {
+
+    }
+
+    @Override
+    protected void hide() {
+
+    }
+
+    @Override
     public void onClick(View view) {
 
         switch (view.getId()) {

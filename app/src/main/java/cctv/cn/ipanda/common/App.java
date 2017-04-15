@@ -7,6 +7,8 @@ import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 
+import cctv.cn.ipanda.base.BaseActivity;
+import cctv.cn.ipanda.base.BaseFragment;
 import cctv.cn.ipanda.utils.ShareControllerUtil;
 import cn.jpush.android.api.JPushInterface;
 import io.vov.vitamio.Vitamio;

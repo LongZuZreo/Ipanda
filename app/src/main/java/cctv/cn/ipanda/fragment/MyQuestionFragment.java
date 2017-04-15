@@ -62,6 +62,16 @@ public class MyQuestionFragment extends BaseFragment implements OnClickListener{
 
 	}
 
+	@Override
+	protected void show() {
+
+	}
+
+	@Override
+	protected void hide() {
+
+	}
+
 	Toast mToast;
 	@Override
 	public void onClick(View arg0) {

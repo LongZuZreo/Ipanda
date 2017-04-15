@@ -96,6 +96,16 @@ public class PandaLiveEyeFragment extends BaseFragment implements LiveContract.V
     }
 
     @Override
+    protected void show() {
+
+    }
+
+    @Override
+    protected void hide() {
+
+    }
+
+    @Override
     public void clickTabToOtherList() {
 
     }

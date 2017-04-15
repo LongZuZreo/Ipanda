@@ -39,4 +39,7 @@ public class Urls {
 
     //视频播放path
     public static final String VADIOPATH = "http://vdn.apps.cntv.cn/api/getVideoInfoForCBox.do";
+
+    //注册
+    public static final String REGISTER_URL="https://reg.cntv.cn/api/register.action";
 }
