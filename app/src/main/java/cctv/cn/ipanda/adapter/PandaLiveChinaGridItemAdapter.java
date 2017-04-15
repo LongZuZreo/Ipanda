@@ -57,7 +57,7 @@ public class PandaLiveChinaGridItemAdapter extends DragAdapter<ChinaLiveTabListB
         });
         View convertView = holder.getConvertView();
         if (datas.indexOf(chinaLiveTabListBeanDb) == movePosition && isMove ){
-            convertView.setVisibility(View.INVISIBLE);
+            convertView.setVisibility(View.VISIBLE);
         }
     }
 

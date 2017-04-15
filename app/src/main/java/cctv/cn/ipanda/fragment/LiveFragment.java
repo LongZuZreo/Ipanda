@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.base.BaseFragment;
 import cctv.cn.ipanda.common.App;
 import cctv.cn.ipanda.contract.LiveContract;
@@ -104,6 +105,16 @@ public class LiveFragment extends BaseFragment implements LiveContract.View, Vie
 
     @Override
     protected void initListener() {
+
+    }
+
+    @Override
+    protected void show() {
+        MainActivity.currentFragment=this;
+    }
+
+    @Override
+    protected void hide() {
 
     }
 

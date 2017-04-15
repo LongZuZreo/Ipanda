@@ -1,8 +1,7 @@
 package cctv.cn.ipanda.common;
-
-import android.app.Activity;
 import android.app.Application;
-
+import cctv.cn.ipanda.base.BaseActivity;
+import cctv.cn.ipanda.base.BaseFragment;
 import io.vov.vitamio.Vitamio;
 
 /**
@@ -11,7 +10,8 @@ import io.vov.vitamio.Vitamio;
 
 public class App extends Application {
 
-    public static Activity context;
+    public static BaseActivity context;
+    public static BaseFragment lastFragment;
     @Override
     public void onCreate() {
         super.onCreate();

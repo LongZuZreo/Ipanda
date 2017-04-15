@@ -14,6 +14,7 @@ import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.base.BaseFragment;
 import cctv.cn.ipanda.common.App;
 import cctv.cn.ipanda.contract.LiveContract;
+import cctv.cn.ipanda.fragment.fragment_builder.FragmentBuilder;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBqBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveDuoshijiaoBean;
@@ -60,7 +61,6 @@ public class PandaPersonFragment extends BaseFragment implements LiveContract.Vi
 
     @Override
     protected void initView(View view) {
-
         user_name_img = (RelativeLayout) view.findViewById(R.id.panda_person_username);
         user_guankanlishi = (RelativeLayout) view.findViewById(R.id.panda_person_guankanlishi);
         user_wodeshoucang = (RelativeLayout) view.findViewById(R.id.panda_person_wodeshoucang);
@@ -77,30 +77,32 @@ public class PandaPersonFragment extends BaseFragment implements LiveContract.Vi
     }
 
     @Override
+    protected void show() {
+        MainActivity.currentFragment=this;
+    }
+
+    @Override
+    protected void hide() {
+
+    }
+
+    @Override
     public void onClick(View view) {
 
         switch (view.getId()) {
-
             case R.id.panda_person_username:
-
+                FragmentBuilder.getInstance().startFragment(PandaLoginFragment.class);
                 MainActivity mainActivity = (MainActivity) getActivity();
-                mainActivity.changeFragment(loginFragment, null, true);
                 mainActivity.changTitle(MainActivity.RIGHT_TYPE,"登陆");
                 break;
             case R.id.panda_person_guankanlishi:
-
-                MainActivity mainActivity1 = (MainActivity) getActivity();
-                mainActivity1.changeFragment(watchHistoryFragment, null, true);
+                FragmentBuilder.getInstance().startFragment(WatchHistoryFragment.class);
                 break;
             case R.id.panda_person_wodeshoucang:
-
-                MainActivity mainActivity2 = (MainActivity) getActivity();
-                mainActivity2.changeFragment(myCollectionFragment, null, true);
+                FragmentBuilder.getInstance().startFragment(MyCollectionFragment.class);
                 break;
             case R.id.panda_person_setting:
-
-                MainActivity mainActivity3 = (MainActivity) getActivity();
-                mainActivity3.changeFragment(settingFragment, null, true);
+                FragmentBuilder.getInstance().startFragment(SettingFragment.class);
                 break;
         }
     }
@@ -210,5 +212,6 @@ public class PandaPersonFragment extends BaseFragment implements LiveContract.Vi
     public void changeTitleBar() {
 
     }
+
 
 }

@@ -3,6 +3,7 @@ package cctv.cn.ipanda.fragment;
 import android.view.View;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.base.BaseFragment;
 import cctv.cn.ipanda.contract.LiveContract;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBean;
@@ -39,6 +40,16 @@ public class PandaLiveEyeFragment extends BaseFragment implements LiveContract.V
 
     @Override
     protected void initListener() {
+
+    }
+
+    @Override
+    protected void show() {
+        MainActivity.currentFragment=this;
+    }
+
+    @Override
+    protected void hide() {
 
     }
 

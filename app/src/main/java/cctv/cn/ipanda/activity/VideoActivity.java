@@ -1,4 +1,5 @@
 package cctv.cn.ipanda.activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.view.SurfaceView;
@@ -10,10 +11,14 @@ import android.widget.TextView;
 
 import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.base.BaseActivity;
+import cctv.cn.ipanda.common.Urls;
+import cctv.cn.ipanda.model.http.MyNetRequest;
+import cctv.cn.ipanda.model.http.RetrofitUtils;
 import cctv.cn.ipanda.view.CustomMediaController;
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.Vitamio;
 import io.vov.vitamio.widget.VideoView;
+import retrofit2.Retrofit;
 
 /**
  * Created by 张志远 on 2017/4/7.
@@ -61,6 +66,7 @@ public class VideoActivity extends BaseActivity implements  MediaPlayer.OnInfoLi
 
     @Override
     protected void initData() {
+
         uri = Uri.parse(path);
         mVideoView.setVideoURI(uri);//设置视频播放地址
         mCustomMediaController.show(5000);

@@ -23,6 +23,8 @@ public class Urls {
     public static final String CCTV = BASE_URL+"shipinliebieye/cctvshipindicengye/index.json";
 
     public static final String PANDACULTURE = "http://www.ipanda.com/kehuduan/xmwh/index.json";
+    //注册接口
+    public static final String REGISTER_URL="https://reg.cntv.cn/api/register.action";
 
 
     //互动集合
@@ -34,5 +36,6 @@ public class Urls {
 
     //验证码
     public static final String IMAGE_CODE="http://reg.cntv.cn/simple/verificationCode.action";
-
+    //videoUrl
+    public static final String VIDEO_URL="http://vdn.apps.cntv.cn/api/getVideoInfoForCBox.do";
 }

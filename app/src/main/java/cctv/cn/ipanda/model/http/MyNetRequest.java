@@ -4,6 +4,7 @@ import java.util.Map;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -29,4 +30,7 @@ public interface MyNetRequest {
     @FormUrlEncoded
     @POST
     Call<ResponseBody> postResponseBody(@Url String url, @FieldMap Map<String,String> params, @HeaderMap Map<String,String> headers);
+
+    @GET
+    Call<ResponseBody> getResponseBody(@Url String url, @QueryMap Map<String,String> params, @HeaderMap Map<String,String> headers);
 }

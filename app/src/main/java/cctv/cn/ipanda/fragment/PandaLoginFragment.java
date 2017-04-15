@@ -70,6 +70,16 @@ public class PandaLoginFragment extends BaseFragment implements View.OnClickList
     }
 
     @Override
+    protected void show() {
+        MainActivity.currentFragment=this;
+    }
+
+    @Override
+    protected void hide() {
+
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.forget_password:

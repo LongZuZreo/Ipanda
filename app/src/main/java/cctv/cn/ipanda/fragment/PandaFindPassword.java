@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.base.BaseFragment;
 
 /**
@@ -57,6 +58,15 @@ public class PandaFindPassword extends BaseFragment {
 
     @Override
     protected void initListener() {
+
+    }
+
+    @Override
+    protected void show() {
+    }
+
+    @Override
+    protected void hide() {
 
     }
 }

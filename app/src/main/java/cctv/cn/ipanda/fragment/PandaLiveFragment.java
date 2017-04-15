@@ -32,7 +32,7 @@ import cctv.cn.ipanda.presenter.panda_live.PandaLiveBqPresenterImpl;
  * Created by lenovo on 2017/4/7.
  */
 
-public class PandaLiveFragment extends MainFragment implements LiveContract.View {
+public class PandaLiveFragment extends BaseFragment implements LiveContract.View {
 
     private TabLayout tabLayout;
     private PandaLiveBqPresenterImpl pandaLivePresenter;
@@ -233,6 +233,16 @@ public class PandaLiveFragment extends MainFragment implements LiveContract.View
 
     @Override
     protected void initListener() {
+
+    }
+
+    @Override
+    protected void show() {
+        MainActivity.currentFragment=this;
+    }
+
+    @Override
+    protected void hide() {
 
     }
 

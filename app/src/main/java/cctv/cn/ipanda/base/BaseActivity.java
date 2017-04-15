@@ -24,7 +24,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-        App.context = this;
+
 
         checkPermission();
         initView();
@@ -34,9 +34,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private void checkPermission(){
-        if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+      /*  if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
-        }
+        }*/
     }
 
     @Override

@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.base.BaseFragment;
 import cctv.cn.ipanda.utils.CleanMessageUtil;
 
@@ -76,6 +77,16 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
         about.setOnClickListener(this);
         isPlay.setOnCheckedChangeListener(this);
         isPush.setOnCheckedChangeListener(this);
+    }
+
+    @Override
+    protected void show() {
+        MainActivity.currentFragment=this;
+    }
+
+    @Override
+    protected void hide() {
+
     }
 
     @Override

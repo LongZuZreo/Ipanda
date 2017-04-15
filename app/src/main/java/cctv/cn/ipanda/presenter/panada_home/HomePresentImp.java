@@ -6,7 +6,6 @@ import java.util.Map;
 
 import cctv.cn.ipanda.common.Urls;
 import cctv.cn.ipanda.contract.HomeContract;
-import cctv.cn.ipanda.fragment.PanadaHomeFragment;
 import cctv.cn.ipanda.model.http.MyCallback;
 import cctv.cn.ipanda.model.http.RetrofitUtils;
 import cctv.cn.ipanda.model.panada_hdjh.PanadaInterfactionBean;

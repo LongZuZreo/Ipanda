@@ -40,18 +40,18 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:background="@null"
-                android:src="@drawable/ic_action_share_without_padding" />
+                android:src="@drawable/share" />
 
             <CheckBox
                 android:id="@+id/mediacontroller_favorite"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
                 android:layout_toLeftOf="@+id/mediacontroller_share"
                 android:layout_toStartOf="@+id/mediacontroller_share"
                 android:button="@null"
-                android:layout_marginLeft="10dp"
-                android:drawableTop="@drawable/play_fullsrcee_collect_selector"/>
+                android:drawableTop="@drawable/play_fullsrcee_collect_selector" />
         </RelativeLayout>
 
         <ImageButton
@@ -115,8 +115,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="40dp"
-                android:text="33:33:33"
-                />
+                android:text="33:33:33" />
 
             <SeekBar
                 android:id="@+id/mediacontroller_scale"
@@ -124,8 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-               android:background="@drawable/video_quality_btn_shap"
-               />
+                android:background="@drawable/video_quality_btn_shap" />
 
             <SeekBar
                 android:id="@+id/mediacontroller_seekbar"

@@ -21,6 +21,7 @@ import android.widget.Toast;
 import java.io.File;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.base.BaseFragment;
 import cctv.cn.ipanda.common.App;
 
@@ -74,6 +75,16 @@ public class PersonInfoFragment extends BaseFragment implements View.OnClickList
         photos.setOnClickListener(this);
         camera.setOnClickListener(this);
         cancle.setOnClickListener(this);
+    }
+
+    @Override
+    protected void show() {
+        MainActivity.currentFragment=this;
+    }
+
+    @Override
+    protected void hide() {
+
     }
 
 

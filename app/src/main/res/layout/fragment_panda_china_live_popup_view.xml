@@ -36,7 +36,7 @@
     <cctv.cn.ipanda.view.DragGridView
         android:id="@+id/mListItemGrid"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:numColumns="3">
     </cctv.cn.ipanda.view.DragGridView>
     <TextView

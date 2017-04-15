@@ -19,6 +19,7 @@ import java.util.List;
 
 import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.Util.CircleImageView;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.adapter.pandacultureadapter.PandaCultureBannerAdapter;
 import cctv.cn.ipanda.adapter.pandacultureadapter.PandaCultureItemAdapter;
 import cctv.cn.ipanda.adapter.pandaobserveradapter.PandaObserverBannerAdapter;
@@ -35,7 +36,7 @@ import cctv.cn.ipanda.presenter.panda_obsenver.PandaObservePersenter;
  * Created by hp1 on 2017-04-07.
  */
 
-public class PandaCultureFragment extends MainFragment implements CultureContract.View {
+public class PandaCultureFragment extends BaseFragment implements CultureContract.View {
     private PandaCulturePersenter pandaCulturePersenter;
     private PullToRefreshRecyclerView pullToRefreshRecyclerView;
     private List<PandaCultureEntity.BigImgBean> dataBeanList;
@@ -109,6 +110,15 @@ public class PandaCultureFragment extends MainFragment implements CultureContrac
 
             }
         });
+    }
+
+    @Override
+    protected void show() {
+    }
+
+    @Override
+    protected void hide() {
+
     }
 
     Handler handler = new Handler() {

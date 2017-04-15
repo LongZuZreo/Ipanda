@@ -40,7 +40,7 @@ import cctv.cn.ipanda.view.DragGridView;
  * Created by 张志远 on 2017/4/7.
  */
 
-public class PandaLiveChinaFragment extends MainFragment implements LiveChinaContract.View,TabLayout.OnTabSelectedListener {
+public class PandaLiveChinaFragment extends BaseFragment implements LiveChinaContract.View,TabLayout.OnTabSelectedListener {
 
     private TabLayout tabLayout;
     private LiveChinaContract.Presenter presenter;
@@ -143,6 +143,15 @@ public class PandaLiveChinaFragment extends MainFragment implements LiveChinaCon
             }
         });
 
+
+    }
+
+    @Override
+    protected void show() {
+    }
+
+    @Override
+    protected void hide() {
 
     }
 

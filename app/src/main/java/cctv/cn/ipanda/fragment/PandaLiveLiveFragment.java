@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.adapter.PandaLiveLiveGridViewAdapter;
 import cctv.cn.ipanda.base.BaseFragment;
 import cctv.cn.ipanda.common.App;
@@ -84,6 +85,15 @@ public class PandaLiveLiveFragment extends BaseFragment implements LiveContract.
 
     @Override
     protected void initListener() {
+
+    }
+
+    @Override
+    protected void show() {
+    }
+
+    @Override
+    protected void hide() {
 
     }
 

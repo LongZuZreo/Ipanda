@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.adapter.pandaobserveradapter.PandaObserverBannerAdapter;
 import cctv.cn.ipanda.adapter.pandaobserveradapter.PandaObserverItemAdapter;
 import cctv.cn.ipanda.base.BaseFragment;
@@ -28,7 +29,7 @@ import cctv.cn.ipanda.presenter.panda_obsenver.PandaObservePersenter;
  * Created by hp1 on 2017-04-07.
  */
 
-public class PandaObserverFragment extends MainFragment implements ObserverContract.View, PullToRefreshListener {
+public class PandaObserverFragment extends BaseFragment implements ObserverContract.View, PullToRefreshListener {
 
 
     private PullToRefreshRecyclerView pullToRefreshRecyclerView;
@@ -80,6 +81,15 @@ public class PandaObserverFragment extends MainFragment implements ObserverContr
     @Override
     protected void initListener() {
         pullToRefreshRecyclerView.setPullToRefreshListener(this);
+    }
+
+    @Override
+    protected void show() {
+    }
+
+    @Override
+    protected void hide() {
+
     }
 
     @Override

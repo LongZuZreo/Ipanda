@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.adapter.hdjhback.PanadaHdjeAdapter;
 import cctv.cn.ipanda.base.BaseFragment;
 import cctv.cn.ipanda.common.Urls;
@@ -54,6 +55,16 @@ public class InteractionFragment extends BaseFragment implements HomeContract.Vi
 
     @Override
     protected void initListener() {
+
+    }
+
+    @Override
+    protected void show() {
+        MainActivity.currentFragment=this;
+    }
+
+    @Override
+    protected void hide() {
 
     }
 

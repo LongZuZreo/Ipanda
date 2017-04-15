@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/login_edit_shape"
-        android:hint="账号：请输入邮箱"
+        android:hint="账号：请输入手机账号"
         android:padding="4dp"
         android:textColorHint="#ADADAD"
         android:textSize="15sp" />
@@ -47,25 +47,40 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="25dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/phoneCheckCode"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:background="@drawable/login_edit_shape"
+            android:hint="请输入收到的验证码"
+            android:textColorHint="#ADADAD"
+            android:textSize="15sp"
+            android:padding="4dp"/>
+        <TextView
+            android:layout_width="25dp"
+            android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/phoneCheckCodeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:text="获取验证码"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
     <EditText
         android:id="@+id/newPasswordEdit"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/login_edit_shape"
-        android:hint="请输入新密码"
-        android:textColorHint="#ADADAD"
-        android:textSize="15sp"
-        android:padding="4dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        />
-    <EditText
-        android:id="@+id/newCheckPasswordEdit"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@drawable/login_edit_shape"
-        android:hint="请确认新密码"
+        android:hint="请设置新密码"
         android:textColorHint="#ADADAD"
         android:textSize="15sp"
         android:padding="4dp"/>

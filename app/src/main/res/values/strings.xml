@@ -5,4 +5,17 @@
     <string name="hudong">原创·互动</string>
     <string name="nameHint">账号：请输入邮箱或手机号</string>
     <string name="passwordHint">请输入密码</string>
+    <string name="set_back_myquestion">遇到的问题</string>
+    <string name="set_back_commonquestion">常见问题</string>
+    <string name="set_back_email">请输入您的邮箱，方便我们及时给您回复</string>
+    <string name="set_back_commit">提交</string>
+    <string name="set_back_liulan">请留下您的宝贵意见</string>
+    <string name="set_back_question1">功能异常</string>
+    <string name="set_back_question2">内容问题</string>
+    <string name="set_back_question3">界面优化</string>
+    <string name="set_back_question4">视频播放</string>
+    <string name="set_back_question5">显示异常</string>
+    <string name="set_back_question6">其他建议</string>
+    <string name="set_about_version">熊猫频道V1.0.0</string>
+    <string name="set_about_content">熊猫频道以24小时直播中国名山大川、自然风光以及熊猫、金丝猴等世界珍稀动物为特色，以CCTV电视节目资源为基础，旨在打造一个传播中国声音、讲好中国故事、展示中国文化独特魅力的中国频道，充分满足海外华人以及喜爱中国文化的外国人的需求，最终建成以视频为特色的中国互联网大百科。现阶段主要开设有《熊猫观察》、《熊猫直播》、《直播中国》、《熊猫文化》等特色栏目。</string>
 </resources>

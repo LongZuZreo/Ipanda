@@ -3,6 +3,7 @@ package cctv.cn.ipanda.fragment;
 import android.view.View;
 
 import cctv.cn.ipanda.R;
+import cctv.cn.ipanda.activity.MainActivity;
 import cctv.cn.ipanda.base.BaseFragment;
 
 /**
@@ -32,6 +33,15 @@ public class PandaMainFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
+
+    }
+
+    @Override
+    protected void show() {
+    }
+
+    @Override
+    protected void hide() {
 
     }
 }

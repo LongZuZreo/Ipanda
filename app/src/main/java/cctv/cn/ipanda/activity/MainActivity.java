@@ -1,37 +1,33 @@
 package cctv.cn.ipanda.activity;
 
-import android.content.Intent;
-import android.support.v4.app.Fragment;
+import android.os.Process;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import java.util.List;
-
 import cctv.cn.ipanda.R;
 import cctv.cn.ipanda.base.BaseActivity;
 import cctv.cn.ipanda.base.BaseFragment;
-import cctv.cn.ipanda.fragment.PanadaHomeFragment;
+import cctv.cn.ipanda.common.App;
+import cctv.cn.ipanda.fragment.InteractionFragment;
+import cctv.cn.ipanda.fragment.PandaHomeFragment;
 import cctv.cn.ipanda.fragment.PandaCultureFragment;
 import cctv.cn.ipanda.fragment.PandaLiveFragment;
 import cctv.cn.ipanda.fragment.PandaObserverFragment;
 import cctv.cn.ipanda.fragment.PandaLiveChinaFragment;
 import cctv.cn.ipanda.fragment.PandaPersonFragment;
 import cctv.cn.ipanda.fragment.PandaRegisterFragment;
+import cctv.cn.ipanda.fragment.fragment_builder.FragmentBuilder;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
-    private BaseFragment currentFragment;
-    private BaseFragment eyeFragment;
-    private BaseFragment cultureFragment;
-    private BaseFragment liveFragment;
-    private BaseFragment liveChinaFragment;
-    private BaseFragment homeFragment;
+    public static BaseFragment currentFragment;
     public static final int HOME_TITLE = 1;
     public static final int OTHER_TITLE = 2;
     public static final int PERSON_OR_INTERTACT=3;
@@ -49,9 +45,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private RadioButton liveChinaRadio;
     private TextView editText;
     public RadioGroup radioGroup;
-    public PandaPersonFragment pandaPersonFragment;
-   FragmentManager supportFragmentManager;
-    private PandaRegisterFragment registerFragment;
+    public FragmentManager supportFragmentManager;
+
 
 
     public void changeFragment(BaseFragment fragment, Bundle bundle, boolean isBack) {
@@ -79,7 +74,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected int getLayoutId() {
-
+        App.context = this;
         return R.layout.activity_main;
     }
 
@@ -102,24 +97,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void initData() {
 
-        homeFragment = new PanadaHomeFragment();
-
-        eyeFragment = new PandaObserverFragment();
-
-        cultureFragment = new PandaCultureFragment();
-
-        liveFragment = new PandaLiveFragment();
-
-        liveChinaFragment = new PandaLiveChinaFragment();
-
-        pandaPersonFragment = new PandaPersonFragment();
-
-        registerFragment = new PandaRegisterFragment();
-
-        currentFragment = homeFragment;
-
-        changeFragment(homeFragment, null, false);
-
         homeRadio = (RadioButton) findViewById(R.id.home_radio);
 
         eyeRadio = (RadioButton) findViewById(R.id.eye_radio);
@@ -129,7 +106,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         liveRadio = (RadioButton) findViewById(R.id.live_radio);
 
         liveChinaRadio = (RadioButton) findViewById(R.id.live_china_radio);
-
+        FragmentBuilder.getInstance().startFragment(PandaHomeFragment.class);
     }
 
     @Override
@@ -143,49 +120,50 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         personSign.setOnClickListener(this);
         editText.setOnClickListener(this);
         titleBackImage.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.home_radio:
-                changeFragment(homeFragment, null, false);
+                FragmentBuilder.getInstance().startFragment(PandaHomeFragment.class);
                 changTitle(HOME_TITLE, "首页");
                 break;
             case R.id.eye_radio:
-                changeFragment(eyeFragment, null, false);
+                FragmentBuilder.getInstance().startFragment(PandaObserverFragment.class);
                 changTitle(OTHER_TITLE, "熊猫观察");
                 break;
             case R.id.culture_radio:
-                changeFragment(cultureFragment, null, false);
+                FragmentBuilder.getInstance().startFragment(PandaCultureFragment.class);
                 changTitle(OTHER_TITLE, "熊猫文化");
                 break;
             case R.id.live_radio:
-                changeFragment(liveFragment, null, false);
+                FragmentBuilder.getInstance().startFragment(PandaLiveFragment.class);
                 changTitle(OTHER_TITLE, "熊猫直播");
                 break;
             case R.id.live_china_radio:
-                changeFragment(liveChinaFragment, null, false);
+                FragmentBuilder.getInstance().startFragment(PandaLiveChinaFragment.class);
                 changTitle(OTHER_TITLE, "直播中国");
                 break;
             case R.id.person_sign:
-                changeFragment(pandaPersonFragment,null,true);
+                FragmentBuilder.getInstance().startFragment(PandaPersonFragment.class);
                 changTitle(PERSON_OR_INTERTACT,"个人中心");
                 break;
             case R.id.hudong_image:
-                changeFragment(pandaPersonFragment,null,true);
+                FragmentBuilder.getInstance().startFragment(InteractionFragment.class);
                 changTitle(PERSON_OR_INTERTACT,"互动·集合");
                 break;
             case R.id.edit_text:
-                if (editText.equals("注册")){
-                    changeFragment(registerFragment,null,true);
+                if (editText.getText().equals("注册")){
+                    FragmentBuilder.getInstance().startFragment(PandaRegisterFragment.class);
                     changTitle(PERSON_OR_INTERTACT,"注册");
                 }else{
 
                 }
                 break;
             case R.id.title_back_img:
-                supportFragmentManager.popBackStack();
+                onBackPressed();
                 break;
         }
     }
@@ -198,6 +176,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 personSign.setVisibility(View.VISIBLE);
                 tabTitle.setVisibility(View.GONE);
                 editText.setVisibility(View.GONE);
+                titleBackImage.setVisibility(View.GONE);
                 break;
             case OTHER_TITLE:
                 tabTitle.setText(title);
@@ -205,6 +184,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 hudongImage.setVisibility(View.GONE);
                 titlePandaSign.setVisibility(View.GONE);
                 editText.setVisibility(View.GONE);
+                personSign.setVisibility(View.VISIBLE);
+                titleBackImage.setVisibility(View.GONE);
                 break;
             case PERSON_OR_INTERTACT:
                 tabTitle.setText(title);
@@ -253,7 +234,49 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        android.os.Process.killProcess(Process.myPid());
+        System.exit(0);
+    }
+
+    @Override
     public void onBackPressed() {
-        super.onBackPressed();
+
+        String name = getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount() - 1).getName();
+
+        if ("PandaHomeFragment".equals(name) || "PandaCultureFragment".equals(name)|| "PandaLiveFragment".equals(name) || "PandaObserverFragment".equals(name)||"PandaLiveChinaFragment".equals(name) ){
+
+            finish();
+
+        }else {
+            if(getSupportFragmentManager().getFragments().size()>1) {
+                getSupportFragmentManager().popBackStackImmediate();
+               String fragmentName = getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount()-1).getName();
+                App.lastFragment= (BaseFragment) getSupportFragmentManager().findFragmentByTag( fragmentName);
+                if (fragmentName.equals("PandaHomeFragment")){
+                    changTitle(HOME_TITLE, "首页");
+                    radioGroup.setVisibility(View.VISIBLE);
+                }else if(fragmentName.equals("PandaCultureFragment")){
+                    changTitle(OTHER_TITLE, "熊猫文化");
+                    radioGroup.setVisibility(View.VISIBLE);
+                }else if(fragmentName.equals("PandaObserverFragment")){
+                  changTitle(OTHER_TITLE,"熊猫观察");
+                    radioGroup.setVisibility(View.VISIBLE);
+                }else if(fragmentName.equals("PandaLiveFragment")) {
+                    changTitle(OTHER_TITLE, "熊猫直播");
+                    radioGroup.setVisibility(View.VISIBLE);
+                }else if(fragmentName.equals("PandaLiveChinaFragment")){
+                    changTitle(OTHER_TITLE,"直播中国");
+                    radioGroup.setVisibility(View.VISIBLE);
+                }else if(fragmentName.equals("PandaPersonFragment")){
+                    changTitle(PERSON_OR_INTERTACT,"个人中心");
+                }else if (fragmentName.equals("InteractionFragment")){
+                    changTitle(PERSON_OR_INTERTACT,"互动·集合");
+                }else if (fragmentName.equals("PandaRegisterFragment")){
+                    changTitle(PERSON_OR_INTERTACT,"注册");
+                }
+            }
+        }
     }
 }
