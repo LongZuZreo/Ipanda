@@ -13,7 +13,7 @@ import cctv.cn.ipanda.base.BaseFragment;
 public class PandaAboutUsFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_personal_feedback_myquestion;
+        return R.layout.fragment_personal_about;
     }
 
     @Override

@@ -2,6 +2,7 @@ package cctv.cn.ipanda.presenter.panda_live;
 
 import java.util.Map;
 
+import cctv.cn.ipanda.common.Urls;
 import cctv.cn.ipanda.contract.LiveContract;
 import cctv.cn.ipanda.model.http.MyCallback;
 import cctv.cn.ipanda.model.pandalive.IPandaLiveModel;
@@ -68,7 +69,7 @@ public class PandaLiveTabPresenterImpl implements LiveContract.Presenter {
     @Override
     public <T> void getInfo(String url, Map<String, String> params, MyCallback<T> callback) {
 
-        pandaLiveModel.getJcyk(url,params,callback);
+        pandaLiveModel.getJcyk(url, params, callback);
     }
 
     @Override
@@ -79,5 +80,16 @@ public class PandaLiveTabPresenterImpl implements LiveContract.Presenter {
     @Override
     public <T> void getEyeFragment(String url, Map<String, String> params, MyCallback<T> callback) {
 
+    }
+
+    @Override
+    public <T> void getTalkList() {
+
+    }
+
+    @Override
+    public <T> void vadioPlay(String url, Map<String, String> params, MyCallback<T> callback) {
+
+        pandaLiveModel.vadioPlay(url,params,callback);
     }
 }

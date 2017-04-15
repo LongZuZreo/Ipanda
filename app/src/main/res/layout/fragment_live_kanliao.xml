@@ -12,16 +12,26 @@
         <EditText
             android:id="@+id/panda_live_kanliao_edit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_weight="1"
+            android:background="@drawable/shape3"
             android:hint="添加评论..." />
 
         <Button
             android:id="@+id/panda_live_kanliao_sendMsg"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:background="@color/colorPrimary"
             android:text="发送"
             android:textColor="#ffffff" />
+
     </LinearLayout>
+
+    <com.androidkun.PullToRefreshRecyclerView
+        android:id="@+id/panda_live_talklistview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.androidkun.PullToRefreshRecyclerView>
+
 </LinearLayout>

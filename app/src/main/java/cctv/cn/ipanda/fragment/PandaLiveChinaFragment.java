@@ -62,6 +62,7 @@ public class PandaLiveChinaFragment extends BaseFragment implements LiveChinaCon
 
     @Override
     protected void loadData() {
+
         if (isFirstGetTab) {
             presenter.getAllTab();
         } else {

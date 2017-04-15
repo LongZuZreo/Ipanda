@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,6 +24,7 @@ import cctv.cn.ipanda.model.pandalive.PandaLiveBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBqBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveDuoshijiaoBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveJcyiBean;
+import cctv.cn.ipanda.model.pandalive.PandaLiveTalkListBean;
 import cctv.cn.ipanda.presenter.panda_live.PandaLiveBqPresenterImpl;
 
 
@@ -306,6 +306,11 @@ public class PandaLiveFragment extends BaseFragment implements LiveContract.View
      */
     @Override
     public void showJcyk(PandaLiveJcyiBean pandaLiveJcyiBean) {
+
+    }
+
+    @Override
+    public void showTalkList(PandaLiveTalkListBean pandaLiveJcyiBean) {
 
     }
 

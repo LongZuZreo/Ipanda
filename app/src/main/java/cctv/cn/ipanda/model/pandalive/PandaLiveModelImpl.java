@@ -3,6 +3,7 @@ package cctv.cn.ipanda.model.pandalive;
 import java.util.Map;
 
 import cctv.cn.ipanda.model.http.MyCallback;
+import cctv.cn.ipanda.model.http.MyVadioPlay;
 
 /**
  * Created by lenovo on 2017/4/7.
@@ -72,6 +73,18 @@ public class PandaLiveModelImpl implements IPandaLiveModel {
 
     @Override
     public <T> void getJcyk(String url, Map<String, String> params, MyCallback<T> callback) {
+        retrofitUtils.getData(url, params, callback);
+    }
+
+    @Override
+    public <T> void getTalkList(String url, Map<String, String> params, MyCallback<T> callback) {
+
+        retrofitUtils.getData(url, params, callback);
+    }
+
+    @Override
+    public <T> void vadioPlay(String url, Map<String, String> params, MyCallback<T> callback) {
+
         retrofitUtils.getData(url, params, callback);
     }
 }

@@ -9,6 +9,7 @@ import cctv.cn.ipanda.model.pandalive.PandaLiveBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBqBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveDuoshijiaoBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveJcyiBean;
+import cctv.cn.ipanda.model.pandalive.PandaLiveTalkListBean;
 
 /**
  * Created by 张志远 on 2017/4/6.
@@ -73,6 +74,11 @@ public interface LiveContract {
         void showJcyk(PandaLiveJcyiBean pandaLiveJcyiBean);
 
         /**
+         * 边看边聊列表
+         */
+        void showTalkList(PandaLiveTalkListBean pandaLiveJcyiBean);
+
+        /**
          * 加载Tab标题
          */
         void loadTab2(PandaLiveBqBean pandaLiveBqBean);
@@ -106,5 +112,12 @@ public interface LiveContract {
 
         //边看边聊
         <T> void getEyeFragment(String url, Map<String, String> params, MyCallback<T> callback);
+
+        //边看边聊列表
+        <T> void getTalkList();
+
+        //视频播放
+        <T> void vadioPlay(String url, Map<String, String> params, MyCallback<T> callback);
+
     }
 }

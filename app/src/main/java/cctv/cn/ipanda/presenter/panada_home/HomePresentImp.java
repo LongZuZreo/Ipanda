@@ -11,6 +11,7 @@ import cctv.cn.ipanda.model.http.RetrofitUtils;
 import cctv.cn.ipanda.model.panada_hdjh.PanadaInterfactionBean;
 import cctv.cn.ipanda.model.panada_home.CctvAgainBean;
 import cctv.cn.ipanda.model.panada_home.PanadaChinaListBean;
+import cctv.cn.ipanda.model.panada_home.PanadaEyesBean;
 import cctv.cn.ipanda.model.panada_home.PanadaHomeBean;
 import cctv.cn.ipanda.model.panada_home.UpdateBean;
 
@@ -53,6 +54,7 @@ public class HomePresentImp implements HomeContract.Presenter{
             @Override
             public void onSuccess(CctvAgainBean cctvAgainBean) {
                 view.loadCcctv(cctvAgainBean);
+
             }
 
             @Override
@@ -69,6 +71,7 @@ public class HomePresentImp implements HomeContract.Presenter{
             public void onSuccess(PanadaChinaListBean panadaChinaListBean) {
                 List<PanadaChinaListBean.ListBean> list = panadaChinaListBean.getList();
                 view.loadListBean(panadaChinaListBean);
+
             }
 
             @Override
@@ -83,6 +86,7 @@ public class HomePresentImp implements HomeContract.Presenter{
             @Override
             public void onSuccess(PanadaInterfactionBean panadaInterfactionBean) {
                 view.loadInteractionBean(panadaInterfactionBean);
+
             }
 
             @Override
@@ -97,6 +101,23 @@ public class HomePresentImp implements HomeContract.Presenter{
             @Override
             public void onSuccess(UpdateBean updateBean) {
                 view.getVersion(updateBean);
+
+
+            }
+
+            @Override
+            public void onError(String msg) {
+
+            }
+        });
+
+    }
+    //获取熊猫观察的list
+    public void getPanadaList(String url){
+        retrofitUtils.getData(url, null, new MyCallback<PanadaEyesBean>() {
+            @Override
+            public void onSuccess(PanadaEyesBean panadaEyesBean) {
+                view.getPanadaEyesList(panadaEyesBean);
             }
 
             @Override

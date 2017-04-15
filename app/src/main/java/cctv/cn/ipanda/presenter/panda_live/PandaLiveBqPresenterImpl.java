@@ -77,6 +77,16 @@ public class PandaLiveBqPresenterImpl implements LiveContract.Presenter, MyCallb
 
     }
 
+    @Override
+    public <T> void getTalkList() {
+
+    }
+
+    @Override
+    public <T> void vadioPlay(String url, Map<String, String> params, MyCallback<T> callback) {
+
+    }
+
     /**
      * 多视角直播
      *

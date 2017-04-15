@@ -24,6 +24,7 @@ import cctv.cn.ipanda.model.pandalive.PandaLiveBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveBqBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveDuoshijiaoBean;
 import cctv.cn.ipanda.model.pandalive.PandaLiveJcyiBean;
+import cctv.cn.ipanda.model.pandalive.PandaLiveTalkListBean;
 import cctv.cn.ipanda.presenter.panda_live.PandaLivePersenterImpl;
 
 /**
@@ -170,9 +171,9 @@ public class LiveFragment extends BaseFragment implements LiveContract.View, Vie
 
                 Glide.with(App.context).load(liveBean.getImage()).into(panda_live_image);
                 panda_live_title.setText(liveBean.getTitle());
-/*
-                String name = (String) bundle.get("name");
-                panda_live_title.setText(name);*/
+
+//                String name = bundle.getString("name");
+//                panda_live_title.setText(name);
 
                 panda_live_detail.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -254,6 +255,11 @@ public class LiveFragment extends BaseFragment implements LiveContract.View, Vie
 
     @Override
     public void showJcyk(PandaLiveJcyiBean pandaLiveJcyiBean) {
+
+    }
+
+    @Override
+    public void showTalkList(PandaLiveTalkListBean pandaLiveJcyiBean) {
 
     }
 

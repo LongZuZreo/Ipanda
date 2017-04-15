@@ -4,6 +4,7 @@ import java.util.Map;
 
 import cctv.cn.ipanda.model.BaseModel;
 import cctv.cn.ipanda.model.http.MyCallback;
+import cctv.cn.ipanda.model.http.MyVadioPlay;
 
 /**
  * Created by lenovo on 2017/4/7.
@@ -40,4 +41,10 @@ public interface IPandaLiveModel extends BaseModel {
 
     //精彩一刻
     <T> void getJcyk(String url, Map<String, String> params, MyCallback<T> callback);
+
+    //边看边聊列表
+    <T> void getTalkList(String url, Map<String, String> params, MyCallback<T> callback);
+
+    //视频播放
+    <T> void vadioPlay(String url, Map<String, String> params, MyCallback<T> callback);
 }

@@ -15,6 +15,7 @@ import cctv.cn.ipanda.contract.HomeContract;
 import cctv.cn.ipanda.model.panada_hdjh.PanadaInterfactionBean;
 import cctv.cn.ipanda.model.panada_home.CctvAgainBean;
 import cctv.cn.ipanda.model.panada_home.PanadaChinaListBean;
+import cctv.cn.ipanda.model.panada_home.PanadaEyesBean;
 import cctv.cn.ipanda.model.panada_home.PanadaHomeBean;
 import cctv.cn.ipanda.model.panada_home.UpdateBean;
 import cctv.cn.ipanda.presenter.panada_home.HomePresentImp;
@@ -37,6 +38,7 @@ public class InteractionFragment extends BaseFragment implements HomeContract.Vi
 
     @Override
     protected void loadData() {
+
     presentImp.getHdjh(Urls.HDJH);
     }
 
@@ -91,6 +93,11 @@ public class InteractionFragment extends BaseFragment implements HomeContract.Vi
 
     @Override
     public void getVersion(UpdateBean updateBean) {
+
+    }
+
+    @Override
+    public void getPanadaEyesList(PanadaEyesBean panadaEyesBean) {
 
     }
 

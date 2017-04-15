@@ -35,6 +35,7 @@ public class RetrofitUtils {
         return  retrofitUtils;
     }
     public <T> void getData(String url, Map<String,String> params, final MyCallback<T> callback){
+
         if (params==null || params.size()==0){
 
             Call<ResponseBody> call = myNetRequest.getResponseBody(url);
@@ -44,6 +45,7 @@ public class RetrofitUtils {
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
                     try {
+
                         String json=response.body().string();
 
                         Type generice = getGenerice(callback);
@@ -65,6 +67,7 @@ public class RetrofitUtils {
             });
 
         }else{
+
             Call<ResponseBody> call = myNetRequest.getResponseBody(url,params);
 
             call.enqueue(new Callback<ResponseBody>() {
@@ -91,11 +94,7 @@ public class RetrofitUtils {
                     callback.onError(t.getMessage());
                 }
             });
-
-
         }
-
-
     }
     public <T> void getDatawithHeader(String url, Map<String,String> params, final MyCallback<T> callback,Map<String,String> headers){
 

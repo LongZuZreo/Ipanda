@@ -18,18 +18,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cctv.cn.ipanda.R;
-import cctv.cn.ipanda.Util.CircleImageView;
-import cctv.cn.ipanda.activity.MainActivity;
+import cctv.cn.ipanda.utils.CircleImageView;
 import cctv.cn.ipanda.adapter.pandacultureadapter.PandaCultureBannerAdapter;
 import cctv.cn.ipanda.adapter.pandacultureadapter.PandaCultureItemAdapter;
-import cctv.cn.ipanda.adapter.pandaobserveradapter.PandaObserverBannerAdapter;
-import cctv.cn.ipanda.adapter.pandaobserveradapter.PandaObserverItemAdapter;
 import cctv.cn.ipanda.base.BaseFragment;
 import cctv.cn.ipanda.contract.CultureContract;
 import cctv.cn.ipanda.model.panda_culture.PandaCultureEntity;
-import cctv.cn.ipanda.model.panda_observer.PandaObserverHeadEntity;
 import cctv.cn.ipanda.presenter.panda_culture.PandaCulturePersenter;
-import cctv.cn.ipanda.presenter.panda_obsenver.PandaObservePersenter;
 
 
 /**
@@ -52,6 +47,7 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
 
     @Override
     protected int getLayoutId() {
+
         return R.layout.fragment_panda_culture;
     }
 
@@ -110,15 +106,6 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
 
             }
         });
-    }
-
-    @Override
-    protected void show() {
-    }
-
-    @Override
-    protected void hide() {
-
     }
 
     Handler handler = new Handler() {
